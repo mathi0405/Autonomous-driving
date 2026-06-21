@@ -1,0 +1,46 @@
+# PPO configuration. Inherits env/reward settings from env.yaml at load time.
+# Hyperparameters follow Stable-Baselines3 conventions and are tuned for the
+# image-based driving task (NatureCNN-style extractor).
+
+defaults: env.yaml
+
+algorithm: ppo
+seed: 1
+
+# Total environment steps. CARLA runs benefit from 1M+; the fallback smoke run
+# overrides this from the CLI (--total-timesteps).
+total_timesteps: 1000000
+
+# Vectorized environments (parallel rollouts). CARLA usually uses 1; the fallback
+# env is cheap and scales to many workers.
+n_envs: 8
+
+policy:
+  # "CnnPolicy" for image observations, "MlpPolicy" for state observations.
+  # The trainer auto-selects based on env.observation, but you can force it here.
+  type: auto
+  features_extractor: nature_cnn   # nature_cnn | impala | mlp
+  features_dim: 512
+  net_arch: [256, 256]
+  activation: relu
+  log_std_init: -0.5
+
+hyperparameters:
+  learning_rate: 3.0e-4
+  n_steps: 1024                # rollout length per env
+  batch_size: 256
+  n_epochs: 10
+  gamma: 0.99
+  gae_lambda: 0.95
+  clip_range: 0.2
+  ent_coef: 0.0
+  vf_coef: 0.5
+  max_grad_norm: 0.5
+  target_kl: 0.03
+
+logging:
+  eval_freq: 25000             # steps between evaluations
+  eval_episodes: 5
+  checkpoint_freq: 50000
+  tensorboard: true
+  save_video: true

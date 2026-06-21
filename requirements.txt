@@ -1,0 +1,14 @@
+# Runtime dependencies (pinned lower bounds; see pyproject.toml for the source of truth).
+# Install the package instead with:  pip install -e .
+numpy>=1.24
+gymnasium>=0.29.1
+stable-baselines3>=2.4.0
+torch>=2.3
+pyyaml>=6.0
+tensorboard>=2.14
+rich>=13.0
+tqdm>=4.66
+
+# CARLA client API is installed separately and must match your CARLA server version.
+# It is NOT required for the fallback environment, the tests, or CI.
+#   pip install "carla>=0.9.15"

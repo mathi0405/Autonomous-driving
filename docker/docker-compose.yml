@@ -1,0 +1,54 @@
+# Full-stack template: a CARLA server + the trainer container.
+#
+# Requires the NVIDIA Container Toolkit (GPU). Bring it up with:
+#   docker compose -f docker/docker-compose.yml up --build
+#
+# The fallback environment needs no GPU and no CARLA server -- just run the
+# `trainer` service's default command, or `make smoke` on the host.
+services:
+  carla:
+    image: carlasim/carla:0.9.15
+    command: ["/bin/bash", "./CarlaUE4.sh", "-RenderOffScreen", "-nosound", "-carla-rpc-port=2000"]
+    ports:
+      - "2000-2002:2000-2002"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    healthcheck:
+      test: ["CMD-SHELL", "ss -ltn | grep -q ':2000' || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+
+  trainer:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    depends_on:
+      carla:
+        condition: service_healthy
+    environment:
+      - CARLA_HOST=carla
+    # Train PPO against the CARLA server (image observations).
+    command:
+      [
+        "ad_rl.training.train",
+        "--config", "configs/ppo.yaml",
+        "--env", "carla",
+        "--obs", "image",
+        "--no-progress",
+      ]
+    volumes:
+      - ../runs:/app/runs
+      - ../results:/app/results
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]

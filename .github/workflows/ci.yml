@@ -1,0 +1,96 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    name: Code quality (advisory)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install lint tooling
+        run: pip install ruff==0.5.7 black==24.8.0 mypy==1.11.1 types-PyYAML
+      - name: Ruff (lint)
+        run: ruff check src tests
+        continue-on-error: true
+      - name: Black (format check)
+        run: black --check src tests
+        continue-on-error: true
+      - name: Mypy (type check)
+        run: mypy src
+        continue-on-error: true
+
+  test:
+    name: Tests (py${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.9", "3.11"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+      - name: Install CPU PyTorch
+        run: pip install "torch>=2.3" --index-url https://download.pytorch.org/whl/cpu
+      - name: Install package with dev extras
+        run: pip install -e ".[dev,viz]"
+      - name: Run fast tests with coverage
+        run: pytest -m "not slow" --cov=ad_rl --cov-report=term-missing --cov-report=xml
+      - name: Upload coverage artifact
+        if: matrix.python-version == '3.11'
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-xml
+          path: coverage.xml
+
+  smoke-e2e:
+    name: End-to-end smoke (train + eval + dashboard)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install CPU PyTorch
+        run: pip install "torch>=2.3" --index-url https://download.pytorch.org/whl/cpu
+      - name: Install package with dev extras
+        run: pip install -e ".[dev,viz]"
+      - name: Run slow smoke-training tests
+        run: pytest -m slow -q
+      - name: Train PPO (fallback, 3k steps) end-to-end
+        run: |
+          python -m ad_rl.training.train --config configs/ppo.yaml --env fallback \
+            --obs state --total-timesteps 3000 --n-envs 4 --eval-episodes 5 \
+            --run-name ci_ppo --no-progress
+      - name: Evaluate trained PPO + classical baselines
+        run: |
+          python -m ad_rl.evaluation.evaluate --model runs/ci_ppo/final_model.zip \
+            --algo ppo --env fallback --obs state --episodes 10 --agent-name PPO
+          python -m ad_rl.evaluation.evaluate --model pid --env fallback --obs state --episodes 10
+          python -m ad_rl.evaluation.evaluate --model stanley --env fallback --obs state --episodes 10
+      - name: Build evaluation dashboard
+        run: python scripts/make_dashboard.py --results results/summary.json --out dashboard/index.html
+      - name: Upload run artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ci-run
+          path: |
+            results/summary.json
+            dashboard/index.html
+            runs/ci_ppo/metrics.json

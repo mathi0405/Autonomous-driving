@@ -1,0 +1,38 @@
+# SAC configuration. Inherits env/reward settings from env.yaml at load time.
+# SAC is off-policy and sample-efficient; it uses a replay buffer and typically
+# fewer parallel envs than PPO.
+
+defaults: env.yaml
+
+algorithm: sac
+seed: 1
+
+total_timesteps: 1000000
+n_envs: 1
+
+policy:
+  type: auto
+  features_extractor: nature_cnn
+  features_dim: 512
+  net_arch: [256, 256]
+  activation: relu
+
+hyperparameters:
+  learning_rate: 3.0e-4
+  buffer_size: 300000
+  learning_starts: 5000
+  batch_size: 256
+  tau: 0.005
+  gamma: 0.99
+  train_freq: 1
+  gradient_steps: 1
+  ent_coef: auto               # automatic entropy tuning
+  target_update_interval: 1
+  use_sde: false
+
+logging:
+  eval_freq: 25000
+  eval_episodes: 5
+  checkpoint_freq: 50000
+  tensorboard: true
+  save_video: true

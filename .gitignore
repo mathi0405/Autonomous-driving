@@ -1,0 +1,78 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Experiment outputs (kept out of git; results/summary.json is committed as an example)
+runs/
+logs/
+tensorboard/
+checkpoints/
+*.zip
+*.pt
+*.pth
+*.ckpt
+videos/
+*.mp4
+
+# Keep example results but ignore bulky raw run artifacts
+results/raw/
+!results/summary.json
+!results/example_summary.json
+
+# CARLA
+CarlaUE4/
+*.egg
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# stray sandbox scratch (locked by mount)
+err.txt
+_setup_log.txt
+_run_log.txt
+_pycheck.txt
+_bootstrap.ps1
+_gitsetup.ps1
+_gitsetup_log.txt
+_pycheck.txt
