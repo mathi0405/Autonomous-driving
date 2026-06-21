@@ -76,3 +76,5 @@ _bootstrap.ps1
 _gitsetup.ps1
 _gitsetup_log.txt
 _pycheck.txt
+_remote.ps1
+_remote_log.txt

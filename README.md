@@ -7,7 +7,7 @@ baselines (PID + Stanley), a modular shaped reward, a full evaluation suite with
 an interactive dashboard, Docker, and a real GitHub Actions CI/CD pipeline.
 
 <!-- Update the repo slug below once you push to GitHub -->
-[![CI](https://github.com/aimee-wagner/autonomous-driving-rl/actions/workflows/ci.yml/badge.svg)](https://github.com/aimee-wagner/autonomous-driving-rl/actions/workflows/ci.yml)
+[![CI](https://github.com/mathi0405/autonomous-driving-rl/actions/workflows/ci.yml/badge.svg)](https://github.com/mathi0405/autonomous-driving-rl/actions/workflows/ci.yml)
 ![Python](https://img.shields.io/badge/python-3.9%E2%80%933.11-blue)
 ![RL](https://img.shields.io/badge/RL-Stable--Baselines3-7c5cff)
 ![Simulator](https://img.shields.io/badge/simulator-CARLA%200.9.15-36c98d)
@@ -237,3 +237,4 @@ codebase helps your work, a star or citation is appreciated.
 
 > Author: **Mani Chandan Mathi** · a portfolio project demonstrating RL + robotics +
 > ML-engineering practice (clean architecture, reproducibility, tests, CI/CD).
+                                           
