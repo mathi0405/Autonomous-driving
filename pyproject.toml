@@ -54,8 +54,8 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/mathi0405/autonomous-driving-rl"
-Repository = "https://github.com/mathi0405/autonomous-driving-rl"
+Homepage = "https://github.com/mathi0405/Autonomous-driving"
+Repository = "https://github.com/mathi0405/Autonomous-driving"
 
 [project.scripts]
 ad-train = "ad_rl.training.train:main"

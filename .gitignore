@@ -78,3 +78,5 @@ _gitsetup_log.txt
 _pycheck.txt
 _remote.ps1
 _remote_log.txt
+_push.ps1
+_push_log.txt
