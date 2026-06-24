@@ -161,9 +161,7 @@ class KinematicDrivingEnv(gym.Env):
         obs = self._build_observation(lateral=0.0, heading_err=0.0)
         return obs, self._info(lateral=0.0, heading_err=0.0, components={})
 
-    def step(
-        self, action: np.ndarray
-    ) -> tuple[np.ndarray, float, bool, bool, dict[str, Any]]:
+    def step(self, action: np.ndarray) -> tuple[np.ndarray, float, bool, bool, dict[str, Any]]:
         """Advance the bicycle model; return the Gymnasium 5-tuple."""
         action = np.asarray(action, dtype=np.float32).reshape(-1)
         steer = float(np.clip(action[0], -1.0, 1.0))
@@ -185,8 +183,9 @@ class KinematicDrivingEnv(gym.Env):
             self._v = float(np.clip(self._v + accel * dt, 0.0, self.fb_cfg.max_speed_ms))
             self._x += self._v * math.cos(self._yaw) * dt
             self._y += self._v * math.sin(self._yaw) * dt
-            self._yaw = _wrap_to_pi(self._yaw \
-                + self._v / self.fb_cfg.wheelbase_m * math.tan(delta) * dt)
+            self._yaw = _wrap_to_pi(
+                self._yaw + self._v / self.fb_cfg.wheelbase_m * math.tan(delta) * dt
+            )
 
             self._idx = self._nearest_index()
             self._progress_s = self._idx * TRACK_DS_M
@@ -307,8 +306,9 @@ class KinematicDrivingEnv(gym.Env):
             return self._render_topdown()
         return None
 
-    def _info(self, lateral: float, heading_err: float,
-        components: dict[str, float]) -> dict[str, Any]:
+    def _info(
+        self, lateral: float, heading_err: float, components: dict[str, float]
+    ) -> dict[str, Any]:
         return {
             "lateral_error_m": float(lateral),
             "heading_error_rad": float(heading_err),
@@ -321,8 +321,9 @@ def _wrap_to_pi(angle: float) -> float:
     return float((angle + math.pi) % (2.0 * math.pi) - math.pi)
 
 
-def _draw_disc(img: np.ndarray, row: int, col: int, radius: int,
-    color: tuple[int, int, int]) -> None:
+def _draw_disc(
+    img: np.ndarray, row: int, col: int, radius: int, color: tuple[int, int, int]
+) -> None:
     """Paint a filled disc onto an (H, W, 3) uint8 image (clipped to bounds)."""
     h, w = img.shape[:2]
     r0, r1 = max(0, row - radius), min(h, row + radius + 1)

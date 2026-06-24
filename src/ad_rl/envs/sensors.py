@@ -84,9 +84,7 @@ class SensorManager:
         if self is None:
             return
         impulse = event.normal_impulse
-        self.collision_intensity = float(
-            (impulse.x**2 + impulse.y**2 + impulse.z**2) ** 0.5
-        )
+        self.collision_intensity = float((impulse.x**2 + impulse.y**2 + impulse.z**2) ** 0.5)
         self._collision_flag = True
 
     @staticmethod

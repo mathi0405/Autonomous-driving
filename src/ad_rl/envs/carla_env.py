@@ -132,9 +132,7 @@ class CarlaEnv(gym.Env):
         self._route_xy = np.array(
             [[w.transform.location.x, w.transform.location.y] for w in waypoints]
         )
-        self._route_yaw = np.array(
-            [math.radians(w.transform.rotation.yaw) for w in waypoints]
-        )
+        self._route_yaw = np.array([math.radians(w.transform.rotation.yaw) for w in waypoints])
         self._idx = 0
 
     # ------------------------------------------------------------------ #
@@ -156,9 +154,7 @@ class CarlaEnv(gym.Env):
         obs = self._build_observation()
         return obs, {"lateral_error_m": 0.0, "heading_error_rad": 0.0}
 
-    def step(
-        self, action: np.ndarray
-    ) -> tuple[np.ndarray, float, bool, bool, dict[str, Any]]:
+    def step(self, action: np.ndarray) -> tuple[np.ndarray, float, bool, bool, dict[str, Any]]:
         """Advance one step; return (obs, reward, terminated, truncated, info)."""
         import carla
 
@@ -258,8 +254,12 @@ class CarlaEnv(gym.Env):
             lookahead.append(kappa * 50.0)
         return np.array(
             [
-                speed_norm, lateral / 2.0, math.sin(heading_err),
-                math.cos(heading_err), self._prev_steer, *lookahead
+                speed_norm,
+                lateral / 2.0,
+                math.sin(heading_err),
+                math.cos(heading_err),
+                self._prev_steer,
+                *lookahead,
             ],
             dtype=np.float32,
         )

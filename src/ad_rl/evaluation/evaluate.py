@@ -150,8 +150,7 @@ def evaluate(args: argparse.Namespace) -> dict:
         agent_name = args.agent_name or algo.upper()
 
     logger.info(
-        f"Evaluating [bold]{agent_name}[/bold]"
-        f" on '{args.env}' for {args.episodes} episodes"
+        f"Evaluating [bold]{agent_name}[/bold]" f" on '{args.env}' for {args.episodes} episodes"
     )
     records = run_episodes(env, policy, args.episodes, seed=args.seed)
     metrics = aggregate(records)

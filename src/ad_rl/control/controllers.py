@@ -104,9 +104,7 @@ class VehiclePIDController:
         self._lon.reset()
         self._lat.reset()
 
-    def act(
-        self, speed_ms: float, lateral_error_m: float, heading_error_rad: float
-    ) -> np.ndarray:
+    def act(self, speed_ms: float, lateral_error_m: float, heading_error_rad: float) -> np.ndarray:
         """Return a ``[steer, throttle_brake]`` action in ``[-1, 1]^2``.
 
         Parameters
