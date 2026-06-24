@@ -11,85 +11,158 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  # ---------------------------------------------------------------------------
+  # Job 1: Code Quality — blocking on main, advisory on PRs
+  # ---------------------------------------------------------------------------
   quality:
-    name: Code quality (advisory)
+    name: Code quality
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
           cache: pip
+
       - name: Install lint tooling
         run: pip install ruff==0.5.7 black==24.8.0 mypy==1.11.1 types-PyYAML
-      - name: Ruff (lint)
-        run: ruff check src tests
-        continue-on-error: true
-      - name: Black (format check)
-        run: black --check src tests
-        continue-on-error: true
-      - name: Mypy (type check)
-        run: mypy src
-        continue-on-error: true
 
-  test:
-    name: Tests (py${{ matrix.python-version }})
+      - name: Ruff — lint and import sort
+        run: ruff check src tests
+
+      - name: Black — format check
+        run: black --check src tests
+
+      - name: mypy — static type analysis
+        run: mypy src
+        continue-on-error: true   # type errors are advisory until full coverage
+
+  # ---------------------------------------------------------------------------
+  # Job 2: Security — dependency vulnerability audit
+  # ---------------------------------------------------------------------------
+  security:
+    name: Security audit
     runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install pip-audit
+        run: pip install pip-audit
+
+      - name: Audit dependencies for known CVEs
+        run: pip-audit --requirement requirements.txt
+        continue-on-error: true   # advisory until pinned versions are locked
+
+  # ---------------------------------------------------------------------------
+  # Job 3: Tests — multi-Python matrix
+  # ---------------------------------------------------------------------------
+  test:
+    name: Tests (Python ${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    needs: quality
     strategy:
       fail-fast: false
       matrix:
-        python-version: ["3.9", "3.11"]
+        python-version: ["3.9", "3.10", "3.11"]
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
           cache: pip
-      - name: Install CPU PyTorch
+
+      - name: Install CPU-only PyTorch
         run: pip install "torch>=2.3" --index-url https://download.pytorch.org/whl/cpu
-      - name: Install package with dev extras
+
+      - name: Install package with development extras
         run: pip install -e ".[dev,viz]"
-      - name: Run fast tests with coverage
-        run: pytest -m "not slow" --cov=ad_rl --cov-report=term-missing --cov-report=xml
-      - name: Upload coverage artifact
+
+      - name: Run fast unit tests with branch coverage
+        run: >
+          pytest -m "not slow"
+          --cov=ad_rl
+          --cov-report=term-missing
+          --cov-report=xml
+          --cov-fail-under=60
+
+      - name: Upload coverage report
         if: matrix.python-version == '3.11'
         uses: actions/upload-artifact@v4
         with:
           name: coverage-xml
           path: coverage.xml
 
+  # ---------------------------------------------------------------------------
+  # Job 4: End-to-end smoke — full pipeline validation
+  # ---------------------------------------------------------------------------
   smoke-e2e:
-    name: End-to-end smoke (train + eval + dashboard)
+    name: End-to-end smoke (train → eval → dashboard)
     runs-on: ubuntu-latest
+    needs: test
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
           cache: pip
-      - name: Install CPU PyTorch
+
+      - name: Install CPU-only PyTorch
         run: pip install "torch>=2.3" --index-url https://download.pytorch.org/whl/cpu
-      - name: Install package with dev extras
+
+      - name: Install package with development extras
         run: pip install -e ".[dev,viz]"
-      - name: Run slow smoke-training tests
+
+      - name: Run slow (integration) tests
         run: pytest -m slow -q
-      - name: Train PPO (fallback, 3k steps) end-to-end
+
+      - name: Train PPO — fallback env, 3 000 steps
         run: |
-          python -m ad_rl.training.train --config configs/ppo.yaml --env fallback \
-            --obs state --total-timesteps 3000 --n-envs 4 --eval-episodes 5 \
-            --run-name ci_ppo --no-progress
-      - name: Evaluate trained PPO + classical baselines
+          python -m ad_rl.training.train \
+            --config configs/ppo.yaml \
+            --env fallback \
+            --obs state \
+            --total-timesteps 3000 \
+            --n-envs 4 \
+            --eval-episodes 5 \
+            --run-name ci_ppo \
+            --no-progress
+
+      - name: Evaluate trained PPO agent
         run: |
-          python -m ad_rl.evaluation.evaluate --model runs/ci_ppo/final_model.zip \
-            --algo ppo --env fallback --obs state --episodes 10 --agent-name PPO
-          python -m ad_rl.evaluation.evaluate --model pid --env fallback --obs state --episodes 10
-          python -m ad_rl.evaluation.evaluate --model stanley --env fallback --obs state --episodes 10
+          python -m ad_rl.evaluation.evaluate \
+            --model runs/ci_ppo/final_model.zip \
+            --algo ppo \
+            --env fallback \
+            --obs state \
+            --episodes 10 \
+            --agent-name PPO
+
+      - name: Evaluate classical baselines (PID, Stanley)
+        run: |
+          python -m ad_rl.evaluation.evaluate \
+            --model pid --env fallback --obs state --episodes 10
+          python -m ad_rl.evaluation.evaluate \
+            --model stanley --env fallback --obs state --episodes 10
+
       - name: Build evaluation dashboard
-        run: python scripts/make_dashboard.py --results results/summary.json --out dashboard/index.html
+        run: |
+          python scripts/make_dashboard.py \
+            --results results/summary.json \
+            --out dashboard/index.html
+
       - name: Upload run artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: ci-run
+          name: ci-run-${{ github.run_number }}
+          retention-days: 14
           path: |
             results/summary.json
             dashboard/index.html

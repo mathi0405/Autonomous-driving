@@ -1,8 +1,49 @@
-"""SAC agent factory (off-policy, sample-efficient continuous control).
+"""SAC agent factory — off-policy, maximum-entropy continuous control.
 
-SAC's maximum-entropy objective and replay buffer make it markedly more
-sample-efficient than PPO, which matters when each CARLA step is expensive. We
-include it as a head-to-head comparison against PPO on the identical task.
+Soft Actor-Critic (Haarnoja et al., 2018) augments the standard RL objective
+with a policy entropy term::
+
+    π* = argmax_π  E[ Σ_t  r(s_t, a_t) + α H(π(· | s_t)) ]
+
+where ``α`` is the temperature parameter that controls the entropy-reward
+trade-off. SAC uses automatic entropy tuning by default (``ent_coef='auto'``),
+which adjusts ``α`` to maintain a target entropy level of
+``−dim(A)`` nats throughout training.
+
+The critic is implemented as a clipped double-Q function to reduce
+overestimation bias::
+
+    y = r + γ (1 − d) [ min_{i=1,2} Q_{θ̄_i}(s', ã') − α log π_φ(ã' | s') ]
+
+where ``ã' ~ π_φ(· | s')`` is a fresh action sample and ``θ̄`` denotes the
+target critic parameters updated via exponential moving average (Polyak
+averaging with coefficient ``τ``).
+
+When to prefer SAC over PPO
+---------------------------
+- Expensive simulation steps (CARLA): SAC's replay buffer enables re-use of
+  historical experience, requiring fewer environment interactions.
+- Fine-grained continuous control: The maximum-entropy objective encourages
+  multimodal exploration, which is beneficial for learning smooth steering.
+- When ``use_sde=True``: State-Dependent Exploration (Raffin et al., 2020)
+  replaces the diagonal Gaussian policy with a learnable perturbation, often
+  producing significantly smoother trajectories.
+
+References
+----------
+Haarnoja, T., Zhou, A., Abbeel, P., & Levine, S. (2018).
+    Soft Actor-Critic: Off-Policy Maximum Entropy Deep Reinforcement Learning
+    with a Stochastic Actor. ICML 2018. arXiv:1801.01290.
+Haarnoja, T., Zhou, A., Hartikainen, K., et al. (2018).
+    Soft Actor-Critic Algorithms and Applications. arXiv:1812.05905.
+Raffin, A., Kober, J., & Stulp, F. (2020).
+    Smooth Exploration for Robotic Reinforcement Learning.
+    CoRL 2021. arXiv:2005.05719.
+
+See Also
+--------
+docs/hyperparameter_guide.md : SAC hyperparameter sensitivity analysis.
+configs/sac.yaml : Default hyperparameter configuration.
 """
 
 from __future__ import annotations
@@ -20,7 +61,32 @@ def build_sac(
     tensorboard_log: Optional[str] = None,
     verbose: int = 1,
 ):
-    """Construct a Stable-Baselines3 ``SAC`` model from a :class:`Config`."""
+    """Construct and return a Stable-Baselines3 ``SAC`` model from a ``Config``.
+
+    All hyperparameters are drawn from ``cfg.hyperparameters``; CLI overrides
+    applied via :func:`~ad_rl.training.train.apply_overrides` take precedence
+    over YAML defaults.
+
+    Parameters
+    ----------
+    env : gymnasium.Env or VecEnv
+        The (possibly vectorised) training environment. Note that SAC is
+        inherently a single-environment algorithm; ``n_envs > 1`` is not
+        supported by Stable-Baselines3's SAC implementation.
+    cfg : Config
+        Fully resolved configuration object.
+    device : str
+        PyTorch device string. ``'auto'`` selects CUDA if available, else CPU.
+    tensorboard_log : str, optional
+        Directory for TensorBoard event files. ``None`` disables logging.
+    verbose : int
+        Stable-Baselines3 verbosity level (0 = silent, 1 = info, 2 = debug).
+
+    Returns
+    -------
+    stable_baselines3.SAC
+        An initialised but untrained SAC model ready for ``.learn()``.
+    """
     from stable_baselines3 import SAC
 
     policy, policy_kwargs = resolve_policy(cfg)
