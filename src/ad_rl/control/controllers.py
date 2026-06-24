@@ -44,10 +44,23 @@ class PID:
         self._prev_error = 0.0
 
     def reset(self) -> None:
+        """Reset internal integrator and previous-error state."""
         self._integral = 0.0
         self._prev_error = 0.0
 
     def step(self, error: float) -> float:
+        """Advance the PID controller by one timestep and return the clipped output.
+
+        Parameters
+        ----------
+        error:
+            The current error (typically setpoint - measurement).
+
+        Returns
+        -------
+        float
+            Control output clipped to ``self.output_clip``.
+        """
         self._integral = float(
             np.clip(self._integral + error * self.dt, -self.integral_clip, self.integral_clip)
         )
@@ -88,13 +101,24 @@ class VehiclePIDController:
         self._lat = PID(kp=0.6, ki=0.0, kd=0.3, dt=dt, output_clip=(-1.0, 1.0))
 
     def reset(self) -> None:
+        """Reset internal state of longitudinal and lateral PID controllers."""
         self._lon.reset()
         self._lat.reset()
 
     def act(
         self, speed_ms: float, lateral_error_m: float, heading_error_rad: float
     ) -> np.ndarray:
-        """Return a ``[steer, throttle_brake]`` action in ``[-1, 1]^2``."""
+        """Return a ``[steer, throttle_brake]`` action in ``[-1, 1]^2``.
+
+        Parameters
+        ----------
+        speed_ms:
+            Current forward speed in m/s.
+        lateral_error_m:
+            Cross-track error in meters (positive = left of lane center).
+        heading_error_rad:
+            Heading error in radians, wrapped to ``[-pi, pi]``.
+        """
         # Longitudinal: PID on speed error.
         throttle_brake = self._lon.step(self.target_speed_ms - speed_ms)
 
