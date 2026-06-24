@@ -7,6 +7,7 @@ fallback environment, the tests, or CI.
 
 from __future__ import annotations
 
+import contextlib
 import weakref
 from typing import Any, List, Optional, Tuple
 
@@ -103,12 +104,17 @@ class SensorManager:
         return flag
 
     def destroy(self) -> None:
+        """Stop and destroy attached sensors, suppressing cleanup errors.
+
+        The method intentionally suppresses exceptions raised during cleanup to
+        ensure shutdown code does not fail; this mirrors prior behaviour but
+        satisfies linter rules by using contextlib.suppress.
+        """
         for sensor in self._sensors:
-            try:
+            # Stop/destroy each sensor and ignore any exceptions during cleanup.
+            with contextlib.suppress(Exception):  # pragma: no cover - cleanup must never raise
                 sensor.stop()
                 sensor.destroy()
-            except Exception:  # pragma: no cover - cleanup must never raise
-                pass
         self._sensors.clear()
 
 
