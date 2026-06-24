@@ -48,6 +48,18 @@ class PID:
         self._prev_error = 0.0
 
     def step(self, error: float) -> float:
+        """Advance the PID controller by one timestep.
+
+        Parameters
+        ----------
+        error:
+            The current error signal (setpoint - measurement).
+
+        Returns
+        -------
+        float
+            Clipped controller output in the configured output range.
+        """
         self._integral = float(
             np.clip(self._integral + error * self.dt, -self.integral_clip, self.integral_clip)
         )

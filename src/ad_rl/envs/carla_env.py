@@ -16,6 +16,7 @@ be imported (and the class referenced) on machines without CARLA installed.
 from __future__ import annotations
 
 import math
+import contextlib
 from typing import Any, Dict, List, Optional, Tuple
 
 import gymnasium as gym
@@ -272,22 +273,19 @@ class CarlaEnv(gym.Env):
             self._sensors.destroy()
             self._sensors = None
         if self._vehicle is not None:
-            try:
+            with contextlib.suppress(Exception):  # pragma: no cover
                 self._vehicle.destroy()
-            except Exception:  # pragma: no cover
-                pass
             self._vehicle = None
 
     def close(self) -> None:
+        """Cleanup CARLA actors and restore world settings if connected."""
         self._destroy_actors()
         if self._world is not None and self._connected:
-            try:
+            with contextlib.suppress(Exception):  # pragma: no cover
                 settings = self._world.get_settings()
                 settings.synchronous_mode = False
                 settings.fixed_delta_seconds = None
                 self._world.apply_settings(settings)
-            except Exception:  # pragma: no cover
-                pass
 
 
 def _wrap_to_pi(angle: float) -> float:
