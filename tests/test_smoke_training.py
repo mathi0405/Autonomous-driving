@@ -12,9 +12,9 @@ import pytest
 
 pytest.importorskip("stable_baselines3")
 
-from ad_rl.agents import build_agent, load_agent  # noqa: E402
-from ad_rl.training.utils import make_vector_env  # noqa: E402
-from helpers import make_cfg  # noqa: E402
+from ad_rl.agents import build_agent, load_agent
+from ad_rl.training.utils import make_vector_env
+from helpers import make_cfg
 
 
 @pytest.mark.slow

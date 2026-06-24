@@ -7,14 +7,14 @@ from ad_rl.utils.config import RewardConfig
 
 
 def _meas(**kw) -> DriveMeasurement:
-    base = dict(
-        speed_ms=8.33,
-        lateral_error_m=0.0,
-        heading_error_rad=0.0,
-        progress_m=1.0,
-        steer=0.0,
-        prev_steer=0.0,
-    )
+    base = {
+        "speed_ms": 8.33,
+        "lateral_error_m": 0.0,
+        "heading_error_rad": 0.0,
+        "progress_m": 1.0,
+        "steer": 0.0,
+        "prev_steer": 0.0,
+    }
     base.update(kw)
     return DriveMeasurement(**base)
 

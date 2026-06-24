@@ -18,7 +18,7 @@ analysis, and known limitations of this formulation.
 Reward components
 -----------------
 speed
-    Triangular reward in [−1, 1] that peaks at the target cruising speed.
+    Triangular reward in [-1, 1] that peaks at the target cruising speed.
     Bounded to prevent the speed term from dominating at extreme velocities.
 progress
     Distance advanced along the reference route this step (m). Provides a dense
@@ -54,7 +54,6 @@ from __future__ import annotations
 
 import math
 from dataclasses import dataclass, field
-from typing import Dict
 
 from ad_rl.utils.config import RewardConfig
 
@@ -77,12 +76,12 @@ class DriveMeasurement:
         Positive values indicate the vehicle is to the right of centre.
     heading_error_rad : float
         Difference between the vehicle's heading and the road tangent direction,
-        wrapped to the interval [−π, π] (rad).
+        wrapped to the interval [-π, π] (rad).
     progress_m : float
         Arc-length distance advanced along the reference route during this
         timestep (m). Negative values indicate the vehicle is moving backwards.
     steer : float
-        Current steering command normalised to [−1, 1]. Negative = left.
+        Current steering command normalised to [-1, 1]. Negative = left.
     prev_steer : float
         Steering command at the previous timestep. Used to compute jerk.
     collided : bool
@@ -119,19 +118,19 @@ class RewardResult:
     """
 
     total: float
-    components: Dict[str, float] = field(default_factory=dict)
+    components: dict[str, float] = field(default_factory=dict)
 
 
 def _speed_reward(speed_ms: float, target_ms: float) -> float:
-    """Compute the triangular speed reward, bounded to [−1, 1].
+    """Compute the triangular speed reward, bounded to [-1, 1].
 
     The reward is 1.0 when ``speed_ms == target_ms``, decreases linearly to
-    0.0 at standstill and at ``2 × target_ms``, and reaches −1.0 beyond
-    ``3 × target_ms``. This asymmetric triangular shape:
+    0.0 at standstill and at ``2 x target_ms``, and reaches -1.0 beyond
+    ``3 x target_ms``. This asymmetric triangular shape:
 
     - Does not penalise a stopped vehicle as harshly as a linear penalty would,
       preventing the speed term from competing with collision-avoidance signals.
-    - Discourages speeding via the negative region beyond ``2 × target_ms``.
+    - Discourages speeding via the negative region beyond ``2 x target_ms``.
     - Is bounded, preventing the term from dominating total reward at high speeds.
 
     Parameters
@@ -144,7 +143,7 @@ def _speed_reward(speed_ms: float, target_ms: float) -> float:
     Returns
     -------
     float
-        Speed reward in [−1, 1].
+        Speed reward in [-1, 1].
     """
     if target_ms <= 0:
         return 0.0
@@ -164,11 +163,11 @@ def compute_reward(meas: DriveMeasurement, cfg: RewardConfig) -> RewardResult:
 
         r_t = w_v · φ_speed(v_t, v*)
               + w_p · Δd_t
-              − w_l · (e_lat / W)²
-              − w_h · (|e_hdg| / π)
-              − w_s · δ_t²
-              − w_j · (δ_t − δ_{t−1})²
-              + r_goal · 𝟙[goal_reached]
+              - w_l · (e_lat / W)²
+              - w_h · (|e_hdg| / π)
+              - w_s · δ_t²
+              - w_j · (δ_t - δ_{t-1})²
+              + r_goal · 1[goal_reached]
 
     where W = 2.0 m is the lane half-width normalisation constant.
 
@@ -205,7 +204,7 @@ def compute_reward(meas: DriveMeasurement, cfg: RewardConfig) -> RewardResult:
         )
 
     # Lane half-width normalisation constant (metres).
-    # At e_lat = W, the lateral penalty equals −w_lane (maximum per-step cost).
+    # At e_lat = W, the lateral penalty equals -w_lane (maximum per-step cost).
     _LANE_HALF_WIDTH_M: float = 2.0
 
     speed = cfg.w_speed * _speed_reward(meas.speed_ms, cfg.target_speed_ms)
@@ -215,7 +214,7 @@ def compute_reward(meas: DriveMeasurement, cfg: RewardConfig) -> RewardResult:
     steer = -cfg.w_steer * meas.steer**2
     jerk = -cfg.w_jerk * (meas.steer - meas.prev_steer) ** 2
 
-    components: Dict[str, float] = {
+    components: dict[str, float] = {
         "speed": speed,
         "progress": progress,
         "lane": lane,

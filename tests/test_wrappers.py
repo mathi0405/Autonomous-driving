@@ -29,5 +29,5 @@ def test_action_smoothing_filters_toward_zero():
     env = ActionSmoothingWrapper(make_env("fallback", make_cfg("state")), alpha=0.5)
     env.reset(seed=0)
     # The wrapper should not raise and should keep the env steppable.
-    obs, reward, terminated, truncated, info = env.step(np.array([1.0, 1.0], dtype=np.float32))
+    _obs, reward, _terminated, _truncated, _info = env.step(np.array([1.0, 1.0], dtype=np.float32))
     assert np.isfinite(reward)

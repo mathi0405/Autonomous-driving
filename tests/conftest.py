@@ -8,9 +8,9 @@ from pathlib import Path
 # Make ``helpers`` importable regardless of pytest's import mode.
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-import pytest  # noqa: E402
+import pytest
 
-from helpers import make_cfg  # noqa: E402
+from helpers import make_cfg
 
 
 @pytest.fixture

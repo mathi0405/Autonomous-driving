@@ -13,7 +13,7 @@ from __future__ import annotations
 import copy
 from dataclasses import dataclass, field, fields, is_dataclass
 from pathlib import Path
-from typing import Any, Dict, List, Tuple, Type, TypeVar
+from typing import Any, TypeVar
 
 import yaml
 
@@ -28,7 +28,7 @@ class EnvConfig:
     """Settings shared by every environment implementation."""
 
     observation: str = "image"  # "image" | "state"
-    image_size: Tuple[int, int] = (84, 84)
+    image_size: tuple[int, int] = (84, 84)
     frame_stack: int = 4
     action_repeat: int = 2
     max_episode_steps: int = 1000
@@ -85,6 +85,7 @@ class FallbackConfig:
 
     @property
     def max_speed_ms(self) -> float:
+        """Return the maximum speed in metres per second."""
         return self.max_speed_kmh / 3.6
 
 
@@ -96,20 +97,20 @@ class Config:
     seed: int = 1
     total_timesteps: int = 1_000_000
     n_envs: int = 8
-    policy: Dict[str, Any] = field(default_factory=dict)
-    hyperparameters: Dict[str, Any] = field(default_factory=dict)
-    logging: Dict[str, Any] = field(default_factory=dict)
+    policy: dict[str, Any] = field(default_factory=dict)
+    hyperparameters: dict[str, Any] = field(default_factory=dict)
+    logging: dict[str, Any] = field(default_factory=dict)
     env: EnvConfig = field(default_factory=EnvConfig)
     reward: RewardConfig = field(default_factory=RewardConfig)
     carla: CarlaConfig = field(default_factory=CarlaConfig)
     fallback: FallbackConfig = field(default_factory=FallbackConfig)
-    raw: Dict[str, Any] = field(default_factory=dict)
+    raw: dict[str, Any] = field(default_factory=dict)
 
 
 # --------------------------------------------------------------------------- #
 # Loading helpers
 # --------------------------------------------------------------------------- #
-def _deep_merge(base: Dict[str, Any], override: Dict[str, Any]) -> Dict[str, Any]:
+def _deep_merge(base: dict[str, Any], override: dict[str, Any]) -> dict[str, Any]:
     """Recursively merge ``override`` into a copy of ``base``."""
     out = copy.deepcopy(base)
     for key, value in override.items():
@@ -120,12 +121,12 @@ def _deep_merge(base: Dict[str, Any], override: Dict[str, Any]) -> Dict[str, Any
     return out
 
 
-def _from_dict(cls: Type[T], data: Dict[str, Any]) -> T:
+def _from_dict(cls: type[T], data: dict[str, Any]) -> T:
     """Build a dataclass from a dict, ignoring unknown keys and fixing tuples."""
     if not is_dataclass(cls):  # pragma: no cover - defensive
         raise TypeError(f"{cls!r} is not a dataclass")
     field_names = {f.name for f in fields(cls)}
-    kwargs: Dict[str, Any] = {}
+    kwargs: dict[str, Any] = {}
     for key, value in data.items():
         if key not in field_names:
             continue
@@ -136,7 +137,7 @@ def _from_dict(cls: Type[T], data: Dict[str, Any]) -> T:
     return cls(**kwargs)  # type: ignore[call-arg]
 
 
-def load_yaml(path: Path | str) -> Dict[str, Any]:
+def load_yaml(path: Path | str) -> dict[str, Any]:
     """Load a single YAML file into a plain dict."""
     path = Path(path)
     with path.open("r", encoding="utf-8") as fh:
@@ -190,11 +191,11 @@ def load_config(path: Path | str) -> Config:
 
 
 __all__ = [
+    "CarlaConfig",
     "Config",
     "EnvConfig",
-    "RewardConfig",
-    "CarlaConfig",
     "FallbackConfig",
+    "RewardConfig",
     "load_config",
     "load_yaml",
 ]

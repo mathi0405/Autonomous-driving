@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing import Dict, List
-
 import numpy as np
 from stable_baselines3.common.callbacks import BaseCallback
 
@@ -19,7 +17,7 @@ class RewardComponentsCallback(BaseCallback):
     def __init__(self, log_freq: int = 2000, verbose: int = 0) -> None:
         super().__init__(verbose)
         self.log_freq = log_freq
-        self._buffer: Dict[str, List[float]] = {}
+        self._buffer: dict[str, list[float]] = {}
 
     def _on_step(self) -> bool:
         for info in self.locals.get("infos", []):

@@ -12,7 +12,7 @@ Algorithmic objective
 PPO maximises the clipped surrogate objective::
 
     L^CLIP(θ) = E_t [ min(r_t(θ) Â_t,
-                          clip(r_t(θ), 1−ε, 1+ε) Â_t) ]
+                          clip(r_t(θ), 1-ε, 1+ε) Â_t) ]
 
 where ``r_t(θ) = π_θ(a_t | s_t) / π_θ_old(a_t | s_t)`` is the importance
 sampling ratio and ``Â_t`` is the Generalised Advantage Estimate (GAE).
@@ -21,7 +21,7 @@ ensuring monotone improvement in expectation without line-search overhead.
 
 The full loss includes a value-function term and an entropy bonus::
 
-    L(θ) = L^CLIP(θ) − c_1 · L^VF(θ) + c_2 · H[π_θ(· | s_t)]
+    L(θ) = L^CLIP(θ) - c_1 · L^VF(θ) + c_2 · H[π_θ(· | s_t)]
 
 where ``c_1 = vf_coef`` and ``c_2 = ent_coef``.
 
@@ -41,7 +41,7 @@ configs/ppo.yaml : Default hyperparameter configuration.
 
 from __future__ import annotations
 
-from typing import Any, Optional
+from typing import Any
 
 from ad_rl.agents._common import resolve_policy
 from ad_rl.utils.config import Config
@@ -51,7 +51,7 @@ def build_ppo(
     env: Any,
     cfg: Config,
     device: str = "auto",
-    tensorboard_log: Optional[str] = None,
+    tensorboard_log: str | None = None,
     verbose: int = 1,
 ):
     """Construct and return a Stable-Baselines3 ``PPO`` model from a ``Config``.

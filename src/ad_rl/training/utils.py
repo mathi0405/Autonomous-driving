@@ -58,4 +58,4 @@ def linear_schedule(initial_value: float) -> Callable[[float], float]:
     return func
 
 
-__all__ = ["make_vector_env", "make_env_thunk", "linear_schedule"]
+__all__ = ["linear_schedule", "make_env_thunk", "make_vector_env"]

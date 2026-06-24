@@ -9,7 +9,7 @@ from __future__ import annotations
 
 import contextlib
 import weakref
-from typing import Any, List, Optional, Tuple
+from typing import Any
 
 import numpy as np
 
@@ -27,11 +27,11 @@ class SensorManager:
     poll synchronously each tick.
     """
 
-    def __init__(self, world: Any, vehicle: Any, image_size: Tuple[int, int] = (84, 84)) -> None:
+    def __init__(self, world: Any, vehicle: Any, image_size: tuple[int, int] = (84, 84)) -> None:
         self._world = world
         self._vehicle = vehicle
         self._img_h, self._img_w = image_size
-        self._sensors: List[Any] = []
+        self._sensors: list[Any] = []
 
         self.latest_image: np.ndarray = np.zeros((self._img_h, self._img_w, 3), dtype=np.uint8)
         self.collision_intensity: float = 0.0
@@ -70,7 +70,7 @@ class SensorManager:
 
     # ----- sensor callbacks (static to avoid holding strong refs) ---------- #
     @staticmethod
-    def _on_image(weak_self: "weakref.ref[SensorManager]", image: Any) -> None:
+    def _on_image(weak_self: weakref.ref[SensorManager], image: Any) -> None:
         self = weak_self()
         if self is None:
             return
@@ -79,7 +79,7 @@ class SensorManager:
         self.latest_image = array[:, :, ::-1].copy()  # BGR -> RGB
 
     @staticmethod
-    def _on_collision(weak_self: "weakref.ref[SensorManager]", event: Any) -> None:
+    def _on_collision(weak_self: weakref.ref[SensorManager], event: Any) -> None:
         self = weak_self()
         if self is None:
             return
@@ -90,7 +90,7 @@ class SensorManager:
         self._collision_flag = True
 
     @staticmethod
-    def _on_lane_invasion(weak_self: "weakref.ref[SensorManager]", event: Any) -> None:
+    def _on_lane_invasion(weak_self: weakref.ref[SensorManager], event: Any) -> None:
         self = weak_self()
         if self is None:
             return

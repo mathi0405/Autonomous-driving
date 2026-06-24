@@ -11,7 +11,7 @@ if TYPE_CHECKING:
     from ad_rl.utils.config import Config
 
 
-def build_agent(algorithm: str, env: Any, cfg: "Config", **kwargs: Any):
+def build_agent(algorithm: str, env: Any, cfg: Config, **kwargs: Any):
     """Return a configured SB3 model for ``algorithm`` in {"ppo", "sac"}."""
     algorithm = algorithm.lower()
     if algorithm == "ppo":

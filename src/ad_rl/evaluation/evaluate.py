@@ -14,7 +14,7 @@ from __future__ import annotations
 
 import argparse
 from pathlib import Path
-from typing import Callable, List, Optional
+from typing import Callable
 
 import numpy as np
 
@@ -35,9 +35,11 @@ class BaselinePolicy:
         self._controller = controller
 
     def reset(self) -> None:
+        """Reset the underlying classical controller."""
         self._controller.reset()
 
     def __call__(self, obs: np.ndarray, info: dict) -> np.ndarray:
+        """Run the controller and return an action array."""
         return self._controller.act_from_info(info)
 
 
@@ -60,10 +62,10 @@ def policy_from_baseline(kind: str, target_speed_ms: float, dt: float) -> Baseli
 
 
 def run_episodes(
-    env, policy: PolicyFn, n_episodes: int, seed: Optional[int] = None
-) -> List[EpisodeRecord]:
+    env, policy: PolicyFn, n_episodes: int, seed: int | None = None
+) -> list[EpisodeRecord]:
     """Roll out ``policy`` for ``n_episodes`` and record per-episode statistics."""
-    records: List[EpisodeRecord] = []
+    records: list[EpisodeRecord] = []
     for ep in range(n_episodes):
         if hasattr(policy, "reset"):
             policy.reset()  # type: ignore[attr-defined]
@@ -71,9 +73,9 @@ def run_episodes(
         obs, info = env.reset(seed=reset_seed)
         done = False
         ret, length = 0.0, 0
-        speeds: List[float] = []
-        laterals: List[float] = []
-        steers: List[float] = []
+        speeds: list[float] = []
+        laterals: list[float] = []
+        steers: list[float] = []
         last_info = info
         while not done:
             action = policy(obs, info)
@@ -102,11 +104,13 @@ def run_episodes(
 
 
 def _effective_dt(env_name: str, cfg: Config) -> float:
+    """Compute the effective dt (base dt * action_repeat)."""
     base = cfg.fallback.dt if env_name == "fallback" else cfg.carla.fixed_delta_seconds
     return base * cfg.env.action_repeat
 
 
 def parse_args(argv=None) -> argparse.Namespace:
+    """Parse command-line arguments for the evaluation script."""
     p = argparse.ArgumentParser(description="Evaluate a driving policy.")
     p.add_argument("--model", required=True, help="Path to a model .zip, or 'pid'/'stanley'.")
     p.add_argument("--algo", default=None, choices=["ppo", "sac"], help="Algo for loading a model.")
@@ -122,6 +126,7 @@ def parse_args(argv=None) -> argparse.Namespace:
 
 
 def evaluate(args: argparse.Namespace) -> dict:
+    """Run evaluation rollouts and return the aggregated metrics dict."""
     cfg = load_config(args.config)
     if args.obs is not None:
         cfg.env.observation = args.obs
@@ -144,7 +149,10 @@ def evaluate(args: argparse.Namespace) -> dict:
         policy = policy_from_model(model, deterministic=not args.stochastic)
         agent_name = args.agent_name or algo.upper()
 
-    logger.info(f"Evaluating [bold]{agent_name}[/bold] on '{args.env}' for {args.episodes} episodes")
+    logger.info(
+        f"Evaluating [bold]{agent_name}[/bold]"
+        f" on '{args.env}' for {args.episodes} episodes"
+    )
     records = run_episodes(env, policy, args.episodes, seed=args.seed)
     metrics = aggregate(records)
     _print_metrics(agent_name, metrics)
@@ -161,6 +169,7 @@ def evaluate(args: argparse.Namespace) -> dict:
 
 
 def _print_metrics(agent: str, metrics: dict) -> None:
+    """Pretty-print a formatted metrics table to stdout."""
     line = "-" * 46
     print(f"\n{line}\n  {agent} — evaluation metrics\n{line}")
     for key, value in metrics.items():
@@ -169,6 +178,7 @@ def _print_metrics(agent: str, metrics: dict) -> None:
 
 
 def main(argv=None) -> None:
+    """CLI entry point: parse arguments and run evaluate()."""
     evaluate(parse_args(argv))
 
 

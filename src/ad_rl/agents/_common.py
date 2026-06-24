@@ -2,12 +2,12 @@
 
 from __future__ import annotations
 
-from typing import Any, Dict, List, Tuple
+from typing import Any
 
 from ad_rl.utils.config import Config
 
 
-def resolve_policy(cfg: Config) -> Tuple[str, Dict[str, Any]]:
+def resolve_policy(cfg: Config) -> tuple[str, dict[str, Any]]:
     """Map our config onto an SB3 ``(policy_name, policy_kwargs)`` pair.
 
     * Image observations  -> ``CnnPolicy`` with one of our custom CNN extractors.
@@ -24,9 +24,9 @@ def resolve_policy(cfg: Config) -> Tuple[str, Dict[str, Any]]:
 
     activation_map = {"relu": nn.ReLU, "tanh": nn.Tanh, "elu": nn.ELU, "gelu": nn.GELU}
     activation = activation_map.get(str(cfg.policy.get("activation", "relu")).lower(), nn.ReLU)
-    net_arch: List[int] = list(cfg.policy.get("net_arch", [256, 256]))
+    net_arch: list[int] = list(cfg.policy.get("net_arch", [256, 256]))
 
-    policy_kwargs: Dict[str, Any] = {"net_arch": net_arch, "activation_fn": activation}
+    policy_kwargs: dict[str, Any] = {"net_arch": net_arch, "activation_fn": activation}
 
     if is_image:
         from ad_rl.perception import get_features_extractor

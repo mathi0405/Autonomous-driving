@@ -18,12 +18,12 @@ from pathlib import Path
 import matplotlib
 
 matplotlib.use("Agg")
-import matplotlib.pyplot as plt  # noqa: E402
-import numpy as np  # noqa: E402
+import matplotlib.pyplot as plt
+import numpy as np
 
-from ad_rl.control import VehiclePIDController  # noqa: E402
-from ad_rl.envs import make_env  # noqa: E402
-from ad_rl.utils.config import load_config  # noqa: E402
+from ad_rl.control import VehiclePIDController
+from ad_rl.envs import make_env
+from ad_rl.utils.config import load_config
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "docs" / "images"

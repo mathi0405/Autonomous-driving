@@ -14,7 +14,7 @@ def test_reset_and_step_state_obs():
     obs, info = env.reset(seed=0)
     assert obs.shape == env.observation_space.shape
     assert obs.dtype == np.float32
-    obs, reward, terminated, truncated, info = env.step(env.action_space.sample())
+    obs, reward, _terminated, _truncated, info = env.step(env.action_space.sample())
     assert np.isfinite(reward)
     assert {"lateral_error_m", "heading_error_rad", "speed_ms"}.issubset(info)
 
@@ -51,7 +51,7 @@ def test_hard_steer_terminates_offroad():
     env.reset(seed=1)
     done = False
     for _ in range(300):
-        _, _, terminated, truncated, info = env.step(np.array([1.0, 1.0], dtype=np.float32))
+        _, _, terminated, truncated, _info = env.step(np.array([1.0, 1.0], dtype=np.float32))
         if terminated or truncated:
             done = True
             break

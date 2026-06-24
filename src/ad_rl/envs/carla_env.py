@@ -15,8 +15,9 @@ be imported (and the class referenced) on machines without CARLA installed.
 
 from __future__ import annotations
 
+import contextlib
 import math
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any
 
 import gymnasium as gym
 import numpy as np
@@ -38,10 +39,10 @@ class CarlaEnv(gym.Env):
 
     def __init__(
         self,
-        env_cfg: Optional[EnvConfig] = None,
-        reward_cfg: Optional[RewardConfig] = None,
-        carla_cfg: Optional[CarlaConfig] = None,
-        render_mode: Optional[str] = None,
+        env_cfg: EnvConfig | None = None,
+        reward_cfg: RewardConfig | None = None,
+        carla_cfg: CarlaConfig | None = None,
+        render_mode: str | None = None,
     ) -> None:
         super().__init__()
         self.env_cfg = env_cfg or EnvConfig()
@@ -70,7 +71,7 @@ class CarlaEnv(gym.Env):
         self._map: Any = None
         self._vehicle: Any = None
         self._sensors: Any = None
-        self._route: List[Any] = []
+        self._route: list[Any] = []
         self._route_xy: np.ndarray = np.zeros((0, 2))
         self._route_yaw: np.ndarray = np.zeros((0,))
         self._idx = 0
@@ -100,7 +101,6 @@ class CarlaEnv(gym.Env):
         self._connected = True
 
     def _spawn_ego(self) -> None:
-        import carla
 
         bp_lib = self._world.get_blueprint_library()
         ego_bp = bp_lib.filter(self.carla_cfg.ego_vehicle)[0]
@@ -141,8 +141,9 @@ class CarlaEnv(gym.Env):
     # Gymnasium API
     # ------------------------------------------------------------------ #
     def reset(
-        self, *, seed: Optional[int] = None, options: Optional[Dict[str, Any]] = None
-    ) -> Tuple[np.ndarray, Dict[str, Any]]:
+        self, *, seed: int | None = None, options: dict[str, Any] | None = None
+    ) -> tuple[np.ndarray, dict[str, Any]]:
+        """Reset and return the initial (obs, info) tuple."""
         super().reset(seed=seed)
         if not self._connected:
             self._connect()
@@ -157,7 +158,8 @@ class CarlaEnv(gym.Env):
 
     def step(
         self, action: np.ndarray
-    ) -> Tuple[np.ndarray, float, bool, bool, Dict[str, Any]]:
+    ) -> tuple[np.ndarray, float, bool, bool, dict[str, Any]]:
+        """Advance one step; return (obs, reward, terminated, truncated, info)."""
         import carla
 
         action = np.asarray(action, dtype=np.float32).reshape(-1)
@@ -232,7 +234,7 @@ class CarlaEnv(gym.Env):
         d2 = np.sum((seg - np.array([loc.x, loc.y])) ** 2, axis=1)
         self._idx = lo + int(np.argmin(d2))
 
-    def _lateral_and_heading_error(self) -> Tuple[float, float]:
+    def _lateral_and_heading_error(self) -> tuple[float, float]:
         tf = self._vehicle.get_transform()
         loc = tf.location
         path_yaw = float(self._route_yaw[self._idx])
@@ -255,11 +257,15 @@ class CarlaEnv(gym.Env):
             kappa = _wrap_to_pi(self._route_yaw[j] - self._route_yaw[j0]) / WAYPOINT_SPACING_M
             lookahead.append(kappa * 50.0)
         return np.array(
-            [speed_norm, lateral / 2.0, math.sin(heading_err), math.cos(heading_err), self._prev_steer, *lookahead],
+            [
+                speed_norm, lateral / 2.0, math.sin(heading_err),
+                math.cos(heading_err), self._prev_steer, *lookahead
+            ],
             dtype=np.float32,
         )
 
-    def render(self) -> Optional[np.ndarray]:
+    def render(self) -> np.ndarray | None:
+        """Return an RGB array of the current camera observation, or None."""
         if self.render_mode == "rgb_array" and self._sensors is not None:
             return self._sensors.latest_image
         return None
@@ -272,13 +278,12 @@ class CarlaEnv(gym.Env):
             self._sensors.destroy()
             self._sensors = None
         if self._vehicle is not None:
-            try:
+            with contextlib.suppress(Exception):
                 self._vehicle.destroy()
-            except Exception:  # pragma: no cover
-                pass
             self._vehicle = None
 
     def close(self) -> None:
+        """Destroy all CARLA actors and disconnect from the server."""
         self._destroy_actors()
         if self._world is not None and self._connected:
             try:

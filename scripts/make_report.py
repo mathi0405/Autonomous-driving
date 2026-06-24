@@ -21,8 +21,15 @@ from reportlab.lib.pagesizes import letter
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.lib.units import inch
 from reportlab.platypus import (
-    BaseDocTemplate, Frame, FrameBreak, Image, NextPageTemplate,
-    PageTemplate, Paragraph, Spacer, Table, TableStyle,
+    BaseDocTemplate,
+    Frame,
+    FrameBreak,
+    Image,
+    NextPageTemplate,
+    PageTemplate,
+    Paragraph,
+    Table,
+    TableStyle,
 )
 
 ROOT = Path(__file__).resolve().parents[1]

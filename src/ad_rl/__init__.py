@@ -13,6 +13,6 @@ from __future__ import annotations
 
 __version__ = "0.1.0"
 
-from ad_rl.envs import make_env  # noqa: E402  (lightweight, no torch)
+from ad_rl.envs import make_env
 
 __all__ = ["__version__", "make_env"]

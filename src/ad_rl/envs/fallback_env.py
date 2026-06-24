@@ -17,7 +17,7 @@ keep its lane, hold a target speed, and avoid a few static obstacles.
 from __future__ import annotations
 
 import math
-from typing import Any, Dict, Optional, Tuple
+from typing import Any
 
 import gymnasium as gym
 import numpy as np
@@ -43,10 +43,10 @@ class KinematicDrivingEnv(gym.Env):
 
     def __init__(
         self,
-        env_cfg: Optional[EnvConfig] = None,
-        reward_cfg: Optional[RewardConfig] = None,
-        fallback_cfg: Optional[FallbackConfig] = None,
-        render_mode: Optional[str] = None,
+        env_cfg: EnvConfig | None = None,
+        reward_cfg: RewardConfig | None = None,
+        fallback_cfg: FallbackConfig | None = None,
+        render_mode: str | None = None,
     ) -> None:
         super().__init__()
         self.env_cfg = env_cfg or EnvConfig()
@@ -130,7 +130,7 @@ class KinematicDrivingEnv(gym.Env):
         d2 = np.sum((seg - np.array([self._x, self._y])) ** 2, axis=1)
         return lo + int(np.argmin(d2))
 
-    def _lateral_and_heading_error(self, idx: int) -> Tuple[float, float]:
+    def _lateral_and_heading_error(self, idx: int) -> tuple[float, float]:
         path_yaw = float(self._path_yaw[idx])
         dx = self._x - self._path_xy[idx, 0]
         dy = self._y - self._path_xy[idx, 1]
@@ -144,8 +144,9 @@ class KinematicDrivingEnv(gym.Env):
     # Gymnasium API
     # ------------------------------------------------------------------ #
     def reset(
-        self, *, seed: Optional[int] = None, options: Optional[Dict[str, Any]] = None
-    ) -> Tuple[np.ndarray, Dict[str, Any]]:
+        self, *, seed: int | None = None, options: dict[str, Any] | None = None
+    ) -> tuple[np.ndarray, dict[str, Any]]:
+        """Reset the kinematic track; return the initial (obs, info)."""
         super().reset(seed=seed)
         self._generate_track()
 
@@ -162,7 +163,8 @@ class KinematicDrivingEnv(gym.Env):
 
     def step(
         self, action: np.ndarray
-    ) -> Tuple[np.ndarray, float, bool, bool, Dict[str, Any]]:
+    ) -> tuple[np.ndarray, float, bool, bool, dict[str, Any]]:
+        """Advance the bicycle model; return the Gymnasium 5-tuple."""
         action = np.asarray(action, dtype=np.float32).reshape(-1)
         steer = float(np.clip(action[0], -1.0, 1.0))
         throttle_brake = float(np.clip(action[1], -1.0, 1.0))
@@ -183,7 +185,8 @@ class KinematicDrivingEnv(gym.Env):
             self._v = float(np.clip(self._v + accel * dt, 0.0, self.fb_cfg.max_speed_ms))
             self._x += self._v * math.cos(self._yaw) * dt
             self._y += self._v * math.sin(self._yaw) * dt
-            self._yaw = _wrap_to_pi(self._yaw + self._v / self.fb_cfg.wheelbase_m * math.tan(delta) * dt)
+            self._yaw = _wrap_to_pi(self._yaw \
+                + self._v / self.fb_cfg.wheelbase_m * math.tan(delta) * dt)
 
             self._idx = self._nearest_index()
             self._progress_s = self._idx * TRACK_DS_M
@@ -263,7 +266,7 @@ class KinematicDrivingEnv(gym.Env):
         view_m = 30.0  # metres covered vertically and horizontally
         cos_y, sin_y = math.cos(self._yaw), math.sin(self._yaw)
 
-        def to_pixel(wx: float, wy: float) -> Optional[Tuple[int, int]]:
+        def to_pixel(wx: float, wy: float) -> tuple[int, int] | None:
             dx, dy = wx - self._x, wy - self._y
             forward = dx * cos_y + dy * sin_y
             left = -dx * sin_y + dy * cos_y
@@ -298,12 +301,14 @@ class KinematicDrivingEnv(gym.Env):
         d2 = np.sum((self._obstacles - np.array([self._x, self._y])) ** 2, axis=1)
         return bool(np.any(d2 < radius**2))
 
-    def render(self) -> Optional[np.ndarray]:
+    def render(self) -> np.ndarray | None:
+        """Return a top-down RGB image, or None in non-render mode."""
         if self.render_mode == "rgb_array":
             return self._render_topdown()
         return None
 
-    def _info(self, lateral: float, heading_err: float, components: Dict[str, float]) -> Dict[str, Any]:
+    def _info(self, lateral: float, heading_err: float,
+        components: dict[str, float]) -> dict[str, Any]:
         return {
             "lateral_error_m": float(lateral),
             "heading_error_rad": float(heading_err),
@@ -316,7 +321,8 @@ def _wrap_to_pi(angle: float) -> float:
     return float((angle + math.pi) % (2.0 * math.pi) - math.pi)
 
 
-def _draw_disc(img: np.ndarray, row: int, col: int, radius: int, color: Tuple[int, int, int]) -> None:
+def _draw_disc(img: np.ndarray, row: int, col: int, radius: int,
+    color: tuple[int, int, int]) -> None:
     """Paint a filled disc onto an (H, W, 3) uint8 image (clipped to bounds)."""
     h, w = img.shape[:2]
     r0, r1 = max(0, row - radius), min(h, row + radius + 1)

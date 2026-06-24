@@ -11,7 +11,7 @@ from __future__ import annotations
 import json
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any
 
 import numpy as np
 
@@ -26,22 +26,22 @@ class EpisodeRecord:
     collided: bool
     offroad: bool
     route_fraction: float
-    speeds: List[float] = field(default_factory=list)
-    lateral_errors: List[float] = field(default_factory=list)
-    steers: List[float] = field(default_factory=list)
+    speeds: list[float] = field(default_factory=list)
+    lateral_errors: list[float] = field(default_factory=list)
+    steers: list[float] = field(default_factory=list)
 
 
-def _mean(values: List[float]) -> float:
+def _mean(values: list[float]) -> float:
     return float(np.mean(values)) if len(values) else 0.0
 
 
-def aggregate(records: List[EpisodeRecord]) -> Dict[str, float]:
+def aggregate(records: list[EpisodeRecord]) -> dict[str, float]:
     """Aggregate a list of episodes into a metrics dict."""
     n = len(records)
     if n == 0:
         return {}
 
-    jerks: List[float] = []
+    jerks: list[float] = []
     for r in records:
         if len(r.steers) > 1:
             jerks.extend(np.abs(np.diff(r.steers)).tolist())
@@ -69,7 +69,7 @@ def aggregate(records: List[EpisodeRecord]) -> Dict[str, float]:
 # --------------------------------------------------------------------------- #
 # Results summary I/O (consumed by the dashboard)
 # --------------------------------------------------------------------------- #
-def load_summary(path: Path | str) -> Dict[str, Any]:
+def load_summary(path: Path | str) -> dict[str, Any]:
     """Load the results summary, returning a fresh skeleton if missing."""
     path = Path(path)
     if path.exists():
@@ -80,10 +80,10 @@ def load_summary(path: Path | str) -> Dict[str, Any]:
 def update_summary(
     path: Path | str,
     agent: str,
-    metrics: Dict[str, float],
-    returns: Optional[List[float]] = None,
-    meta: Optional[Dict[str, Any]] = None,
-) -> Dict[str, Any]:
+    metrics: dict[str, float],
+    returns: list[float] | None = None,
+    meta: dict[str, Any] | None = None,
+) -> dict[str, Any]:
     """Merge one agent's results into ``summary.json`` and write it back."""
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)

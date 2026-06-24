@@ -3,17 +3,17 @@
 Soft Actor-Critic (Haarnoja et al., 2018) augments the standard RL objective
 with a policy entropy term::
 
-    π* = argmax_π  E[ Σ_t  r(s_t, a_t) + α H(π(· | s_t)) ]
+    π* = argmax_π  E[ Σ_t  r(s_t, a_t) + alpha H(π(· | s_t)) ]
 
-where ``α`` is the temperature parameter that controls the entropy-reward
+where ``alpha`` is the temperature parameter that controls the entropy-reward
 trade-off. SAC uses automatic entropy tuning by default (``ent_coef='auto'``),
-which adjusts ``α`` to maintain a target entropy level of
-``−dim(A)`` nats throughout training.
+which adjusts ``alpha`` to maintain a target entropy level of
+``-dim(A)`` nats throughout training.
 
 The critic is implemented as a clipped double-Q function to reduce
 overestimation bias::
 
-    y = r + γ (1 − d) [ min_{i=1,2} Q_{θ̄_i}(s', ã') − α log π_φ(ã' | s') ]
+    y = r + gamma (1 - d) [ min_{i=1,2} Q_{θ̄_i}(s', ã') - alpha log π_φ(ã' | s') ]
 
 where ``ã' ~ π_φ(· | s')`` is a fresh action sample and ``θ̄`` denotes the
 target critic parameters updated via exponential moving average (Polyak
@@ -48,7 +48,7 @@ configs/sac.yaml : Default hyperparameter configuration.
 
 from __future__ import annotations
 
-from typing import Any, Optional, Union
+from typing import Any
 
 from ad_rl.agents._common import resolve_policy
 from ad_rl.utils.config import Config
@@ -58,7 +58,7 @@ def build_sac(
     env: Any,
     cfg: Config,
     device: str = "auto",
-    tensorboard_log: Optional[str] = None,
+    tensorboard_log: str | None = None,
     verbose: int = 1,
 ):
     """Construct and return a Stable-Baselines3 ``SAC`` model from a ``Config``.
@@ -92,7 +92,7 @@ def build_sac(
     policy, policy_kwargs = resolve_policy(cfg)
 
     hp = cfg.hyperparameters
-    ent_coef: Union[str, float] = hp.get("ent_coef", "auto")
+    ent_coef: str | float = hp.get("ent_coef", "auto")
     if isinstance(ent_coef, str) and ent_coef.replace(".", "", 1).isdigit():
         ent_coef = float(ent_coef)
 

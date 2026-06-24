@@ -19,7 +19,6 @@ Sign conventions (consistent with the environments)
 from __future__ import annotations
 
 import math
-from typing import Tuple
 
 import numpy as np
 
@@ -34,7 +33,7 @@ class PID:
         kd: float,
         dt: float = 0.1,
         integral_clip: float = 5.0,
-        output_clip: Tuple[float, float] = (-1.0, 1.0),
+        output_clip: tuple[float, float] = (-1.0, 1.0),
     ) -> None:
         self.kp, self.ki, self.kd = kp, ki, kd
         self.dt = dt
@@ -135,7 +134,7 @@ class VehiclePIDController:
         return np.array([steer, throttle_brake], dtype=np.float32)
 
     def act_from_info(self, info: dict) -> np.ndarray:
-        """Convenience: read the standard keys from an env ``info`` dict."""
+        """Read the standard keys from an env ``info`` dict."""
         return self.act(
             speed_ms=float(info.get("speed_ms", 0.0)),
             lateral_error_m=float(info.get("lateral_error_m", 0.0)),

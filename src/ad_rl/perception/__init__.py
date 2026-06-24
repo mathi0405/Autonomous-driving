@@ -16,4 +16,4 @@ def get_features_extractor(name: str = "nature_cnn"):
     return {"nature_cnn": DrivingCNN, "impala": ImpalaCNN}.get(name.lower(), DrivingCNN)
 
 
-__all__ = ["normalize_image", "preprocess_observation", "to_chw", "get_features_extractor"]
+__all__ = ["get_features_extractor", "normalize_image", "preprocess_observation", "to_chw"]

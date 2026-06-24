@@ -37,4 +37,4 @@ def preprocess_observation(
     return out
 
 
-__all__ = ["to_chw", "normalize_image", "preprocess_observation"]
+__all__ = ["normalize_image", "preprocess_observation", "to_chw"]

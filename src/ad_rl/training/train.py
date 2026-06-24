@@ -30,6 +30,7 @@ logger = get_logger("ad_rl.train")
 
 
 def parse_args(argv=None) -> argparse.Namespace:
+    """Parse CLI arguments for the training script."""
     p = argparse.ArgumentParser(description="Train a driving agent (PPO/SAC).")
     p.add_argument("--config", required=True, help="Path to an algorithm config YAML.")
     p.add_argument("--env", default="fallback", choices=["fallback", "carla"])
@@ -49,6 +50,7 @@ def parse_args(argv=None) -> argparse.Namespace:
 
 
 def apply_overrides(cfg: Config, args: argparse.Namespace) -> Config:
+    """Apply CLI argument overrides onto the loaded config."""
     if args.total_timesteps is not None:
         cfg.total_timesteps = args.total_timesteps
     if args.n_envs is not None:
@@ -68,6 +70,7 @@ def apply_overrides(cfg: Config, args: argparse.Namespace) -> Config:
 
 
 def train(args: argparse.Namespace) -> Path:
+    """Run training end-to-end and return the output directory path."""
     cfg = apply_overrides(load_config(args.config), args)
     set_global_seeds(cfg.seed)
 
@@ -141,7 +144,8 @@ def _final_evaluation(model, env_name: str, cfg: Config, run_dir: Path) -> dict:
 
     n_eval = int(cfg.logging.get("eval_episodes", 5))
     eval_env = make_env(env_name, cfg)
-    records = run_episodes(eval_env, policy_from_model(model, deterministic=True), n_eval, seed=cfg.seed + 10_000)
+    records = run_episodes(eval_env, policy_from_model(model, deterministic=True), n_eval,
+        seed=cfg.seed + 10_000)
     metrics = aggregate(records)
     (run_dir / "metrics.json").write_text(json.dumps(metrics, indent=2), encoding="utf-8")
     update_summary(
@@ -149,12 +153,14 @@ def _final_evaluation(model, env_name: str, cfg: Config, run_dir: Path) -> dict:
         agent=cfg.algorithm.upper(),
         metrics=metrics,
         returns=[r.ret for r in records],
-        meta={"env": env_name, "observation": cfg.env.observation, "timesteps": cfg.total_timesteps},
+        meta={"env": env_name, "observation": cfg.env.observation,
+            "timesteps": cfg.total_timesteps},
     )
     return metrics
 
 
 def main(argv=None) -> None:
+    """CLI entry point: parse arguments, train, and save the model."""
     train(parse_args(argv))
 
 

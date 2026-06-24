@@ -42,6 +42,7 @@ class DrivingCNN(BaseFeaturesExtractor):
         self.linear = nn.Sequential(nn.Linear(n_flatten, features_dim), nn.ReLU())
 
     def forward(self, observations: torch.Tensor) -> torch.Tensor:
+        """Compute and return the feature embedding from the input tensor."""
         return self.linear(self.cnn(observations))
 
 
@@ -91,6 +92,7 @@ class ImpalaCNN(BaseFeaturesExtractor):
         self.linear = nn.Sequential(nn.ReLU(), nn.Linear(n_flatten, features_dim), nn.ReLU())
 
     def forward(self, observations: torch.Tensor) -> torch.Tensor:
+        """Compute and return the feature embedding from the input tensor."""
         x = self.stages(observations)
         return self.linear(x.reshape(x.shape[0], -1))
 

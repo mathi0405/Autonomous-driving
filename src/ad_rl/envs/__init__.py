@@ -11,7 +11,7 @@ codebase is backend-agnostic.
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING
 
 import gymnasium as gym
 
@@ -25,8 +25,8 @@ VALID_ENVS = ("fallback", "carla")
 
 def make_env(
     env_name: str,
-    cfg: "Config",
-    render_mode: Optional[str] = None,
+    cfg: Config,
+    render_mode: str | None = None,
     smooth_actions: bool = False,
 ) -> gym.Env:
     """Construct a driving environment.
@@ -70,4 +70,4 @@ def make_env(
     return env
 
 
-__all__ = ["make_env", "VALID_ENVS"]
+__all__ = ["VALID_ENVS", "make_env"]
