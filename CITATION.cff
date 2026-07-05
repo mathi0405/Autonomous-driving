@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+title: "Autonomous Driving with Reinforcement Learning"
+message: "If you use this repository, please cite it."
+type: software
+authors:
+  - family-names: Mathi
+    given-names: Mani Chandan
+version: 1.0.0
+date-released: 2026-06-22
+repository-code: "https://github.com/mathi0405/Autonomous-driving"
+license: MIT
