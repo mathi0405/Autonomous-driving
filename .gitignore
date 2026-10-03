@@ -24,6 +24,8 @@ wheels/
 
 # Virtual environments
 .venv/
+.venv-review/
+artifacts/
 venv/
 env/
 ENV/

@@ -85,6 +85,9 @@ class CarlaEnv(gym.Env):
     def _connect(self) -> None:
         import carla
 
+        if not self.carla_cfg.synchronous:
+            raise ValueError("This environment requires synchronous CARLA stepping.")
+
         self._client = carla.Client(self.carla_cfg.host, self.carla_cfg.port)
         self._client.set_timeout(self.carla_cfg.timeout)
         self._world = self._client.load_world(self.carla_cfg.town)
@@ -150,9 +153,16 @@ class CarlaEnv(gym.Env):
         self._prev_steer = 0.0
         self._steps = 0
         for _ in range(10):  # let physics/sensors settle
-            self._world.tick()
+            frame = self._world.tick()
+            self._sensors.wait_for_frame(frame, self.carla_cfg.timeout)
         obs = self._build_observation()
-        return obs, {"lateral_error_m": 0.0, "heading_error_rad": 0.0}
+        lateral, heading = self._lateral_and_heading_error()
+        return obs, {
+            "lateral_error_m": lateral,
+            "heading_error_rad": heading,
+            "speed_ms": self._speed_ms(),
+            "sensor_frame": self._sensors.latest_frame,
+        }
 
     def step(self, action: np.ndarray) -> tuple[np.ndarray, float, bool, bool, dict[str, Any]]:
         """Advance one step; return (obs, reward, terminated, truncated, info)."""
@@ -171,7 +181,8 @@ class CarlaEnv(gym.Env):
         s_start = self._idx * WAYPOINT_SPACING_M
         for _ in range(self._action_repeat):
             self._vehicle.apply_control(control)
-            self._world.tick()
+            frame = self._world.tick()
+            self._sensors.wait_for_frame(frame, self.carla_cfg.timeout)
             if self._sensors.had_collision():
                 collided = True
                 break
@@ -181,7 +192,7 @@ class CarlaEnv(gym.Env):
         speed = self._speed_ms()
         offroad = abs(lateral) > OFFROAD_LATERAL_M
         self._steps += 1
-        reached_goal = self._idx >= len(self._route) - 2
+        reached_goal = self._idx >= len(self._route) - 2 and not (collided or offroad)
         progress_m = max(0.0, self._idx * WAYPOINT_SPACING_M - s_start)
 
         meas = DriveMeasurement(
@@ -210,6 +221,16 @@ class CarlaEnv(gym.Env):
             "speed_ms": speed,
             "lane_invasions": int(self._sensors.lane_invasions),
             "route_fraction": self._idx / max(1, len(self._route) - 1),
+            "sensor_frame": self._sensors.latest_frame,
+            "terminal_reason": (
+                "COLLISION"
+                if collided
+                else (
+                    "OFFROAD"
+                    if offroad
+                    else "SUCCESS" if reached_goal else "TIMEOUT" if truncated else "RUNNING"
+                )
+            ),
         }
         return self._build_observation(), float(result.total), terminated, truncated, info
 
@@ -250,7 +271,8 @@ class CarlaEnv(gym.Env):
         for k in range(N_LOOKAHEAD):
             j = min(len(self._route_yaw) - 1, self._idx + (k + 1) * LOOKAHEAD_STRIDE)
             j0 = min(len(self._route_yaw) - 1, self._idx + k * LOOKAHEAD_STRIDE)
-            kappa = _wrap_to_pi(self._route_yaw[j] - self._route_yaw[j0]) / WAYPOINT_SPACING_M
+            distance = max(1, j - j0) * WAYPOINT_SPACING_M
+            kappa = _wrap_to_pi(self._route_yaw[j] - self._route_yaw[j0]) / distance
             lookahead.append(kappa * 50.0)
         return np.array(
             [

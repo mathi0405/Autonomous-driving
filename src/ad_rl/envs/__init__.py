@@ -27,7 +27,7 @@ def make_env(
     env_name: str,
     cfg: Config,
     render_mode: str | None = None,
-    smooth_actions: bool = False,
+    smooth_actions: bool | None = None,
 ) -> gym.Env:
     """Construct a driving environment.
 
@@ -65,7 +65,7 @@ def make_env(
         raise ValueError(f"Unknown env '{env_name}'. Expected one of {VALID_ENVS}.")
 
     env = maybe_frame_stack(env, cfg.env.observation, cfg.env.frame_stack)
-    if smooth_actions:
+    if cfg.env.smooth_actions if smooth_actions is None else smooth_actions:
         env = ActionSmoothingWrapper(env)
     return env
 
