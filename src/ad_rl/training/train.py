@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import argparse
 import copy
+import hashlib
 import json
 from dataclasses import asdict
 from pathlib import Path
@@ -82,6 +83,9 @@ def apply_overrides(cfg: Config, args: argparse.Namespace) -> Config:
 
 def train(args: argparse.Namespace) -> Path:
     """Run training end-to-end and return the output directory path."""
+    from ad_rl.validation.runner import provenance, source_fingerprint, write_json
+
+    run_provenance = provenance()
     cfg = apply_overrides(load_config(args.config), args)
     eval_cfg = copy.deepcopy(cfg)
     if args.env == "carla":
@@ -93,7 +97,7 @@ def train(args: argparse.Namespace) -> Path:
 
     run_name = args.run_name or f"{cfg.algorithm}_{args.env}_{cfg.env.observation}"
     run_dir = Path(args.outdir) / run_name
-    run_dir.mkdir(parents=True, exist_ok=True)
+    run_dir.mkdir(parents=True, exist_ok=False)
     tb_dir = str(run_dir / "tb") if cfg.logging.get("tensorboard", True) else None
 
     logger.info(
@@ -124,16 +128,19 @@ def train(args: argparse.Namespace) -> Path:
         resolved = asdict(cfg)
         resolved.pop("raw", None)
         (run_dir / "config.yaml").write_text(yaml.safe_dump(resolved), encoding="utf-8")
-        from ad_rl.validation.runner import provenance, write_json
-
         write_json(
             run_dir / "provenance.json",
             {
-                **provenance(),
+                **run_provenance,
                 "backend": args.env,
                 "resolved_config": resolved,
                 "cli": vars(args),
                 "evaluation_port": eval_cfg.carla.port if args.env == "carla" else None,
+                "source_changed_during_training": (
+                    run_provenance["source_sha256"] != source_fingerprint()
+                ),
+                "actual_timesteps": model.num_timesteps,
+                "model_sha256": hashlib.sha256(final_path.read_bytes()).hexdigest(),
             },
         )
         logger.info(f"Saved final model -> {final_path}")
@@ -192,7 +199,7 @@ def _final_evaluation(model, env_name: str, cfg: Config, run_dir: Path) -> dict:
     metrics = aggregate(records)
     (run_dir / "metrics.json").write_text(json.dumps(metrics, indent=2), encoding="utf-8")
     update_summary(
-        Path("results") / "summary.json",
+        run_dir / "summary.json",
         agent=cfg.algorithm.upper(),
         metrics=metrics,
         returns=[r.ret for r in records],

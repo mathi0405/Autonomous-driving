@@ -5,6 +5,7 @@ from __future__ import annotations
 import copy
 import json
 from dataclasses import asdict
+from pathlib import Path
 
 import numpy as np
 import pytest
@@ -42,6 +43,9 @@ def test_disturbed_sensor_does_not_change_scoring_state():
     assert measured[1] == pytest.approx(0.25)
     assert info["lateral_error_m"] == 0 and obs[1] == 0
     assert measured_info is not info
+    assert (
+        not {"x_m", "y_m", "minimum_clearance_m", "collision", "is_success"} & measured_info.keys()
+    )
 
 
 def test_observation_delay_is_real():
@@ -187,3 +191,48 @@ def test_bounded_search_finds_and_replays_failure(tmp_path):
     repeated = run_episode(Scenario(**failure["scenario"]), failure["policy"])
     assert repeated["content_sha256"] == result["failure_sha256"]
     assert not repeated["metrics"]["success"]
+
+
+@pytest.mark.parametrize("case_id", ["sensing-000", "sensing-003"])
+def test_discovered_collisions_are_regression_cases(case_id):
+    root = Path(__file__).resolve().parents[1]
+    saved = json.loads((root / "results/validation/first-held-out" / f"{case_id}.json").read_text())
+    case = Scenario(**saved["scenario"])
+    previous = run_episode(case, policy_identity("robust-v1"))
+    fixed = run_episode(case, policy_identity("robust"))
+    assert previous["metrics"]["collision"]
+    assert fixed["metrics"]["success"] and not fixed["metrics"]["collision"]
+
+
+def test_compare_cli_returns_fail_then_restoration_pass(tmp_path, nominal_suite):
+    suite, cases = nominal_suite
+    run_suite(suite, cases, policy_identity("stanley"), tmp_path / "baseline")
+    run_suite(suite, cases, policy_identity("mutant-stop"), tmp_path / "bad")
+    run_suite(suite, cases, policy_identity("stanley"), tmp_path / "fixed")
+    rules = Path(__file__).resolve().parents[1] / "configs/validation/gate-rules.json"
+    common = ["compare", "--baseline", str(tmp_path / "baseline/run.json"), "--rules", str(rules)]
+    assert (
+        main(
+            [
+                *common,
+                "--candidate",
+                str(tmp_path / "bad/run.json"),
+                "--out",
+                str(tmp_path / "bad-verdict"),
+            ]
+        )
+        == 1
+    )
+    assert (
+        main(
+            [
+                *common,
+                "--candidate",
+                str(tmp_path / "fixed/run.json"),
+                "--out",
+                str(tmp_path / "fixed-verdict"),
+            ]
+        )
+        == 0
+    )
+    assert (tmp_path / "bad-verdict/report.html").exists()

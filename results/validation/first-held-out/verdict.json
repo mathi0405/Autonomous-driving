@@ -1,0 +1,554 @@
+{
+  "schema": 1,
+  "verdict": "FAIL",
+  "reason_codes": [
+    {
+      "code": "NEW_COLLISION",
+      "observed": 2,
+      "limit": 0
+    }
+  ],
+  "rules": {
+    "max_new_collisions": 0,
+    "max_new_offroads": 0,
+    "max_new_failures": 0,
+    "max_route_drop": 0.02,
+    "max_lateral_increase_m": 0.1,
+    "max_overspeed_increase_kmh": 3.0,
+    "min_nominal_success_rate": 0.95
+  },
+  "paired_episodes": 64,
+  "baseline_policy": {
+    "name": "stanley"
+  },
+  "candidate_policy": {
+    "name": "robust"
+  },
+  "suite_sha256": "455a77ffbafd186b08f19d526e0f9c9f4ad63f0f3c39ebaab867fbdc5052d33b",
+  "cases": [
+    {
+      "id": "actuator-000",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": -0.018035040332095048
+    },
+    {
+      "id": "actuator-001",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": -0.012344456399847159
+    },
+    {
+      "id": "actuator-002",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": -0.06345449101554886
+    },
+    {
+      "id": "actuator-003",
+      "reason_codes": [],
+      "baseline_reason": "COLLISION",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.28800000000000003,
+      "lateral_delta_m": -0.016286389097368487
+    },
+    {
+      "id": "actuator-004",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": -0.002287161500688778
+    },
+    {
+      "id": "actuator-005",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": -0.02352034273222045
+    },
+    {
+      "id": "actuator-006",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": -0.01946156443396202
+    },
+    {
+      "id": "actuator-007",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": -0.038113586810967146
+    },
+    {
+      "id": "actuator-008",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": -0.036253105623103826
+    },
+    {
+      "id": "actuator-009",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": -0.00924685870454331
+    },
+    {
+      "id": "actuator-010",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": -0.04945705375582282
+    },
+    {
+      "id": "actuator-011",
+      "reason_codes": [],
+      "baseline_reason": "COLLISION",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.06399999999999995,
+      "lateral_delta_m": -0.023348650119007802
+    },
+    {
+      "id": "actuator-012",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": -0.01041874693967268
+    },
+    {
+      "id": "actuator-013",
+      "reason_codes": [],
+      "baseline_reason": "COLLISION",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.368,
+      "lateral_delta_m": -0.055828675012639356
+    },
+    {
+      "id": "actuator-014",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": -0.029821928740028786
+    },
+    {
+      "id": "actuator-015",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": -0.036302560596741335
+    },
+    {
+      "id": "geometry-000",
+      "reason_codes": [],
+      "baseline_reason": "COLLISION",
+      "candidate_reason": "COLLISION",
+      "route_delta": 0.023999999999999994,
+      "lateral_delta_m": -0.11019460926031918
+    },
+    {
+      "id": "geometry-001",
+      "reason_codes": [],
+      "baseline_reason": "COLLISION",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.41600000000000004,
+      "lateral_delta_m": 0.14569200955115663
+    },
+    {
+      "id": "geometry-002",
+      "reason_codes": [],
+      "baseline_reason": "COLLISION",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.42400000000000004,
+      "lateral_delta_m": 0.12793393944954504
+    },
+    {
+      "id": "geometry-003",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.003117097083917608
+    },
+    {
+      "id": "geometry-004",
+      "reason_codes": [],
+      "baseline_reason": "COLLISION",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.264,
+      "lateral_delta_m": 0.0704255955819903
+    },
+    {
+      "id": "geometry-005",
+      "reason_codes": [],
+      "baseline_reason": "COLLISION",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.696,
+      "lateral_delta_m": 0.19957130270749096
+    },
+    {
+      "id": "geometry-006",
+      "reason_codes": [],
+      "baseline_reason": "COLLISION",
+      "candidate_reason": "COLLISION",
+      "route_delta": 0.0,
+      "lateral_delta_m": -0.06584411383281538
+    },
+    {
+      "id": "geometry-007",
+      "reason_codes": [],
+      "baseline_reason": "COLLISION",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.6719999999999999,
+      "lateral_delta_m": 0.2229877481199706
+    },
+    {
+      "id": "geometry-008",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.08300053633910351
+    },
+    {
+      "id": "geometry-009",
+      "reason_codes": [],
+      "baseline_reason": "COLLISION",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.512,
+      "lateral_delta_m": 0.13951068885259246
+    },
+    {
+      "id": "geometry-010",
+      "reason_codes": [],
+      "baseline_reason": "COLLISION",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.43199999999999994,
+      "lateral_delta_m": 0.15057556283937476
+    },
+    {
+      "id": "geometry-011",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.07772864335510021
+    },
+    {
+      "id": "geometry-012",
+      "reason_codes": [],
+      "baseline_reason": "COLLISION",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.592,
+      "lateral_delta_m": 0.26547991751341293
+    },
+    {
+      "id": "geometry-013",
+      "reason_codes": [],
+      "baseline_reason": "COLLISION",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.776,
+      "lateral_delta_m": 0.11088130243191113
+    },
+    {
+      "id": "geometry-014",
+      "reason_codes": [],
+      "baseline_reason": "COLLISION",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.46399999999999997,
+      "lateral_delta_m": 0.16477442778709694
+    },
+    {
+      "id": "geometry-015",
+      "reason_codes": [],
+      "baseline_reason": "COLLISION",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.776,
+      "lateral_delta_m": 0.10229219288064698
+    },
+    {
+      "id": "nominal-000",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": -0.009222388937321448
+    },
+    {
+      "id": "nominal-001",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": -0.002500763808707507
+    },
+    {
+      "id": "nominal-002",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": -0.016125701890553366
+    },
+    {
+      "id": "nominal-003",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": -0.0018535139352574559
+    },
+    {
+      "id": "nominal-004",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": -0.0059398470598636885
+    },
+    {
+      "id": "nominal-005",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.002502685437824087
+    },
+    {
+      "id": "nominal-006",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": -0.013270357146808492
+    },
+    {
+      "id": "nominal-007",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": -0.01310682075915813
+    },
+    {
+      "id": "nominal-008",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": -0.021599013094066838
+    },
+    {
+      "id": "nominal-009",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": -0.004650850633157108
+    },
+    {
+      "id": "nominal-010",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": -0.009117167266124208
+    },
+    {
+      "id": "nominal-011",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": -0.01828151204732756
+    },
+    {
+      "id": "nominal-012",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": -0.01744296871327601
+    },
+    {
+      "id": "nominal-013",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": -4.633903109399484e-05
+    },
+    {
+      "id": "nominal-014",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": -0.004653738786923725
+    },
+    {
+      "id": "nominal-015",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0032767227486318676
+    },
+    {
+      "id": "sensing-000",
+      "reason_codes": [
+        "NEW_COLLISION"
+      ],
+      "baseline_reason": "OFFROAD",
+      "candidate_reason": "COLLISION",
+      "route_delta": 0.472,
+      "lateral_delta_m": -0.5042229387819279
+    },
+    {
+      "id": "sensing-001",
+      "reason_codes": [],
+      "baseline_reason": "OFFROAD",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.84,
+      "lateral_delta_m": -0.5104462524401077
+    },
+    {
+      "id": "sensing-002",
+      "reason_codes": [],
+      "baseline_reason": "OFFROAD",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.9279999999999999,
+      "lateral_delta_m": -0.5237411491747256
+    },
+    {
+      "id": "sensing-003",
+      "reason_codes": [
+        "NEW_COLLISION"
+      ],
+      "baseline_reason": "OFFROAD",
+      "candidate_reason": "COLLISION",
+      "route_delta": 0.672,
+      "lateral_delta_m": -0.2922339238458861
+    },
+    {
+      "id": "sensing-004",
+      "reason_codes": [],
+      "baseline_reason": "OFFROAD",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.872,
+      "lateral_delta_m": -0.5181103949546826
+    },
+    {
+      "id": "sensing-005",
+      "reason_codes": [],
+      "baseline_reason": "OFFROAD",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.912,
+      "lateral_delta_m": -0.4272832267266884
+    },
+    {
+      "id": "sensing-006",
+      "reason_codes": [],
+      "baseline_reason": "OFFROAD",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.872,
+      "lateral_delta_m": -0.5271079759428436
+    },
+    {
+      "id": "sensing-007",
+      "reason_codes": [],
+      "baseline_reason": "OFFROAD",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.848,
+      "lateral_delta_m": -0.4494892992666628
+    },
+    {
+      "id": "sensing-008",
+      "reason_codes": [],
+      "baseline_reason": "OFFROAD",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.912,
+      "lateral_delta_m": -0.4061422676316446
+    },
+    {
+      "id": "sensing-009",
+      "reason_codes": [],
+      "baseline_reason": "OFFROAD",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.872,
+      "lateral_delta_m": -0.4262624555389045
+    },
+    {
+      "id": "sensing-010",
+      "reason_codes": [],
+      "baseline_reason": "OFFROAD",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.9279999999999999,
+      "lateral_delta_m": -0.5707583457550031
+    },
+    {
+      "id": "sensing-011",
+      "reason_codes": [],
+      "baseline_reason": "OFFROAD",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.88,
+      "lateral_delta_m": -0.5733716102274222
+    },
+    {
+      "id": "sensing-012",
+      "reason_codes": [],
+      "baseline_reason": "OFFROAD",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.9359999999999999,
+      "lateral_delta_m": -0.5678852612692094
+    },
+    {
+      "id": "sensing-013",
+      "reason_codes": [],
+      "baseline_reason": "OFFROAD",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.912,
+      "lateral_delta_m": -0.48261572441343925
+    },
+    {
+      "id": "sensing-014",
+      "reason_codes": [],
+      "baseline_reason": "OFFROAD",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.9279999999999999,
+      "lateral_delta_m": -0.77421656138624
+    },
+    {
+      "id": "sensing-015",
+      "reason_codes": [],
+      "baseline_reason": "OFFROAD",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.848,
+      "lateral_delta_m": -0.5588740638945222
+    }
+  ],
+  "route_delta": 0.31875,
+  "lateral_delta_m": -0.10939127182167463,
+  "overspeed_delta_kmh": -0.019768972957203812,
+  "route_delta_paired_bootstrap_95ci": [
+    0.22636875,
+    0.41663125
+  ],
+  "scope": "Finite paired kinematic simulation suite; not hardware validation."
+}

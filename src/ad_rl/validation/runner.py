@@ -25,12 +25,12 @@ def write_json(path: Path, value: object) -> None:
 
 
 def source_fingerprint() -> str:
-    """Hash all package source bytes, including uncommitted modifications."""
+    """Hash package source with normalized line endings, including local changes."""
     root = Path(__file__).resolve().parents[1]
     digest = hashlib.sha256()
     for path in sorted(root.rglob("*.py")):
         digest.update(path.relative_to(root).as_posix().encode())
-        digest.update(path.read_bytes())
+        digest.update(path.read_bytes().replace(b"\r\n", b"\n"))
     return digest.hexdigest()
 
 
