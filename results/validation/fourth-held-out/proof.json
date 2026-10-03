@@ -1,0 +1,66 @@
+{
+  "schema": 1,
+  "candidate_verdict": "FAIL",
+  "mutation_checks": [
+    {
+      "mutation": "mutant-steering",
+      "detected": true,
+      "reason_codes": [
+        "LATERAL_ERROR_INCREASE",
+        "NEW_FAILURE",
+        "NEW_OFFROAD",
+        "NOMINAL_SUCCESS_FLOOR",
+        "ROUTE_COMPLETION_DROP"
+      ]
+    },
+    {
+      "mutation": "mutant-speed",
+      "detected": true,
+      "reason_codes": [
+        "OVERSPEED_REGRESSION"
+      ]
+    },
+    {
+      "mutation": "mutant-stop",
+      "detected": true,
+      "reason_codes": [
+        "NEW_FAILURE",
+        "NOMINAL_SUCCESS_FLOOR",
+        "ROUTE_COMPLETION_DROP"
+      ]
+    }
+  ],
+  "restored_verdict": "PASS",
+  "exact_failure_replay": true,
+  "replay_hash": "a715bdffa461bfe830a2ec7d1ae09d937ba10cf91e6ec1f8f4b34e4c58c14164",
+  "baseline": {
+    "episodes": 256,
+    "success_rate": 0.51171875,
+    "collision_rate": 0.23828125,
+    "offroad_rate": 0.25,
+    "timeout_rate": 0.0,
+    "route_completion": 0.65378125,
+    "mean_abs_lateral_error_m": 0.25854188565732744,
+    "mean_speed_kmh": 29.520363284215072,
+    "success_95ci": [
+      0.45076751333371007,
+      0.5723234900313086
+    ]
+  },
+  "candidate": {
+    "episodes": 256,
+    "success_rate": 0.921875,
+    "collision_rate": 0.078125,
+    "offroad_rate": 0.0,
+    "timeout_rate": 0.0,
+    "route_completion": 0.9574062500000002,
+    "mean_abs_lateral_error_m": 0.1781136799659845,
+    "mean_speed_kmh": 23.36902160713344,
+    "success_95ci": [
+      0.8824167617091012,
+      0.9488593594315697
+    ]
+  },
+  "suite_sha256": "3834f13a9f53c73d24800f35ba71bcf41cc04b81f215784aad04c2d974829550",
+  "passed": false
+}

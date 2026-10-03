@@ -137,7 +137,11 @@ def compare(baseline: dict, candidate: dict, rules: GateRules | None = None) -> 
             }
         )
     rng = np.random.default_rng(20261003)
-    samples = rng.choice(deltas, size=(2000, len(deltas)), replace=True).mean(axis=1)
+    regimes = {s["id"]: s["regime"] for s in candidate["suite"]["scenarios"]}
+    samples = np.zeros(2000)
+    for regime in sorted(set(regimes.values())):
+        group = np.array([case["route_delta"] for case in cases if regimes[case["id"]] == regime])
+        samples += rng.choice(group, size=(2000, len(group)), replace=True).sum(axis=1) / len(cases)
     return {
         "schema": 1,
         "verdict": "FAIL" if reasons else "PASS",
@@ -152,5 +156,6 @@ def compare(baseline: dict, candidate: dict, rules: GateRules | None = None) -> 
         "lateral_delta_m": lateral_delta,
         "overspeed_delta_kmh": speed_delta,
         "route_delta_paired_bootstrap_95ci": np.quantile(samples, [0.025, 0.975]).tolist(),
+        "uncertainty_method": "Paired stratified bootstrap, 2000 resamples, fixed regime weights",
         "scope": "Finite paired kinematic simulation suite; not hardware validation.",
     }

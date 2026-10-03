@@ -91,6 +91,7 @@ def run_episode(scenario: Scenario, identity: dict) -> dict:
                     "applied_action": info["applied_action"],
                     "measured_lateral_error_m": measured_info["lateral_error_m"],
                     "reason": info["terminal_reason"],
+                    "safety_filter": getattr(policy, "last_decision", {}),
                 }
             )
             if terminated or truncated:
@@ -108,6 +109,9 @@ def run_episode(scenario: Scenario, identity: dict) -> dict:
             "timeout": reason == "TIMEOUT",
             "terminal_reason": reason,
             "steps": len(trajectory),
+            "safety_interventions": sum(
+                p["safety_filter"].get("intervened", False) for p in trajectory
+            ),
             "return": float(total_return),
             "route_completion": float(info["route_fraction"]),
             "mean_speed_kmh": float(np.mean(speeds) * 3.6),
@@ -158,7 +162,7 @@ def run_suite(suite: dict, scenarios: list[Scenario], identity: dict, out: Path)
     out.mkdir(parents=True, exist_ok=False)
     (out / "episodes").mkdir()
     run: dict[str, Any] = {
-        "schema": 1,
+        "schema": 2,
         "backend": "kinematic",
         "suite_sha256": canonical_hash(suite),
         "suite": suite,
@@ -186,6 +190,7 @@ def run_suite(suite: dict, scenarios: list[Scenario], identity: dict, out: Path)
         regime: summarize([e for e in episodes if e["scenario"]["regime"] == regime])
         for regime in sorted({s.regime for s in scenarios})
     }
+    run["content_sha256"] = canonical_hash(run)
     write_json(out / "run.json", run)
     return run
 
@@ -193,8 +198,12 @@ def run_suite(suite: dict, scenarios: list[Scenario], identity: dict, out: Path)
 def load_run(path: Path) -> dict:
     """Verify episode digests and metadata before using saved evidence."""
     run = json.loads(path.read_text(encoding="utf-8"))
-    if run.get("schema") != 1 or run.get("backend") != "kinematic":
+    if run.get("schema") != 2 or run.get("backend") != "kinematic":
         raise ValueError("Unsupported evidence schema/backend.")
+    contents = dict(run)
+    digest = contents.pop("content_sha256", None)
+    if canonical_hash(contents) != digest:
+        raise ValueError("Run integrity check failed.")
     if canonical_hash(run["suite"]) != run["suite_sha256"]:
         raise ValueError("Suite integrity check failed.")
     episodes = []
@@ -217,4 +226,10 @@ def load_run(path: Path) -> dict:
         episodes.append(episode)
     if ids != set(expected_cases) or summarize(episodes) != run["summary"]:
         raise ValueError("Run summary or completeness check failed.")
+    regimes = {s["regime"] for s in expected_cases.values()}
+    by_regime = {
+        r: summarize([e for e in episodes if e["scenario"]["regime"] == r]) for r in regimes
+    }
+    if by_regime != run["by_regime"]:
+        raise ValueError("Regime summary check failed.")
     return run

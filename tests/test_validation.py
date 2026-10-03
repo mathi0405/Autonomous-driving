@@ -115,7 +115,7 @@ def test_tampered_summary_is_rejected(tmp_path, nominal_suite):
     result = run_suite(suite, cases, policy_identity("pid"), tmp_path / "run")
     result["summary"]["success_rate"] = 0.0
     write_json(tmp_path / "run" / "run.json", result)
-    with pytest.raises(ValueError, match="summary"):
+    with pytest.raises(ValueError, match="integrity|summary"):
         load_run(tmp_path / "run" / "run.json")
 
 
