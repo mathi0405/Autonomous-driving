@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Callable
+from collections.abc import Callable
 
 from ad_rl.envs import make_env
 from ad_rl.utils.config import Config

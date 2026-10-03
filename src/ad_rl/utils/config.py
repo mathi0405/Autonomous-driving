@@ -13,7 +13,7 @@ from __future__ import annotations
 import copy
 from dataclasses import dataclass, field, fields, is_dataclass
 from pathlib import Path
-from typing import Any, TypeVar
+from typing import Any, TypeVar, cast
 
 import yaml
 
@@ -33,6 +33,7 @@ class EnvConfig:
     action_repeat: int = 2
     max_episode_steps: int = 1000
     normalize_actions: bool = True
+    smooth_actions: bool = False
 
 
 @dataclass
@@ -134,7 +135,7 @@ def _from_dict(cls: type[T], data: dict[str, Any]) -> T:
         if key == "image_size" and isinstance(value, list):
             value = tuple(value)
         kwargs[key] = value
-    return cls(**kwargs)  # type: ignore[call-arg]
+    return cast(T, cls(**kwargs))
 
 
 def load_yaml(path: Path | str) -> dict[str, Any]:

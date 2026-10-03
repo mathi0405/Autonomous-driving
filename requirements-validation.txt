@@ -1,0 +1,7 @@
+# Small CPU dependency set; no PyTorch, GPU or CARLA required for behavioral gates.
+numpy==2.2.6
+gymnasium==1.1.1
+PyYAML==6.0.2
+rich==13.9.4
+pytest==8.3.5
+pytest-cov==6.1.1
