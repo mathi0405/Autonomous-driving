@@ -1,0 +1,37 @@
+# State-policy experiment; results are explicitly kinematic, not camera/CARLA.
+defaults: env.yaml
+algorithm: ppo
+seed: 17
+total_timesteps: 200000
+n_envs: 4
+env:
+  observation: state
+  frame_stack: 1
+policy:
+  type: auto
+  net_arch: [64, 64]
+  activation: tanh
+  log_std_init: -0.5
+hyperparameters:
+  learning_rate: 0.0003
+  n_steps: 512
+  batch_size: 256
+  n_epochs: 5
+  gamma: 0.99
+  gae_lambda: 0.95
+  clip_range: 0.2
+  ent_coef: 0.0
+  vf_coef: 0.5
+  max_grad_norm: 0.5
+  target_kl: 0.03
+logging:
+  eval_freq: 25000
+  eval_episodes: 10
+  checkpoint_freq: 100000
+  tensorboard: false
+
+# Explicitly penalize speeding more strongly than progress incentives.
+reward:
+  w_speed: 3.0
+  w_progress: 0.5
+  w_lane: 1.0

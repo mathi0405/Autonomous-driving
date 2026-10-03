@@ -15,6 +15,7 @@ CONTROLLERS = (
     "stanley",
     "preview",
     "robust",
+    "robust-v1",
     "mutant-steering",
     "mutant-speed",
     "mutant-stop",
@@ -29,13 +30,14 @@ class RobustController:
     is available to the control law. This is not a camera-based controller.
     """
 
-    def __init__(self, scenario: Scenario) -> None:
+    def __init__(self, scenario: Scenario, version: int = 2) -> None:
         self.target_speed_ms = scenario.target_speed_kmh / 3.6
         self.road_half_width_m = scenario.road_half_width_m
         self.speed = VehiclePIDController(self.target_speed_ms, dt=0.2)
         self.commands: list[np.ndarray] = []
         self.integral = 0.0
         self.offset = 0.0
+        self.version = version
 
     def __call__(self, obs: np.ndarray, info: dict) -> np.ndarray:
         """Predict delayed state and follow a locally displaced lane reference."""
@@ -55,8 +57,12 @@ class RobustController:
         for obstacle in obstacles:
             forward = obstacle["forward_m"] - speed * age * 0.2
             road_left = obstacle["road_lateral_m"]
-            if -1.5 < forward < 24 and abs(road_left) < 1.4:
-                desired = (-1 if road_left >= 0 else 1) * min(0.8, max(0.3, 1.65 - abs(road_left)))
+            margin = 1.4 if self.version == 1 else 1.8
+            clearance = 1.65 if self.version == 1 else 1.75
+            if -1.5 < forward < 24 and abs(road_left) < margin:
+                desired = (-1 if road_left >= 0 else 1) * min(
+                    0.8, max(0.2, clearance - abs(road_left))
+                )
                 break
         self.offset += np.clip(desired - self.offset, -0.08, 0.08)
         error = lateral - self.offset
@@ -71,11 +77,12 @@ class RobustController:
         upcoming = max(abs(curvature), float(np.max(np.abs(obs[5:]))) / 50.0)
         desired_speed = min(self.target_speed_ms, np.sqrt(1.8 / max(0.003, upcoming)))
         if age:
-            desired_speed = min(desired_speed, 6.0)
+            desired_speed = min(desired_speed, 6.0 if self.version == 1 else 4.0)
         if abs(error) > 0.5:
             desired_speed = min(desired_speed, 4.0)
         if desired:
-            desired_speed = min(desired_speed, 3.0)
+            avoidance_speed = 3.0 if self.version == 1 or abs(desired) > 0.35 else 6.0
+            desired_speed = min(desired_speed, avoidance_speed)
         throttle = self.speed._lon.step(desired_speed - speed)
         action = np.array([steer, throttle], dtype=np.float32)
         self.commands.append(action.copy())
@@ -131,8 +138,8 @@ def policy_identity(name: str, model: str | None = None, algo: str = "ppo") -> d
 def make_policy(identity: dict, scenario: Scenario):
     """Construct a fresh policy so controller state never leaks across scenarios."""
     if identity["name"] != "model":
-        if identity["name"] == "robust":
-            return RobustController(scenario)
+        if identity["name"] in {"robust", "robust-v1"}:
+            return RobustController(scenario, version=1 if identity["name"] == "robust-v1" else 2)
         return ValidationPolicy(identity["name"], scenario)
     from ad_rl.agents import load_agent
 
