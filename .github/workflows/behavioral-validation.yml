@@ -17,7 +17,7 @@ jobs:
   behavioral-gate:
     name: Driving regression gate and negative controls
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 20
     env:
       PYTHONPATH: src
     steps:
@@ -30,14 +30,18 @@ jobs:
       - name: Install pinned CPU validation dependencies
         run: pip install -r requirements-validation.txt
       - name: Test behavioral and evidence correctness
-        run: pytest tests/test_validation.py tests/test_sensor_sync.py -q
+        run: pytest tests/test_validation.py tests/test_sensor_sync.py tests/test_safety_filter.py -q
       - name: Evaluate frozen cases and prove three bad changes are rejected
         run: python scripts/validate_release.py --out artifacts/ci
+      - name: Reject regressions in cases discovered during held-out evaluation
+        run: python scripts/validate_regressions.py --out artifacts/regression
       - name: Retain reports and replay evidence even when the gate fails
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: driving-validation-${{ github.run_number }}
-          path: artifacts/ci
+          path: |
+            artifacts/ci
+            artifacts/regression
           retention-days: 30
           if-no-files-found: error

@@ -1,5 +1,12 @@
 name: CI
 
+permissions:
+  contents: read
+
+env:
+  OMP_NUM_THREADS: '2'
+  MKL_NUM_THREADS: '2'
+
 on:
   push:
     branches: [main, master]
@@ -36,7 +43,6 @@ jobs:
 
       - name: mypy — static type analysis
         run: mypy src
-        continue-on-error: true   # type errors are advisory until full coverage
 
   # ---------------------------------------------------------------------------
   # Job 2: Security — dependency vulnerability audit
