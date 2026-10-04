@@ -65,8 +65,8 @@ def provenance() -> dict:
 def run_episode(scenario: Scenario, identity: dict) -> dict:
     """Evaluate one policy with ground-truth metrics and full replay trajectory."""
     env = ScenarioEnvironment(scenario)
-    policy = make_policy(identity, scenario)
     try:
+        policy = make_policy(identity, scenario)
         obs, info = env.reset()
         scene = env.scene()
         trajectory = []
@@ -137,10 +137,44 @@ def run_episode(scenario: Scenario, identity: dict) -> dict:
         env.close()
 
 
+def validate_outcomes(episodes: list[dict]) -> None:
+    """Reject internally inconsistent outcomes even when digests have been recomputed."""
+    reasons = {
+        "success": "SUCCESS",
+        "collision": "COLLISION",
+        "offroad": "OFFROAD",
+        "timeout": "TIMEOUT",
+    }
+    if not episodes:
+        raise ValueError("Cannot validate empty outcome evidence.")
+    for episode in episodes:
+        metrics = episode["metrics"]
+        reason = metrics["terminal_reason"]
+        if reason not in reasons.values() or any(
+            type(metrics[name]) is not bool or metrics[name] != (reason == expected)
+            for name, expected in reasons.items()
+        ):
+            raise ValueError("Inconsistent outcome flags or terminal reason.")
+        for name in ("route_completion", "mean_abs_lateral_error_m", "mean_speed_kmh"):
+            value = metrics[name]
+            if (
+                isinstance(value, bool)
+                or not isinstance(value, int | float)
+                or not np.isfinite(value)
+                or value < 0
+            ):
+                raise ValueError(f"Invalid outcome metric: {name}.")
+        if metrics["route_completion"] > 1:
+            raise ValueError("Invalid outcome metric: route_completion.")
+        if "trajectory" in episode:
+            points = episode["trajectory"]
+            if not points or len(points) != metrics["steps"] or points[-1]["reason"] != reason:
+                raise ValueError("Trajectory disagrees with outcome metrics.")
+
+
 def summarize(episodes: list[dict]) -> dict:
     """Aggregate actual outcomes; all rates are fractions over episodes."""
-    if not episodes:
-        raise ValueError("Cannot summarize an empty run.")
+    validate_outcomes(episodes)
     metrics = [ep["metrics"] for ep in episodes]
     n = len(metrics)
     result: dict[str, Any] = {"episodes": n}
@@ -159,6 +193,12 @@ def summarize(episodes: list[dict]) -> dict:
 
 def run_suite(suite: dict, scenarios: list[Scenario], identity: dict, out: Path) -> dict:
     """Create a fresh bundle; an existing run is never silently overwritten."""
+    if (
+        not scenarios
+        or len({s.id for s in scenarios}) != len(scenarios)
+        or [asdict(s) for s in scenarios] != [asdict(Scenario(**s)) for s in suite["scenarios"]]
+    ):
+        raise ValueError("Suite mapping does not match the executed scenarios.")
     out.mkdir(parents=True, exist_ok=False)
     (out / "episodes").mkdir()
     run: dict[str, Any] = {
@@ -190,6 +230,8 @@ def run_suite(suite: dict, scenarios: list[Scenario], identity: dict, out: Path)
         regime: summarize([e for e in episodes if e["scenario"]["regime"] == regime])
         for regime in sorted({s.regime for s in scenarios})
     }
+    if source_fingerprint() != run["provenance"]["source_sha256"]:
+        raise ValueError("Source changed during evaluation; incomplete evidence retained.")
     run["content_sha256"] = canonical_hash(run)
     write_json(out / "run.json", run)
     return run
