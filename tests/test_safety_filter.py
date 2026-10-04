@@ -6,7 +6,7 @@ from pathlib import Path
 import numpy as np
 import pytest
 
-from ad_rl.validation.policies import policy_identity
+from ad_rl.validation.policies import RobustController, policy_identity
 from ad_rl.validation.runner import run_episode
 from ad_rl.validation.safety import filter_action, predict_clearance
 from ad_rl.validation.scenarios import Scenario
@@ -30,6 +30,37 @@ def test_clear_path_does_not_change_requested_action():
 def test_future_collision_is_predicted_before_actual_contact():
     clearance = predict_clearance(0, 5, [{"forward_m": 6, "left_m": 0}])
     assert clearance < 0
+
+
+def test_wide_road_current_sensor_branch_still_checks_obstacles():
+    policy = RobustController(Scenario("wide", 1))
+    info = {
+        "lateral_error_m": 0.0,
+        "heading_error_rad": 0.0,
+        "speed_ms": 8.0,
+        "curvature_inv_m": 0.0,
+        "measurement_step": 0,
+        "obstacle_detections": [{"forward_m": 8.0, "left_m": 0.0, "road_lateral_m": 0.0}],
+    }
+    action = policy(np.zeros(10), info)
+    assert policy.last_decision["intervened"]
+    assert action[1] <= 0
+
+
+def test_command_history_is_bounded_without_losing_absolute_sensor_age():
+    policy = RobustController(Scenario("long", 1))
+    for step in range(150):
+        info = {
+            "lateral_error_m": 0.0,
+            "heading_error_rad": 0.0,
+            "speed_ms": 0.0,
+            "curvature_inv_m": 0.0,
+            "measurement_step": step,
+            "obstacle_detections": [],
+        }
+        policy(np.zeros(10), info)
+    assert len(policy.commands) == 101 and policy.steps == 150
+    assert not policy.last_decision["intervened"]
 
 
 @pytest.mark.parametrize(

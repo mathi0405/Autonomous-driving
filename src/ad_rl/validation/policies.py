@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import hashlib
+from collections import deque
 from pathlib import Path
 
 import numpy as np
@@ -20,6 +21,7 @@ CONTROLLERS = (
     "robust-v2",
     "robust-v3",
     "robust-v4",
+    "robust-v5",
     "mutant-steering",
     "mutant-speed",
     "mutant-stop",
@@ -34,11 +36,12 @@ class RobustController:
     is available to the control law. This is not a camera-based controller.
     """
 
-    def __init__(self, scenario: Scenario, version: int = 5) -> None:
+    def __init__(self, scenario: Scenario, version: int = 6) -> None:
         self.target_speed_ms = scenario.target_speed_kmh / 3.6
         self.road_half_width_m = scenario.road_half_width_m
         self.speed = VehiclePIDController(self.target_speed_ms, dt=0.2)
-        self.commands: list[np.ndarray] = []
+        self.commands: deque[np.ndarray] = deque(maxlen=101)
+        self.steps = 0
         self.integral = 0.0
         self.offset = 0.0
         self.version = version
@@ -64,13 +67,24 @@ class RobustController:
                 )
                 weight = max(0.0, min(1.0, (8 - abs(forward)) / 5))
                 lateral = (1 - weight) * lateral + weight * offset
-        age = max(0, len(self.commands) - int(info["measurement_step"]))
+        age = max(0, self.steps - int(info["measurement_step"]))
+        self.steps += 1
         if self.version >= 3 and age == 0 and self.road_half_width_m >= 1.8:
             action = self.nominal.act_from_info(info)
+            if self.version >= 6:
+                action, self.last_decision = filter_action(
+                    action,
+                    speed,
+                    info["obstacle_detections"],
+                    lateral,
+                    heading,
+                    curvature,
+                    self.road_half_width_m,
+                )
             self.commands.append(action.copy())
             return action
         shift_x, shift_y, shift_yaw = 0.0, 0.0, 0.0
-        for command in self.commands[-age:] if age else []:
+        for command in list(self.commands)[-age:] if age else []:
             for _ in range(2):
                 lateral += speed * np.sin(heading) * 0.1
                 heading += (speed / 2.8 * np.tan(float(command[0]) * 0.5) - speed * curvature) * 0.1
@@ -181,10 +195,22 @@ def policy_identity(name: str, model: str | None = None, algo: str = "ppo") -> d
 def make_policy(identity: dict, scenario: Scenario):
     """Construct a fresh policy so controller state never leaks across scenarios."""
     if identity["name"] != "model":
-        if identity["name"] in {"robust", "robust-v1", "robust-v2", "robust-v3", "robust-v4"}:
-            version = {"robust-v1": 1, "robust-v2": 2, "robust-v3": 3, "robust-v4": 4, "robust": 5}[
-                identity["name"]
-            ]
+        if identity["name"] in {
+            "robust",
+            "robust-v1",
+            "robust-v2",
+            "robust-v3",
+            "robust-v4",
+            "robust-v5",
+        }:
+            version = {
+                "robust-v1": 1,
+                "robust-v2": 2,
+                "robust-v3": 3,
+                "robust-v4": 4,
+                "robust-v5": 5,
+                "robust": 6,
+            }[identity["name"]]
             return RobustController(scenario, version=version)
         return ValidationPolicy(identity["name"], scenario)
     from ad_rl.agents import load_agent
