@@ -4,7 +4,7 @@ A reproducible simulation test platform that discovers driving failures, replays
 
 The project extends the original PPO/SAC framework. **Measured claims concern the CPU kinematic simulator and synthetic state/range measurements.** Live CARLA and hardware behavior remain unverified.
 
-The final untouched suite completed **249/256 missions (97.3%)**, versus **132/256 (51.6%)** for the baseline, with slower control under sensing faults. All failed outcomes remain in the reports.
+Version 5's original untouched suite completed **249/256 missions (97.3%)**, versus **132/256 (51.6%)** for Stanley, with slower control under sensing faults. During the second review, version 6 completed **254/256** on that now-consumed regression suite, with zero collisions and two timeouts. The second review's fresh qualification and release blockers are recorded separately in [the review](docs/SECOND_REVIEW.md). All failed outcomes remain in the reports.
 
 ![Final simulation outcomes](docs/images/validation_results.png)
 
@@ -56,9 +56,13 @@ python -m ad_rl.validation.cli compare --baseline artifacts/baseline/run.json \
 python -m ad_rl.validation.cli search --policy stanley --budget 64 --out artifacts/search
 python -m ad_rl.validation.cli replay --run artifacts/demo/mutant-steering/run.json \
   --scenario nominal-000 --out artifacts/replayed
+python -m ad_rl.validation.cli readiness --run artifacts/candidate/run.json \
+  --out artifacts/release-readiness
 ```
 
 `compare` exits **0** for a passing contract, **1** for a behavioral failure and **2** for invalid/incomparable evidence. `PASS` is a finite test-contract result, not a hardware safety claim.
+
+`readiness` independently requires at least 32 cases in each of the four regimes, zero failed missions, and peak speed no more than 3 km/h above the target. It exits **0** when those simulation requirements are met, **1** when blocked, and **2** for invalid evidence. Reports show regression and release results separately. Older evidence without peak-speed measurements cannot satisfy release requirements. No simulation result authorizes hardware deployment.
 
 ## Evidence and results
 
@@ -67,6 +71,8 @@ See [measured results](docs/VALIDATION_RESULTS.md), [evidence design](docs/VALID
 Once a held-out suite has informed a controller change, it becomes regression data. Failed first evaluations are retained. Acceptance rules remain fixed: no new collisions, lane departures or failed missions; bounded route/lateral regressions; a nominal success floor; and an overspeed limit.
 
 `robust` combines a nominal Stanley controller, delayed-state prediction, speed adaptation, local obstacle handling, nearby mapped range/lane fusion and an approximate steering/braking prediction filter. Interventions are logged. Controller inputs exclude scoring pose, success, collision and true clearance. Range measurements and mapped obstacle coordinates are ideal in these suites. Learned policies use the original ten-value state vector without range detections: comparisons are system comparisons, not equal-input algorithm superiority claims.
+
+The default is now version 6, which filters nominal-road actions as well as disturbed sensing/geometry actions and retains bounded command history. `robust-v5` preserves the previously delivered controller for direct comparisons. Evaluation refuses to publish a completed run if package source changes during execution. Replay checks the recorded source and runtime before execution.
 
 ## GitHub Actions
 

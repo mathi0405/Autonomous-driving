@@ -19,7 +19,7 @@ concurrency:
 
 jobs:
   # ---------------------------------------------------------------------------
-  # Job 1: Code Quality — blocking on main, advisory on PRs
+  # Job 1: Code Quality — required before test jobs run
   # ---------------------------------------------------------------------------
   quality:
     name: Code quality

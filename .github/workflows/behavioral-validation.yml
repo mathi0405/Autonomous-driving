@@ -30,10 +30,10 @@ jobs:
       - name: Install pinned CPU validation dependencies
         run: pip install -r requirements-validation.txt
       - name: Test behavioral and evidence correctness
-        run: pytest tests/test_validation.py tests/test_sensor_sync.py tests/test_safety_filter.py -q
+        run: pytest tests/test_validation.py tests/test_sensor_sync.py tests/test_safety_filter.py tests/test_evidence_lifecycle.py tests/test_release_readiness.py -q
       - name: Evaluate frozen cases and prove three bad changes are rejected
         run: python scripts/validate_release.py --out artifacts/ci
-      - name: Reject regressions in cases discovered during held-out evaluation
+      - name: Reject regressions against the previous improved controller
         run: python scripts/validate_regressions.py --out artifacts/regression
       - name: Retain reports and replay evidence even when the gate fails
         if: always()
