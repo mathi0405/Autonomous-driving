@@ -1,0 +1,4129 @@
+{
+  "schema": 1,
+  "verdict": "PASS",
+  "reason_codes": [],
+  "rules": {
+    "max_new_collisions": 0,
+    "max_new_offroads": 0,
+    "max_new_failures": 0,
+    "max_route_drop": 0.02,
+    "max_lateral_increase_m": 0.1,
+    "max_overspeed_increase_kmh": 3.0,
+    "min_nominal_success_rate": 0.95
+  },
+  "paired_episodes": 512,
+  "baseline_policy": {
+    "name": "robust-v5"
+  },
+  "candidate_policy": {
+    "name": "robust"
+  },
+  "suite_sha256": "90cfa2ac95c9236a45f6a41203d77b1a0935d34e6d57dc7514393c9dbe366663",
+  "cases": [
+    {
+      "id": "actuator-000",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.06277766574988142
+    },
+    {
+      "id": "actuator-001",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.24781580359932906
+    },
+    {
+      "id": "actuator-002",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.3315526274658263
+    },
+    {
+      "id": "actuator-003",
+      "reason_codes": [],
+      "baseline_reason": "COLLISION",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.4,
+      "lateral_delta_m": 0.2784879640162147
+    },
+    {
+      "id": "actuator-004",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.7144838510038903
+    },
+    {
+      "id": "actuator-005",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.426147212577726
+    },
+    {
+      "id": "actuator-006",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.21907638680613914
+    },
+    {
+      "id": "actuator-007",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.09203129561741905
+    },
+    {
+      "id": "actuator-008",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.30576506277196325
+    },
+    {
+      "id": "actuator-009",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.47873803704707574
+    },
+    {
+      "id": "actuator-010",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.6408783674551346
+    },
+    {
+      "id": "actuator-011",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.10070512922711897
+    },
+    {
+      "id": "actuator-012",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.3890854668173622
+    },
+    {
+      "id": "actuator-013",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.11657928971376547
+    },
+    {
+      "id": "actuator-014",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.07792338691893942
+    },
+    {
+      "id": "actuator-015",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.10577044784105971
+    },
+    {
+      "id": "actuator-016",
+      "reason_codes": [],
+      "baseline_reason": "COLLISION",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.752,
+      "lateral_delta_m": 0.28585485323821497
+    },
+    {
+      "id": "actuator-017",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.4744918064215937
+    },
+    {
+      "id": "actuator-018",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.31599889050999624
+    },
+    {
+      "id": "actuator-019",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.5116478327052045
+    },
+    {
+      "id": "actuator-020",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.411108297560046
+    },
+    {
+      "id": "actuator-021",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.023808161651137416
+    },
+    {
+      "id": "actuator-022",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.18202613347640978
+    },
+    {
+      "id": "actuator-023",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.11030212383632008
+    },
+    {
+      "id": "actuator-024",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.17105065054324953
+    },
+    {
+      "id": "actuator-025",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.16262798073961035
+    },
+    {
+      "id": "actuator-026",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.27923143522197774
+    },
+    {
+      "id": "actuator-027",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.3077687823925131
+    },
+    {
+      "id": "actuator-028",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.2474959402931412
+    },
+    {
+      "id": "actuator-029",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.1284231979948501
+    },
+    {
+      "id": "actuator-030",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.03856955324592662
+    },
+    {
+      "id": "actuator-031",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.36805606103792066
+    },
+    {
+      "id": "actuator-032",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.06297225714503535
+    },
+    {
+      "id": "actuator-033",
+      "reason_codes": [],
+      "baseline_reason": "COLLISION",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.19999999999999996,
+      "lateral_delta_m": 0.25814822398981574
+    },
+    {
+      "id": "actuator-034",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.29561699770153027
+    },
+    {
+      "id": "actuator-035",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.39379597773505426
+    },
+    {
+      "id": "actuator-036",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.2300548175822591
+    },
+    {
+      "id": "actuator-037",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.22222310560863615
+    },
+    {
+      "id": "actuator-038",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.039489917615878375
+    },
+    {
+      "id": "actuator-039",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.6255356779027027
+    },
+    {
+      "id": "actuator-040",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.475651044711997
+    },
+    {
+      "id": "actuator-041",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.06173472162168947
+    },
+    {
+      "id": "actuator-042",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.03241253653654201
+    },
+    {
+      "id": "actuator-043",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.6315970113032919
+    },
+    {
+      "id": "actuator-044",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.49985190193829626
+    },
+    {
+      "id": "actuator-045",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.47380392931344284
+    },
+    {
+      "id": "actuator-046",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.07027361435552436
+    },
+    {
+      "id": "actuator-047",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.23502283326388684
+    },
+    {
+      "id": "actuator-048",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.32257769567703
+    },
+    {
+      "id": "actuator-049",
+      "reason_codes": [],
+      "baseline_reason": "COLLISION",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.128,
+      "lateral_delta_m": 0.10622758364700807
+    },
+    {
+      "id": "actuator-050",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.5595167765216241
+    },
+    {
+      "id": "actuator-051",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.00846965251151624
+    },
+    {
+      "id": "actuator-052",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.04169505766538306
+    },
+    {
+      "id": "actuator-053",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.7389017325387881
+    },
+    {
+      "id": "actuator-054",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.21002828305387883
+    },
+    {
+      "id": "actuator-055",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.36523626099268136
+    },
+    {
+      "id": "actuator-056",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.3272569929155872
+    },
+    {
+      "id": "actuator-057",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.15645756724010135
+    },
+    {
+      "id": "actuator-058",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.10126979703548815
+    },
+    {
+      "id": "actuator-059",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.08067658620591696
+    },
+    {
+      "id": "actuator-060",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.05768813624666472
+    },
+    {
+      "id": "actuator-061",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.3245358770653456
+    },
+    {
+      "id": "actuator-062",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.09150673577465743
+    },
+    {
+      "id": "actuator-063",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.508329886171534
+    },
+    {
+      "id": "actuator-064",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.03295054299440037
+    },
+    {
+      "id": "actuator-065",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.35152118356108203
+    },
+    {
+      "id": "actuator-066",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.2715599950965439
+    },
+    {
+      "id": "actuator-067",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.4217351407938088
+    },
+    {
+      "id": "actuator-068",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.4638461841884569
+    },
+    {
+      "id": "actuator-069",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.47941660385577745
+    },
+    {
+      "id": "actuator-070",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.43967161071278993
+    },
+    {
+      "id": "actuator-071",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.18188814956944044
+    },
+    {
+      "id": "actuator-072",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.23282892620744677
+    },
+    {
+      "id": "actuator-073",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.04103379750981277
+    },
+    {
+      "id": "actuator-074",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": -0.0015180979988696774
+    },
+    {
+      "id": "actuator-075",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.14849580284098654
+    },
+    {
+      "id": "actuator-076",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.06456183946207937
+    },
+    {
+      "id": "actuator-077",
+      "reason_codes": [],
+      "baseline_reason": "COLLISION",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.696,
+      "lateral_delta_m": 0.22756220205844852
+    },
+    {
+      "id": "actuator-078",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.01903457453211277
+    },
+    {
+      "id": "actuator-079",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.1631854991199619
+    },
+    {
+      "id": "actuator-080",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.1658099955171404
+    },
+    {
+      "id": "actuator-081",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.46546401334678755
+    },
+    {
+      "id": "actuator-082",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.30414690796998856
+    },
+    {
+      "id": "actuator-083",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.07458931103002325
+    },
+    {
+      "id": "actuator-084",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.010389144301403405
+    },
+    {
+      "id": "actuator-085",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.7467296476539054
+    },
+    {
+      "id": "actuator-086",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.3310185481082917
+    },
+    {
+      "id": "actuator-087",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.07413964523428282
+    },
+    {
+      "id": "actuator-088",
+      "reason_codes": [],
+      "baseline_reason": "COLLISION",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.248,
+      "lateral_delta_m": 0.07726952105732784
+    },
+    {
+      "id": "actuator-089",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0949109490851254
+    },
+    {
+      "id": "actuator-090",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.07258625116721902
+    },
+    {
+      "id": "actuator-091",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.17006206019152864
+    },
+    {
+      "id": "actuator-092",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.4691491081153599
+    },
+    {
+      "id": "actuator-093",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.005716241906152844
+    },
+    {
+      "id": "actuator-094",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.01858870168114876
+    },
+    {
+      "id": "actuator-095",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.030947478063436437
+    },
+    {
+      "id": "actuator-096",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.187696153810627
+    },
+    {
+      "id": "actuator-097",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.5189672978424354
+    },
+    {
+      "id": "actuator-098",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.7315620001611141
+    },
+    {
+      "id": "actuator-099",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.408834862111095
+    },
+    {
+      "id": "actuator-100",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.3290427464702961
+    },
+    {
+      "id": "actuator-101",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.19674152276818918
+    },
+    {
+      "id": "actuator-102",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.1255377133491457
+    },
+    {
+      "id": "actuator-103",
+      "reason_codes": [],
+      "baseline_reason": "COLLISION",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.264,
+      "lateral_delta_m": 0.46478453680614573
+    },
+    {
+      "id": "actuator-104",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.6116662322952853
+    },
+    {
+      "id": "actuator-105",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.05285506946175082
+    },
+    {
+      "id": "actuator-106",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.4536987607901649
+    },
+    {
+      "id": "actuator-107",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.42948116586739105
+    },
+    {
+      "id": "actuator-108",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.08986096350047067
+    },
+    {
+      "id": "actuator-109",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.06699555974480821
+    },
+    {
+      "id": "actuator-110",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.7195518235553878
+    },
+    {
+      "id": "actuator-111",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.3129625520586917
+    },
+    {
+      "id": "actuator-112",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.4150955836044171
+    },
+    {
+      "id": "actuator-113",
+      "reason_codes": [],
+      "baseline_reason": "COLLISION",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.744,
+      "lateral_delta_m": 0.37589963106479607
+    },
+    {
+      "id": "actuator-114",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.18055915719791038
+    },
+    {
+      "id": "actuator-115",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.4196611355434862
+    },
+    {
+      "id": "actuator-116",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.002646206807269902
+    },
+    {
+      "id": "actuator-117",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.03211533265203344
+    },
+    {
+      "id": "actuator-118",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.4978578486167886
+    },
+    {
+      "id": "actuator-119",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.32528217902075185
+    },
+    {
+      "id": "actuator-120",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.4022856301363772
+    },
+    {
+      "id": "actuator-121",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.4032783584936591
+    },
+    {
+      "id": "actuator-122",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.1230282787735743
+    },
+    {
+      "id": "actuator-123",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.6664636328230773
+    },
+    {
+      "id": "actuator-124",
+      "reason_codes": [],
+      "baseline_reason": "COLLISION",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.12,
+      "lateral_delta_m": 0.10502883317635925
+    },
+    {
+      "id": "actuator-125",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.10353935579395224
+    },
+    {
+      "id": "actuator-126",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.16948376212095909
+    },
+    {
+      "id": "actuator-127",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.13916190231835887
+    },
+    {
+      "id": "geometry-000",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-001",
+      "reason_codes": [],
+      "baseline_reason": "TIMEOUT",
+      "candidate_reason": "TIMEOUT",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-002",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-003",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-004",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-005",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-006",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-007",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-008",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-009",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-010",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-011",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-012",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-013",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-014",
+      "reason_codes": [],
+      "baseline_reason": "COLLISION",
+      "candidate_reason": "COLLISION",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-015",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-016",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-017",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-018",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-019",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-020",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-021",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-022",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-023",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-024",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-025",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-026",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-027",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-028",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-029",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-030",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-031",
+      "reason_codes": [],
+      "baseline_reason": "TIMEOUT",
+      "candidate_reason": "TIMEOUT",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-032",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-033",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-034",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-035",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-036",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-037",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-038",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-039",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-040",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-041",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-042",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-043",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-044",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-045",
+      "reason_codes": [],
+      "baseline_reason": "COLLISION",
+      "candidate_reason": "COLLISION",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-046",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-047",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-048",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-049",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-050",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-051",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-052",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-053",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-054",
+      "reason_codes": [],
+      "baseline_reason": "COLLISION",
+      "candidate_reason": "COLLISION",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-055",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-056",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-057",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-058",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-059",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-060",
+      "reason_codes": [],
+      "baseline_reason": "COLLISION",
+      "candidate_reason": "COLLISION",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-061",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-062",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-063",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-064",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-065",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-066",
+      "reason_codes": [],
+      "baseline_reason": "TIMEOUT",
+      "candidate_reason": "TIMEOUT",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-067",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-068",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-069",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-070",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-071",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-072",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-073",
+      "reason_codes": [],
+      "baseline_reason": "TIMEOUT",
+      "candidate_reason": "TIMEOUT",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-074",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-075",
+      "reason_codes": [],
+      "baseline_reason": "COLLISION",
+      "candidate_reason": "COLLISION",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-076",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-077",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-078",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-079",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-080",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-081",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-082",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-083",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-084",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-085",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-086",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-087",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-088",
+      "reason_codes": [],
+      "baseline_reason": "TIMEOUT",
+      "candidate_reason": "TIMEOUT",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-089",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-090",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-091",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-092",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-093",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-094",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-095",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-096",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-097",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-098",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-099",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-100",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-101",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-102",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-103",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-104",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-105",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-106",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-107",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-108",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-109",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-110",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-111",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-112",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-113",
+      "reason_codes": [],
+      "baseline_reason": "TIMEOUT",
+      "candidate_reason": "TIMEOUT",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-114",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-115",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-116",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-117",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-118",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-119",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-120",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-121",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-122",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-123",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-124",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-125",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-126",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "geometry-127",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "nominal-000",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.004019170427879609
+    },
+    {
+      "id": "nominal-001",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.007584727975604506
+    },
+    {
+      "id": "nominal-002",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.010000775839369175
+    },
+    {
+      "id": "nominal-003",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": -0.0015840517327103815
+    },
+    {
+      "id": "nominal-004",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.024370239162128146
+    },
+    {
+      "id": "nominal-005",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.025883741077429093
+    },
+    {
+      "id": "nominal-006",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.038635266017888775
+    },
+    {
+      "id": "nominal-007",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.009636794283054473
+    },
+    {
+      "id": "nominal-008",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.022685889129448467
+    },
+    {
+      "id": "nominal-009",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": -0.00022881135332407376
+    },
+    {
+      "id": "nominal-010",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": -0.0028824904952238772
+    },
+    {
+      "id": "nominal-011",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.014142114981795031
+    },
+    {
+      "id": "nominal-012",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": -0.00013789019524332313
+    },
+    {
+      "id": "nominal-013",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0077574190838023555
+    },
+    {
+      "id": "nominal-014",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.024544506832935964
+    },
+    {
+      "id": "nominal-015",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.05455050324506997
+    },
+    {
+      "id": "nominal-016",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": -0.0030993608100052666
+    },
+    {
+      "id": "nominal-017",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.010997349391982006
+    },
+    {
+      "id": "nominal-018",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.01795147402686277
+    },
+    {
+      "id": "nominal-019",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.00034486925528817713
+    },
+    {
+      "id": "nominal-020",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": -0.006260935664745837
+    },
+    {
+      "id": "nominal-021",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": -0.0034769050251560046
+    },
+    {
+      "id": "nominal-022",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": -0.0007941526640000002
+    },
+    {
+      "id": "nominal-023",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.006447400875992798
+    },
+    {
+      "id": "nominal-024",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0024921660972888893
+    },
+    {
+      "id": "nominal-025",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.03881665450151835
+    },
+    {
+      "id": "nominal-026",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.014048920377225993
+    },
+    {
+      "id": "nominal-027",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": -0.005820134595461879
+    },
+    {
+      "id": "nominal-028",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0037519601519532472
+    },
+    {
+      "id": "nominal-029",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.003360862506010087
+    },
+    {
+      "id": "nominal-030",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.027521482207848127
+    },
+    {
+      "id": "nominal-031",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.027895156071618077
+    },
+    {
+      "id": "nominal-032",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.02579806240880113
+    },
+    {
+      "id": "nominal-033",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.02248437064616607
+    },
+    {
+      "id": "nominal-034",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0483610650581595
+    },
+    {
+      "id": "nominal-035",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.005082301515268006
+    },
+    {
+      "id": "nominal-036",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.023034473133986294
+    },
+    {
+      "id": "nominal-037",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.03777352869239203
+    },
+    {
+      "id": "nominal-038",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.022542575635028414
+    },
+    {
+      "id": "nominal-039",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.010704554966533733
+    },
+    {
+      "id": "nominal-040",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.00958362611965953
+    },
+    {
+      "id": "nominal-041",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.02895707545992121
+    },
+    {
+      "id": "nominal-042",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.010596671144819311
+    },
+    {
+      "id": "nominal-043",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": -0.0008287155029043439
+    },
+    {
+      "id": "nominal-044",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.013069457563661555
+    },
+    {
+      "id": "nominal-045",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": -0.0026273748970513655
+    },
+    {
+      "id": "nominal-046",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.013626571767270348
+    },
+    {
+      "id": "nominal-047",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.003030805633598019
+    },
+    {
+      "id": "nominal-048",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.014831620652796765
+    },
+    {
+      "id": "nominal-049",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0253512861579977
+    },
+    {
+      "id": "nominal-050",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.03106096187222549
+    },
+    {
+      "id": "nominal-051",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0019739668614649764
+    },
+    {
+      "id": "nominal-052",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.02657404767141762
+    },
+    {
+      "id": "nominal-053",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0013999629696748103
+    },
+    {
+      "id": "nominal-054",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.026528258171579014
+    },
+    {
+      "id": "nominal-055",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0034819186514117376
+    },
+    {
+      "id": "nominal-056",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.006570391810592102
+    },
+    {
+      "id": "nominal-057",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.014762182298686692
+    },
+    {
+      "id": "nominal-058",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.020210986405837017
+    },
+    {
+      "id": "nominal-059",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.008055847684009548
+    },
+    {
+      "id": "nominal-060",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.03407584752926579
+    },
+    {
+      "id": "nominal-061",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.011670256701116155
+    },
+    {
+      "id": "nominal-062",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": -0.00567008492339529
+    },
+    {
+      "id": "nominal-063",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.004840390282853976
+    },
+    {
+      "id": "nominal-064",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0045780626801715865
+    },
+    {
+      "id": "nominal-065",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.004129418702113252
+    },
+    {
+      "id": "nominal-066",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.015216919385510036
+    },
+    {
+      "id": "nominal-067",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.022974492238808458
+    },
+    {
+      "id": "nominal-068",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0007433279291050171
+    },
+    {
+      "id": "nominal-069",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.013726681825541348
+    },
+    {
+      "id": "nominal-070",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": -0.003920570877102084
+    },
+    {
+      "id": "nominal-071",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.004704479206287165
+    },
+    {
+      "id": "nominal-072",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0019431837738891206
+    },
+    {
+      "id": "nominal-073",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.014619211597638307
+    },
+    {
+      "id": "nominal-074",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.004835412451433832
+    },
+    {
+      "id": "nominal-075",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.00443886101775591
+    },
+    {
+      "id": "nominal-076",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0015452038170272603
+    },
+    {
+      "id": "nominal-077",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.023994271976194206
+    },
+    {
+      "id": "nominal-078",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.009271546205404907
+    },
+    {
+      "id": "nominal-079",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.012287281850541357
+    },
+    {
+      "id": "nominal-080",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.014686163624579633
+    },
+    {
+      "id": "nominal-081",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.008563072105110398
+    },
+    {
+      "id": "nominal-082",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.03045808893328561
+    },
+    {
+      "id": "nominal-083",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.031453201978790354
+    },
+    {
+      "id": "nominal-084",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.008323151999607759
+    },
+    {
+      "id": "nominal-085",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.045109467029106384
+    },
+    {
+      "id": "nominal-086",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.014449318120269061
+    },
+    {
+      "id": "nominal-087",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.027833082181483865
+    },
+    {
+      "id": "nominal-088",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.009073182986014547
+    },
+    {
+      "id": "nominal-089",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.00835787317165336
+    },
+    {
+      "id": "nominal-090",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": -0.0036377276863393954
+    },
+    {
+      "id": "nominal-091",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.00582329236805855
+    },
+    {
+      "id": "nominal-092",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.026650207882710802
+    },
+    {
+      "id": "nominal-093",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.014834773002881524
+    },
+    {
+      "id": "nominal-094",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": -0.0023082578336352383
+    },
+    {
+      "id": "nominal-095",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.009287383459809007
+    },
+    {
+      "id": "nominal-096",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.039190862741484506
+    },
+    {
+      "id": "nominal-097",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.007972811524644206
+    },
+    {
+      "id": "nominal-098",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.015664525872834262
+    },
+    {
+      "id": "nominal-099",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": -0.0007625675974788776
+    },
+    {
+      "id": "nominal-100",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.07356121675474339
+    },
+    {
+      "id": "nominal-101",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0023779184443265405
+    },
+    {
+      "id": "nominal-102",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0421121544913617
+    },
+    {
+      "id": "nominal-103",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0030923265096638453
+    },
+    {
+      "id": "nominal-104",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.005956158587956964
+    },
+    {
+      "id": "nominal-105",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.01594919261314781
+    },
+    {
+      "id": "nominal-106",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.032827315463287175
+    },
+    {
+      "id": "nominal-107",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.012363545533192383
+    },
+    {
+      "id": "nominal-108",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.03382461949230307
+    },
+    {
+      "id": "nominal-109",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.007523374958883958
+    },
+    {
+      "id": "nominal-110",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.008104176489955955
+    },
+    {
+      "id": "nominal-111",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.00040365872294821636
+    },
+    {
+      "id": "nominal-112",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.023187551768946713
+    },
+    {
+      "id": "nominal-113",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.009554550504374495
+    },
+    {
+      "id": "nominal-114",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.003338318199495635
+    },
+    {
+      "id": "nominal-115",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.01317430256749784
+    },
+    {
+      "id": "nominal-116",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0016963818945116213
+    },
+    {
+      "id": "nominal-117",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": -0.0018131125165905537
+    },
+    {
+      "id": "nominal-118",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0087190037936212
+    },
+    {
+      "id": "nominal-119",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.02039524351728507
+    },
+    {
+      "id": "nominal-120",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.017289428170817057
+    },
+    {
+      "id": "nominal-121",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.013390648049649491
+    },
+    {
+      "id": "nominal-122",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.024428265444813135
+    },
+    {
+      "id": "nominal-123",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.000290725894392857
+    },
+    {
+      "id": "nominal-124",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.018451542671711257
+    },
+    {
+      "id": "nominal-125",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.009985231948112516
+    },
+    {
+      "id": "nominal-126",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.001685351861628867
+    },
+    {
+      "id": "nominal-127",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.00958111764079711
+    },
+    {
+      "id": "sensing-000",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": -9.488790632988797e-05
+    },
+    {
+      "id": "sensing-001",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-002",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-003",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-004",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-005",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-006",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-007",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": -4.1972899837927624e-05
+    },
+    {
+      "id": "sensing-008",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-009",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-010",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-011",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-012",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-013",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-014",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-015",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-016",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-017",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": -0.0002746953950870379
+    },
+    {
+      "id": "sensing-018",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-019",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-020",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": -3.070776169880607e-05
+    },
+    {
+      "id": "sensing-021",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-022",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-023",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-024",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-025",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-026",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 9.158836222172839e-05
+    },
+    {
+      "id": "sensing-027",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-028",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-029",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-030",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-031",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-032",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-033",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 4.648993073724794e-05
+    },
+    {
+      "id": "sensing-034",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-035",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-036",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-037",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-038",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-039",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-040",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-041",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-042",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-043",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-044",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-045",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-046",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-047",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-048",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-049",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": -1.1319622606309476e-05
+    },
+    {
+      "id": "sensing-050",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-051",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-052",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-053",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0001183445546985018
+    },
+    {
+      "id": "sensing-054",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-055",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-056",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-057",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-058",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-059",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-060",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-061",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-062",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": -3.417445770093064e-05
+    },
+    {
+      "id": "sensing-063",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-064",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-065",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 7.368437145327533e-05
+    },
+    {
+      "id": "sensing-066",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-067",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-068",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-069",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-070",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-071",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-072",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-073",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-074",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-075",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-076",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-077",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-078",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-079",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-080",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-081",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-082",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-083",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-084",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-085",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-086",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-087",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 5.2383736190653174e-05
+    },
+    {
+      "id": "sensing-088",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-089",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-090",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-091",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-092",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-093",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-094",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-095",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-096",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-097",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.00016218938562090335
+    },
+    {
+      "id": "sensing-098",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-099",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-100",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-101",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-102",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-103",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-104",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-105",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-106",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-107",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-108",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-109",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-110",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-111",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-112",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-113",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-114",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-115",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-116",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-117",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-118",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-119",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-120",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-121",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-122",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-123",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-124",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-125",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-126",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0
+    },
+    {
+      "id": "sensing-127",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 8.368131003652635e-05
+    }
+  ],
+  "route_delta": 0.0069375,
+  "lateral_delta_m": 0.06963577784493867,
+  "overspeed_delta_kmh": -0.02901230578986394,
+  "route_delta_paired_bootstrap_95ci": [
+    0.002280859375,
+    0.012969140624999998
+  ],
+  "uncertainty_method": "Paired stratified bootstrap, 2000 resamples, fixed regime weights",
+  "scope": "Finite paired kinematic simulation suite; not hardware validation."
+}
