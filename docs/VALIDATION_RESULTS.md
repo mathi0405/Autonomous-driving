@@ -1,6 +1,8 @@
-# Measured validation results
+# Historical version-5 validation results
 
-Recorded 4 October 2026. Primary evaluation: `configs/validation/held-out-v5.json`, generator seed 2236067, 64 cases per regime, 256 paired cases. The controller was frozen before its first evaluation. No threshold or control change followed these results.
+Recorded 4 October 2026. This document preserves the first delivered version-5 measurements. Current version-6 qualification and release blockers are in [SECOND_REVIEW.md](SECOND_REVIEW.md).
+
+Primary version-5 evaluation: `configs/validation/held-out-v5.json`, generator seed 2236067, 64 cases per regime, 256 paired cases. That controller was frozen before its first evaluation. These historical measurements were not rewritten after subsequent controller changes.
 
 ![Measured outcomes](images/validation_results.png)
 
