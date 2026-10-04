@@ -6,9 +6,12 @@ import html
 import json
 from pathlib import Path
 
+from ad_rl.validation.readiness import assess_readiness
+
 
 def render_report(baseline: dict, candidate: dict, verdict: dict, out: Path) -> None:
     """Generate a portable HTML report with no network dependencies."""
+    readiness = assess_readiness(candidate)
     rows = []
     for case in verdict["cases"]:
         rows.append(
@@ -40,9 +43,14 @@ def render_report(baseline: dict, candidate: dict, verdict: dict, out: Path) -> 
             f"{s['success_95ci'][1]:.1%}</p></article>"
         )
     content = (
-        f"<h1>Driving validation <span>{verdict['verdict']}</span></h1>"
+        f"<h1>Driving regression check <span>{verdict['verdict']}</span></h1>"
         "<p>Paired scenarios. Reproducible evidence. Explicit acceptance rules.</p>"
-        f"<section>{cards}</section><h2>Verdict reasons</h2><ul>"
+        f"<section>{cards}</section>"
+        f"<h2>Simulation release: {readiness['status']}</h2>"
+        "<p>This separate check requires sufficient cases in every regime, zero failed missions "
+        "and bounded peak speed. It does not approve hardware deployment.</p><pre>"
+        + html.escape(json.dumps(readiness["blockers"], indent=2))
+        + "</pre><h2>Regression reasons</h2><ul>"
         f"{reasons or '<li>No regression threshold exceeded.</li>'}</ul>"
         f"<p>Mean route delta: {verdict['route_delta']:+.4f}; paired bootstrap 95% interval: "
         f"{verdict['route_delta_paired_bootstrap_95ci']}</p>"

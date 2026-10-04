@@ -12,8 +12,16 @@ import numpy as np
 
 from ad_rl.validation.gate import compare, load_rules
 from ad_rl.validation.policies import CONTROLLERS, policy_identity
+from ad_rl.validation.readiness import assess_readiness
 from ad_rl.validation.report import render_replay, render_report
-from ad_rl.validation.runner import load_run, run_episode, run_suite, source_fingerprint, write_json
+from ad_rl.validation.runner import (
+    assert_replay_compatible,
+    load_run,
+    run_episode,
+    run_suite,
+    source_fingerprint,
+    write_json,
+)
 from ad_rl.validation.scenarios import Scenario, generate_suite, load_suite
 
 
@@ -37,6 +45,11 @@ def parse_args(argv=None):
     gate.add_argument("--candidate", type=Path, required=True)
     gate.add_argument("--rules", type=Path, required=True)
     gate.add_argument("--out", type=Path, required=True)
+    readiness = commands.add_parser(
+        "readiness", help="Absolute simulation requirements: 0 met, 1 blocked, 2 invalid."
+    )
+    readiness.add_argument("--run", type=Path, required=True)
+    readiness.add_argument("--out", type=Path, required=True)
     replay = commands.add_parser("replay", help="Re-execute and verify an episode hash.")
     replay.add_argument("--run", type=Path, required=True)
     replay.add_argument("--scenario", required=True)
@@ -159,10 +172,17 @@ def execute(args) -> int:
             )
         )
         return 0 if verdict["verdict"] == "PASS" else 1
+    elif args.command == "readiness":
+        verdict = assess_readiness(load_run(args.run))
+        args.out.mkdir(parents=True, exist_ok=False)
+        write_json(args.out / "readiness.json", verdict)
+        print(json.dumps(verdict, indent=2))
+        return 0 if verdict["status"] == "SIMULATION_REQUIREMENTS_MET" else 1
     elif args.command == "replay":
         run = load_run(args.run)
         if source_fingerprint() != run["provenance"]["source_sha256"]:
             raise ValueError("Source changed; restore the recorded source before exact replay.")
+        assert_replay_compatible(run["provenance"], run["policy"])
         entries = [e for e in run["episodes"] if e["id"] == args.scenario]
         if len(entries) != 1:
             raise ValueError("Scenario is not present in this run.")

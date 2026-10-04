@@ -16,6 +16,7 @@ from ad_rl.validation.scenarios import load_suite
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--out", type=Path, required=True)
+    parser.add_argument("--baseline", default="robust-v5", choices=["stanley", "robust-v5"])
     args = parser.parse_args()
     args.out.mkdir(parents=True, exist_ok=False)
     rules = load_rules(json.loads(Path("configs/validation/gate-rules.json").read_text()))
@@ -23,7 +24,7 @@ def main():
     for path in sorted(Path("configs/validation").glob("held-out-v*.json")):
         suite, cases = load_suite(path)
         folder = args.out / path.stem
-        baseline = run_suite(suite, cases, policy_identity("stanley"), folder / "baseline")
+        baseline = run_suite(suite, cases, policy_identity(args.baseline), folder / "baseline")
         candidate = run_suite(suite, cases, policy_identity("robust"), folder / "candidate")
         verdict = compare(
             load_run(folder / "baseline/run.json"), load_run(folder / "candidate/run.json"), rules

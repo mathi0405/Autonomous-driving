@@ -56,3 +56,17 @@ def test_suite_mapping_is_checked_before_execution(tmp_path):
     with pytest.raises(ValueError, match="Suite mapping"):
         runner.run_suite(suite, [case], policy_identity("stanley"), tmp_path / "run")
     assert not (tmp_path / "run").exists()
+
+
+def test_replay_requires_matching_dependency_versions():
+    recorded = runner.provenance()
+    recorded["dependencies"]["numpy"] = "different"
+    with pytest.raises(ValueError, match="Replay runtime dependency"):
+        runner.assert_replay_compatible(recorded, policy_identity("stanley"))
+
+
+def test_recomputed_digest_cannot_hide_false_peak_speed():
+    episode = runner.run_episode(Scenario("case", 1, max_steps=2), policy_identity("stanley"))
+    episode["metrics"]["peak_speed_kmh"] = 0
+    with pytest.raises(ValueError, match="Peak speed metric"):
+        runner.summarize([episode])

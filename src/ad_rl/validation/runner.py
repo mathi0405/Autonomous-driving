@@ -115,6 +115,7 @@ def run_episode(scenario: Scenario, identity: dict) -> dict:
             "return": float(total_return),
             "route_completion": float(info["route_fraction"]),
             "mean_speed_kmh": float(np.mean(speeds) * 3.6),
+            "peak_speed_kmh": float(np.max(speeds) * 3.6),
             "mean_abs_lateral_error_m": float(np.mean(np.abs(lateral))),
             "max_abs_lateral_error_m": float(np.max(np.abs(lateral))),
             "minimum_clearance_m": float(min(p["minimum_clearance_m"] for p in trajectory)),
@@ -170,6 +171,25 @@ def validate_outcomes(episodes: list[dict]) -> None:
             points = episode["trajectory"]
             if not points or len(points) != metrics["steps"] or points[-1]["reason"] != reason:
                 raise ValueError("Trajectory disagrees with outcome metrics.")
+            if (
+                "peak_speed_kmh" in metrics
+                and metrics["peak_speed_kmh"] != max(p["speed_ms"] for p in points) * 3.6
+            ):
+                raise ValueError("Peak speed metric disagrees with trajectory.")
+
+
+def assert_replay_compatible(recorded: dict, policy: dict) -> None:
+    """Require the recorded runtime before spending work on an exact replay claim."""
+    current = provenance()
+    for key in ("python", "platform"):
+        if current[key] != recorded[key]:
+            raise ValueError(f"Replay runtime differs: {key}.")
+    dependencies = ["numpy", "gymnasium"]
+    if policy["name"] == "model":
+        dependencies.extend(["torch", "stable-baselines3"])
+    for key in dependencies:
+        if current["dependencies"][key] != recorded["dependencies"][key]:
+            raise ValueError(f"Replay runtime dependency differs: {key}.")
 
 
 def summarize(episodes: list[dict]) -> dict:
