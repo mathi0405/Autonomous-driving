@@ -4,9 +4,9 @@ A reproducible simulation test platform that discovers driving failures, replays
 
 The project extends the original PPO/SAC framework. **Measured claims concern the CPU kinematic simulator and synthetic state/range measurements.** Live CARLA and hardware behavior remain unverified.
 
-Version 5's original untouched suite completed **249/256 missions (97.3%)**, versus **132/256 (51.6%)** for Stanley, with slower control under sensing faults. During the second review, version 6 completed **254/256** on that now-consumed regression suite, with zero collisions and two timeouts. The second review's fresh qualification and release blockers are recorded separately in [the review](docs/SECOND_REVIEW.md). All failed outcomes remain in the reports.
+Version 6's first evaluation on a fresh frozen suite completed **501/512 missions (97.9%)**, versus **492/512 (96.1%)** for the previous improved version 5. The paired regression contract passed, but absolute release readiness is **BLOCKED** by five geometry collisions and six timeouts. Average speed decreased from 21.9 to 21.6 km/h. See [the second review](docs/SECOND_REVIEW.md) for the staged changes and every failed case.
 
-![Final simulation outcomes](docs/images/validation_results.png)
+![Second-review simulation outcomes](docs/images/second_review_results.png)
 
 ## Capabilities
 

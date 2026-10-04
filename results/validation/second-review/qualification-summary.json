@@ -1,0 +1,91 @@
+{
+  "baseline": {
+    "episodes": 512,
+    "success_rate": 0.9609375,
+    "collision_rate": 0.02734375,
+    "offroad_rate": 0.0,
+    "timeout_rate": 0.01171875,
+    "route_completion": 0.9748281250000004,
+    "mean_abs_lateral_error_m": 0.19256606371091928,
+    "mean_speed_kmh": 21.91328356063552,
+    "success_95ci": [
+      0.9404368991207068,
+      0.9745729201347606
+    ]
+  },
+  "candidate": {
+    "episodes": 512,
+    "success_rate": 0.978515625,
+    "collision_rate": 0.009765625,
+    "offroad_rate": 0.0,
+    "timeout_rate": 0.01171875,
+    "route_completion": 0.9817656250000004,
+    "mean_abs_lateral_error_m": 0.26220184155585796,
+    "mean_speed_kmh": 21.637430226614164,
+    "success_95ci": [
+      0.9619423364720409,
+      0.9879619250431689
+    ]
+  },
+  "by_regime": {
+    "actuator": {
+      "episodes": 128,
+      "success_rate": 1.0,
+      "collision_rate": 0.0,
+      "offroad_rate": 0.0,
+      "timeout_rate": 0.0,
+      "route_completion": 0.9920000000000004,
+      "mean_abs_lateral_error_m": 0.3883350571751296,
+      "mean_speed_kmh": 29.15002023784215,
+      "success_95ci": [
+        0.9708630437264916,
+        1.0
+      ]
+    },
+    "geometry": {
+      "episodes": 128,
+      "success_rate": 0.9140625,
+      "collision_rate": 0.0390625,
+      "offroad_rate": 0.0,
+      "timeout_rate": 0.046875,
+      "route_completion": 0.9510625000000004,
+      "mean_abs_lateral_error_m": 0.412617797830907,
+      "mean_speed_kmh": 17.435980924986968,
+      "success_95ci": [
+        0.852659089457387,
+        0.9513368686286138
+      ]
+    },
+    "nominal": {
+      "episodes": 128,
+      "success_rate": 1.0,
+      "collision_rate": 0.0,
+      "offroad_rate": 0.0,
+      "timeout_rate": 0.0,
+      "route_completion": 0.9920000000000004,
+      "mean_abs_lateral_error_m": 0.08296524883498531,
+      "mean_speed_kmh": 29.88371748283231,
+      "success_95ci": [
+        0.9708630437264916,
+        1.0
+      ]
+    },
+    "sensing": {
+      "episodes": 128,
+      "success_rate": 1.0,
+      "collision_rate": 0.0,
+      "offroad_rate": 0.0,
+      "timeout_rate": 0.0,
+      "route_completion": 0.9920000000000004,
+      "mean_abs_lateral_error_m": 0.1648892623824098,
+      "mean_speed_kmh": 10.08000226079523,
+      "success_95ci": [
+        0.9708630437264916,
+        1.0
+      ]
+    }
+  },
+  "source_sha256": "bb8d7112d53d26a910648247698d74bd5ca38cb836a55521e8e932523acede86",
+  "suite_sha256": "90cfa2ac95c9236a45f6a41203d77b1a0935d34e6d57dc7514393c9dbe366663",
+  "evaluated_source_commit": "efbd39f665977935283dccf79f4ef5e20711fba7"
+}

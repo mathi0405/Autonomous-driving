@@ -1,0 +1,65 @@
+{
+  "schema": 1,
+  "status": "BLOCKED",
+  "hardware_release_approved": false,
+  "requirements": {
+    "min_cases_per_regime": 32,
+    "max_peak_overspeed_kmh": 3.0,
+    "required_regimes": [
+      "nominal",
+      "geometry",
+      "sensing",
+      "actuator"
+    ],
+    "max_failed_missions": 0
+  },
+  "blockers": [
+    {
+      "code": "COLLISIONS_PRESENT",
+      "observed": 5,
+      "limit": 0,
+      "scenario_ids": [
+        "geometry-014",
+        "geometry-045",
+        "geometry-054",
+        "geometry-060",
+        "geometry-075"
+      ]
+    },
+    {
+      "code": "TIMEOUTS_PRESENT",
+      "observed": 6,
+      "limit": 0,
+      "scenario_ids": [
+        "geometry-001",
+        "geometry-031",
+        "geometry-066",
+        "geometry-073",
+        "geometry-088",
+        "geometry-113"
+      ]
+    }
+  ],
+  "failed_scenario_ids": [
+    "geometry-001",
+    "geometry-014",
+    "geometry-031",
+    "geometry-045",
+    "geometry-054",
+    "geometry-060",
+    "geometry-066",
+    "geometry-073",
+    "geometry-075",
+    "geometry-088",
+    "geometry-113"
+  ],
+  "cases_per_regime": {
+    "nominal": 128,
+    "geometry": 128,
+    "sensing": 128,
+    "actuator": 128
+  },
+  "suite_sha256": "90cfa2ac95c9236a45f6a41203d77b1a0935d34e6d57dc7514393c9dbe366663",
+  "source_sha256": "bb8d7112d53d26a910648247698d74bd5ca38cb836a55521e8e932523acede86",
+  "scope": "Finite kinematic simulation only; CARLA and hardware remain unvalidated."
+}
