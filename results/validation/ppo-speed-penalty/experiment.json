@@ -1,0 +1,619 @@
+{
+  "schema": 1,
+  "requested_steps_per_seed": 200000,
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "scope": "State-policy kinematic speed-penalty experiment; not camera/CARLA",
+  "runs": [
+    {
+      "seed": 17,
+      "summary": {
+        "episodes": 32,
+        "success_rate": 0.375,
+        "collision_rate": 0.40625,
+        "offroad_rate": 0.21875,
+        "timeout_rate": 0.0,
+        "route_completion": 0.575,
+        "mean_abs_lateral_error_m": 0.3210013494719018,
+        "mean_speed_kmh": 30.159687798465203,
+        "success_95ci": [
+          0.22933887309454212,
+          0.5474559264692255
+        ]
+      },
+      "by_regime": {
+        "actuator": {
+          "episodes": 8,
+          "success_rate": 0.5,
+          "collision_rate": 0.5,
+          "offroad_rate": 0.0,
+          "timeout_rate": 0.0,
+          "route_completion": 0.664,
+          "mean_abs_lateral_error_m": 0.2370543171828456,
+          "mean_speed_kmh": 32.001925633134235,
+          "success_95ci": [
+            0.21521606221387757,
+            0.7847839377861224
+          ]
+        },
+        "geometry": {
+          "episodes": 8,
+          "success_rate": 0.125,
+          "collision_rate": 0.875,
+          "offroad_rate": 0.0,
+          "timeout_rate": 0.0,
+          "route_completion": 0.536,
+          "mean_abs_lateral_error_m": 0.30876194220103714,
+          "mean_speed_kmh": 29.890344142922594,
+          "success_95ci": [
+            0.02241749145005667,
+            0.4708881822128535
+          ]
+        },
+        "nominal": {
+          "episodes": 8,
+          "success_rate": 0.875,
+          "collision_rate": 0.125,
+          "offroad_rate": 0.0,
+          "timeout_rate": 0.0,
+          "route_completion": 0.983,
+          "mean_abs_lateral_error_m": 0.13965636435684536,
+          "mean_speed_kmh": 35.60023383883701,
+          "success_95ci": [
+            0.5291118177871464,
+            0.9775825085499433
+          ]
+        },
+        "sensing": {
+          "episodes": 8,
+          "success_rate": 0.0,
+          "collision_rate": 0.125,
+          "offroad_rate": 0.875,
+          "timeout_rate": 0.0,
+          "route_completion": 0.11699999999999999,
+          "mean_abs_lateral_error_m": 0.5985327741468792,
+          "mean_speed_kmh": 23.14624757896697,
+          "success_95ci": [
+            0.0,
+            0.32440756488388023
+          ]
+        }
+      },
+      "verdict": "FAIL",
+      "reason_codes": [
+        {
+          "code": "NEW_COLLISION",
+          "observed": 6,
+          "limit": 0
+        },
+        {
+          "code": "NEW_FAILURE",
+          "observed": 5,
+          "limit": 0
+        },
+        {
+          "code": "ROUTE_COMPLETION_DROP",
+          "observed": -0.0565,
+          "limit": -0.02
+        },
+        {
+          "code": "NOMINAL_SUCCESS_FLOOR",
+          "observed": 0.875,
+          "limit": 0.95
+        }
+      ],
+      "model_sha256": "6ff812354f4a99045c7dcb4802e3915f05be84785b0cbc820b27d18ca395dc34",
+      "training": {
+        "source_sha256": "5f27633b191913fd07503c41861204d699b278240368447e3c68e2b13a5626b2",
+        "commit": "79921d3d2f3f8898b15c885348f5379b1ebbfbe4",
+        "dirty": true,
+        "python": "3.11.9",
+        "platform": "Windows-10-10.0.26300-SP0",
+        "dependencies": {
+          "numpy": "2.4.6",
+          "gymnasium": "1.3.0",
+          "stable-baselines3": "2.9.0",
+          "torch": "2.14.1+cpu"
+        },
+        "backend": "fallback",
+        "resolved_config": {
+          "algorithm": "ppo",
+          "seed": 17,
+          "total_timesteps": 200000,
+          "n_envs": 4,
+          "policy": {
+            "type": "auto",
+            "net_arch": [
+              64,
+              64
+            ],
+            "activation": "tanh",
+            "log_std_init": -0.5
+          },
+          "hyperparameters": {
+            "learning_rate": 0.0003,
+            "n_steps": 512,
+            "batch_size": 256,
+            "n_epochs": 5,
+            "gamma": 0.99,
+            "gae_lambda": 0.95,
+            "clip_range": 0.2,
+            "ent_coef": 0.0,
+            "vf_coef": 0.5,
+            "max_grad_norm": 0.5,
+            "target_kl": 0.03
+          },
+          "logging": {
+            "eval_freq": 25000,
+            "eval_episodes": 10,
+            "checkpoint_freq": 100000,
+            "tensorboard": false
+          },
+          "env": {
+            "observation": "state",
+            "image_size": [
+              84,
+              84
+            ],
+            "frame_stack": 1,
+            "action_repeat": 2,
+            "max_episode_steps": 1000,
+            "normalize_actions": true,
+            "smooth_actions": false
+          },
+          "reward": {
+            "target_speed_kmh": 30.0,
+            "w_speed": 3.0,
+            "w_progress": 0.5,
+            "w_lane": 1.0,
+            "w_heading": 0.3,
+            "w_steer": 0.1,
+            "w_jerk": 0.1,
+            "collision_penalty": 50.0,
+            "offroad_penalty": 25.0
+          },
+          "carla": {
+            "host": "localhost",
+            "port": 2000,
+            "timeout": 20.0,
+            "town": "Town03",
+            "fixed_delta_seconds": 0.05,
+            "synchronous": true,
+            "num_vehicles": 30,
+            "num_walkers": 10,
+            "weather": "ClearNoon",
+            "ego_vehicle": "vehicle.tesla.model3",
+            "route_length_m": 200.0
+          },
+          "fallback": {
+            "dt": 0.1,
+            "wheelbase_m": 2.8,
+            "max_speed_kmh": 50.0,
+            "road_half_width_m": 2.0,
+            "curviness": 0.6,
+            "num_obstacles": 3
+          }
+        },
+        "cli": {
+          "config": "configs/ppo_validation_safe.yaml",
+          "env": "fallback",
+          "total_timesteps": null,
+          "n_envs": null,
+          "obs": "state",
+          "seed": 17,
+          "device": "auto",
+          "vec": "dummy",
+          "run_name": "safe_ppo_seed17",
+          "eval_episodes": null,
+          "smooth_actions": false,
+          "no_tensorboard": true,
+          "no_progress": true,
+          "carla_eval_port": 2001
+        },
+        "evaluation_port": null,
+        "source_changed_during_training": false,
+        "actual_timesteps": 200704,
+        "model_sha256": "6ff812354f4a99045c7dcb4802e3915f05be84785b0cbc820b27d18ca395dc34"
+      }
+    },
+    {
+      "seed": 29,
+      "summary": {
+        "episodes": 32,
+        "success_rate": 0.5625,
+        "collision_rate": 0.1875,
+        "offroad_rate": 0.25,
+        "timeout_rate": 0.0,
+        "route_completion": 0.6660000000000001,
+        "mean_abs_lateral_error_m": 0.2407982752020974,
+        "mean_speed_kmh": 33.42133357090536,
+        "success_95ci": [
+          0.3932559113685198,
+          0.7183466888495963
+        ]
+      },
+      "by_regime": {
+        "actuator": {
+          "episodes": 8,
+          "success_rate": 0.875,
+          "collision_rate": 0.125,
+          "offroad_rate": 0.0,
+          "timeout_rate": 0.0,
+          "route_completion": 0.927,
+          "mean_abs_lateral_error_m": 0.13062409130254898,
+          "mean_speed_kmh": 38.160931278368814,
+          "success_95ci": [
+            0.5291118177871464,
+            0.9775825085499433
+          ]
+        },
+        "geometry": {
+          "episodes": 8,
+          "success_rate": 0.375,
+          "collision_rate": 0.625,
+          "offroad_rate": 0.0,
+          "timeout_rate": 0.0,
+          "route_completion": 0.653,
+          "mean_abs_lateral_error_m": 0.17671549074207654,
+          "mean_speed_kmh": 31.996499697011775,
+          "success_95ci": [
+            0.13684428582359742,
+            0.6942576053973727
+          ]
+        },
+        "nominal": {
+          "episodes": 8,
+          "success_rate": 1.0,
+          "collision_rate": 0.0,
+          "offroad_rate": 0.0,
+          "timeout_rate": 0.0,
+          "route_completion": 0.994,
+          "mean_abs_lateral_error_m": 0.11266860823238121,
+          "mean_speed_kmh": 39.14441744248301,
+          "success_95ci": [
+            0.6755924351161198,
+            1.0
+          ]
+        },
+        "sensing": {
+          "episodes": 8,
+          "success_rate": 0.0,
+          "collision_rate": 0.0,
+          "offroad_rate": 1.0,
+          "timeout_rate": 0.0,
+          "route_completion": 0.09,
+          "mean_abs_lateral_error_m": 0.5431849105313828,
+          "mean_speed_kmh": 24.383485865757844,
+          "success_95ci": [
+            0.0,
+            0.32440756488388023
+          ]
+        }
+      },
+      "verdict": "FAIL",
+      "reason_codes": [
+        {
+          "code": "NEW_COLLISION",
+          "observed": 1,
+          "limit": 0
+        },
+        {
+          "code": "NEW_FAILURE",
+          "observed": 1,
+          "limit": 0
+        },
+        {
+          "code": "OVERSPEED_REGRESSION",
+          "observed": 5.168950603654118,
+          "limit": 3.0
+        }
+      ],
+      "model_sha256": "7cada3cca264c059b5ae8f983b7a3347562a94835c52a87a915f645f1c658dab",
+      "training": {
+        "source_sha256": "5f27633b191913fd07503c41861204d699b278240368447e3c68e2b13a5626b2",
+        "commit": "79921d3d2f3f8898b15c885348f5379b1ebbfbe4",
+        "dirty": true,
+        "python": "3.11.9",
+        "platform": "Windows-10-10.0.26300-SP0",
+        "dependencies": {
+          "numpy": "2.4.6",
+          "gymnasium": "1.3.0",
+          "stable-baselines3": "2.9.0",
+          "torch": "2.14.1+cpu"
+        },
+        "backend": "fallback",
+        "resolved_config": {
+          "algorithm": "ppo",
+          "seed": 29,
+          "total_timesteps": 200000,
+          "n_envs": 4,
+          "policy": {
+            "type": "auto",
+            "net_arch": [
+              64,
+              64
+            ],
+            "activation": "tanh",
+            "log_std_init": -0.5
+          },
+          "hyperparameters": {
+            "learning_rate": 0.0003,
+            "n_steps": 512,
+            "batch_size": 256,
+            "n_epochs": 5,
+            "gamma": 0.99,
+            "gae_lambda": 0.95,
+            "clip_range": 0.2,
+            "ent_coef": 0.0,
+            "vf_coef": 0.5,
+            "max_grad_norm": 0.5,
+            "target_kl": 0.03
+          },
+          "logging": {
+            "eval_freq": 25000,
+            "eval_episodes": 10,
+            "checkpoint_freq": 100000,
+            "tensorboard": false
+          },
+          "env": {
+            "observation": "state",
+            "image_size": [
+              84,
+              84
+            ],
+            "frame_stack": 1,
+            "action_repeat": 2,
+            "max_episode_steps": 1000,
+            "normalize_actions": true,
+            "smooth_actions": false
+          },
+          "reward": {
+            "target_speed_kmh": 30.0,
+            "w_speed": 3.0,
+            "w_progress": 0.5,
+            "w_lane": 1.0,
+            "w_heading": 0.3,
+            "w_steer": 0.1,
+            "w_jerk": 0.1,
+            "collision_penalty": 50.0,
+            "offroad_penalty": 25.0
+          },
+          "carla": {
+            "host": "localhost",
+            "port": 2000,
+            "timeout": 20.0,
+            "town": "Town03",
+            "fixed_delta_seconds": 0.05,
+            "synchronous": true,
+            "num_vehicles": 30,
+            "num_walkers": 10,
+            "weather": "ClearNoon",
+            "ego_vehicle": "vehicle.tesla.model3",
+            "route_length_m": 200.0
+          },
+          "fallback": {
+            "dt": 0.1,
+            "wheelbase_m": 2.8,
+            "max_speed_kmh": 50.0,
+            "road_half_width_m": 2.0,
+            "curviness": 0.6,
+            "num_obstacles": 3
+          }
+        },
+        "cli": {
+          "config": "configs/ppo_validation_safe.yaml",
+          "env": "fallback",
+          "total_timesteps": null,
+          "n_envs": null,
+          "obs": "state",
+          "seed": 29,
+          "device": "auto",
+          "vec": "dummy",
+          "run_name": "safe_ppo_seed29",
+          "eval_episodes": null,
+          "smooth_actions": false,
+          "no_tensorboard": true,
+          "no_progress": true,
+          "carla_eval_port": 2001
+        },
+        "evaluation_port": null,
+        "source_changed_during_training": false,
+        "actual_timesteps": 200704,
+        "model_sha256": "7cada3cca264c059b5ae8f983b7a3347562a94835c52a87a915f645f1c658dab"
+      }
+    },
+    {
+      "seed": 43,
+      "summary": {
+        "episodes": 32,
+        "success_rate": 0.53125,
+        "collision_rate": 0.21875,
+        "offroad_rate": 0.25,
+        "timeout_rate": 0.0,
+        "route_completion": 0.65525,
+        "mean_abs_lateral_error_m": 0.2485852830720516,
+        "mean_speed_kmh": 30.316308752674615,
+        "success_95ci": [
+          0.3644951711897464,
+          0.6913061289193116
+        ]
+      },
+      "by_regime": {
+        "actuator": {
+          "episodes": 8,
+          "success_rate": 1.0,
+          "collision_rate": 0.0,
+          "offroad_rate": 0.0,
+          "timeout_rate": 0.0,
+          "route_completion": 0.992,
+          "mean_abs_lateral_error_m": 0.12554279921010975,
+          "mean_speed_kmh": 34.19535531578072,
+          "success_95ci": [
+            0.6755924351161198,
+            1.0
+          ]
+        },
+        "geometry": {
+          "episodes": 8,
+          "success_rate": 0.125,
+          "collision_rate": 0.875,
+          "offroad_rate": 0.0,
+          "timeout_rate": 0.0,
+          "route_completion": 0.556,
+          "mean_abs_lateral_error_m": 0.1713124115947425,
+          "mean_speed_kmh": 30.74486385262003,
+          "success_95ci": [
+            0.02241749145005667,
+            0.4708881822128535
+          ]
+        },
+        "nominal": {
+          "episodes": 8,
+          "success_rate": 1.0,
+          "collision_rate": 0.0,
+          "offroad_rate": 0.0,
+          "timeout_rate": 0.0,
+          "route_completion": 0.992,
+          "mean_abs_lateral_error_m": 0.07785208133002477,
+          "mean_speed_kmh": 34.59571326707234,
+          "success_95ci": [
+            0.6755924351161198,
+            1.0
+          ]
+        },
+        "sensing": {
+          "episodes": 8,
+          "success_rate": 0.0,
+          "collision_rate": 0.0,
+          "offroad_rate": 1.0,
+          "timeout_rate": 0.0,
+          "route_completion": 0.081,
+          "mean_abs_lateral_error_m": 0.6196338401533295,
+          "mean_speed_kmh": 21.729302575225383,
+          "success_95ci": [
+            0.0,
+            0.32440756488388023
+          ]
+        }
+      },
+      "verdict": "PASS",
+      "reason_codes": [],
+      "model_sha256": "b55e9409f6d6c817237a6e18f76762c07000009f7adb128c64a426547a2c2f42",
+      "training": {
+        "source_sha256": "5f27633b191913fd07503c41861204d699b278240368447e3c68e2b13a5626b2",
+        "commit": "79921d3d2f3f8898b15c885348f5379b1ebbfbe4",
+        "dirty": true,
+        "python": "3.11.9",
+        "platform": "Windows-10-10.0.26300-SP0",
+        "dependencies": {
+          "numpy": "2.4.6",
+          "gymnasium": "1.3.0",
+          "stable-baselines3": "2.9.0",
+          "torch": "2.14.1+cpu"
+        },
+        "backend": "fallback",
+        "resolved_config": {
+          "algorithm": "ppo",
+          "seed": 43,
+          "total_timesteps": 200000,
+          "n_envs": 4,
+          "policy": {
+            "type": "auto",
+            "net_arch": [
+              64,
+              64
+            ],
+            "activation": "tanh",
+            "log_std_init": -0.5
+          },
+          "hyperparameters": {
+            "learning_rate": 0.0003,
+            "n_steps": 512,
+            "batch_size": 256,
+            "n_epochs": 5,
+            "gamma": 0.99,
+            "gae_lambda": 0.95,
+            "clip_range": 0.2,
+            "ent_coef": 0.0,
+            "vf_coef": 0.5,
+            "max_grad_norm": 0.5,
+            "target_kl": 0.03
+          },
+          "logging": {
+            "eval_freq": 25000,
+            "eval_episodes": 10,
+            "checkpoint_freq": 100000,
+            "tensorboard": false
+          },
+          "env": {
+            "observation": "state",
+            "image_size": [
+              84,
+              84
+            ],
+            "frame_stack": 1,
+            "action_repeat": 2,
+            "max_episode_steps": 1000,
+            "normalize_actions": true,
+            "smooth_actions": false
+          },
+          "reward": {
+            "target_speed_kmh": 30.0,
+            "w_speed": 3.0,
+            "w_progress": 0.5,
+            "w_lane": 1.0,
+            "w_heading": 0.3,
+            "w_steer": 0.1,
+            "w_jerk": 0.1,
+            "collision_penalty": 50.0,
+            "offroad_penalty": 25.0
+          },
+          "carla": {
+            "host": "localhost",
+            "port": 2000,
+            "timeout": 20.0,
+            "town": "Town03",
+            "fixed_delta_seconds": 0.05,
+            "synchronous": true,
+            "num_vehicles": 30,
+            "num_walkers": 10,
+            "weather": "ClearNoon",
+            "ego_vehicle": "vehicle.tesla.model3",
+            "route_length_m": 200.0
+          },
+          "fallback": {
+            "dt": 0.1,
+            "wheelbase_m": 2.8,
+            "max_speed_kmh": 50.0,
+            "road_half_width_m": 2.0,
+            "curviness": 0.6,
+            "num_obstacles": 3
+          }
+        },
+        "cli": {
+          "config": "configs/ppo_validation_safe.yaml",
+          "env": "fallback",
+          "total_timesteps": null,
+          "n_envs": null,
+          "obs": "state",
+          "seed": 43,
+          "device": "auto",
+          "vec": "dummy",
+          "run_name": "safe_ppo_seed43",
+          "eval_episodes": null,
+          "smooth_actions": false,
+          "no_tensorboard": true,
+          "no_progress": true,
+          "carla_eval_port": 2001
+        },
+        "evaluation_port": null,
+        "source_changed_during_training": false,
+        "actual_timesteps": 200704,
+        "model_sha256": "b55e9409f6d6c817237a6e18f76762c07000009f7adb128c64a426547a2c2f42"
+      }
+    }
+  ]
+}

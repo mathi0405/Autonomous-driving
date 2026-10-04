@@ -199,7 +199,7 @@ class KinematicDrivingEnv(gym.Env):
                 break
 
         self._steps += 1
-        reached_goal = self._idx >= len(self._path_xy) - 2
+        reached_goal = self._idx >= len(self._path_xy) - 2 and not (collided or offroad)
         progress_m = max(0.0, self._progress_s - s_start)
 
         meas = DriveMeasurement(
@@ -229,6 +229,15 @@ class KinematicDrivingEnv(gym.Env):
                 "speed_ms": self._v,
                 "progress_m": self._progress_s,
                 "route_fraction": self._idx / max(1, len(self._path_xy) - 1),
+                "terminal_reason": (
+                    "COLLISION"
+                    if collided
+                    else (
+                        "OFFROAD"
+                        if offroad
+                        else "SUCCESS" if reached_goal else "TIMEOUT" if truncated else "RUNNING"
+                    )
+                ),
             }
         )
         return obs, float(result.total), terminated, truncated, info
@@ -310,6 +319,16 @@ class KinematicDrivingEnv(gym.Env):
         self, lateral: float, heading_err: float, components: dict[str, float]
     ) -> dict[str, Any]:
         return {
+            "speed_ms": float(self._v),
+            "x_m": float(self._x),
+            "y_m": float(self._y),
+            "yaw_rad": float(self._yaw),
+            "curvature_inv_m": float(self._path_kappa[self._idx]),
+            "minimum_clearance_m": (
+                float(np.min(np.linalg.norm(self._obstacles - [self._x, self._y], axis=1))) - 1.2
+                if len(self._obstacles)
+                else float(TRACK_LENGTH_M)
+            ),
             "lateral_error_m": float(lateral),
             "heading_error_rad": float(heading_err),
             "reward_components": components,

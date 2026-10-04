@@ -1,0 +1,1070 @@
+{
+  "schema": 1,
+  "verdict": "FAIL",
+  "reason_codes": [
+    {
+      "code": "NEW_COLLISION",
+      "observed": 1,
+      "limit": 0
+    },
+    {
+      "code": "NEW_FAILURE",
+      "observed": 1,
+      "limit": 0
+    }
+  ],
+  "rules": {
+    "max_new_collisions": 0,
+    "max_new_offroads": 0,
+    "max_new_failures": 0,
+    "max_route_drop": 0.02,
+    "max_lateral_increase_m": 0.1,
+    "max_overspeed_increase_kmh": 3.0,
+    "min_nominal_success_rate": 0.95
+  },
+  "paired_episodes": 128,
+  "baseline_policy": {
+    "name": "stanley"
+  },
+  "candidate_policy": {
+    "name": "robust"
+  },
+  "suite_sha256": "56e7085a9d20ef3f6863e7b96f10ba6895f4445a08cdf9caac9030ec6b49d6b2",
+  "cases": [
+    {
+      "id": "actuator-000",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.06486744824199864
+    },
+    {
+      "id": "actuator-001",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.037550433899042
+    },
+    {
+      "id": "actuator-002",
+      "reason_codes": [],
+      "baseline_reason": "COLLISION",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.6799999999999999,
+      "lateral_delta_m": -0.016414366384271184
+    },
+    {
+      "id": "actuator-003",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.03964230126329901
+    },
+    {
+      "id": "actuator-004",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.03570418562316635
+    },
+    {
+      "id": "actuator-005",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": -0.01858280936996934
+    },
+    {
+      "id": "actuator-006",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.03574018282756271
+    },
+    {
+      "id": "actuator-007",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.05249571652791682
+    },
+    {
+      "id": "actuator-008",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.04001764432227914
+    },
+    {
+      "id": "actuator-009",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.06669782834262615
+    },
+    {
+      "id": "actuator-010",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.043724905800106406
+    },
+    {
+      "id": "actuator-011",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.03968143759747411
+    },
+    {
+      "id": "actuator-012",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.024983342636352532
+    },
+    {
+      "id": "actuator-013",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.055289104776464607
+    },
+    {
+      "id": "actuator-014",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.023798235828547787
+    },
+    {
+      "id": "actuator-015",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.03676707937051979
+    },
+    {
+      "id": "actuator-016",
+      "reason_codes": [],
+      "baseline_reason": "COLLISION",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.136,
+      "lateral_delta_m": -0.007122212416128565
+    },
+    {
+      "id": "actuator-017",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.06176450121145689
+    },
+    {
+      "id": "actuator-018",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.04138401957889021
+    },
+    {
+      "id": "actuator-019",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.04885809432342009
+    },
+    {
+      "id": "actuator-020",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.027529366318822468
+    },
+    {
+      "id": "actuator-021",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.02382034142887554
+    },
+    {
+      "id": "actuator-022",
+      "reason_codes": [],
+      "baseline_reason": "COLLISION",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.43999999999999995,
+      "lateral_delta_m": -0.01576995395655706
+    },
+    {
+      "id": "actuator-023",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.03608341925037942
+    },
+    {
+      "id": "actuator-024",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.022614185861233982
+    },
+    {
+      "id": "actuator-025",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0478724042147155
+    },
+    {
+      "id": "actuator-026",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.019075330881472286
+    },
+    {
+      "id": "actuator-027",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.061256671987748285
+    },
+    {
+      "id": "actuator-028",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.041596917952188256
+    },
+    {
+      "id": "actuator-029",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.06428966342094958
+    },
+    {
+      "id": "actuator-030",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.05444982678936455
+    },
+    {
+      "id": "actuator-031",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.038239621905244506
+    },
+    {
+      "id": "geometry-000",
+      "reason_codes": [],
+      "baseline_reason": "COLLISION",
+      "candidate_reason": "COLLISION",
+      "route_delta": 0.007999999999999952,
+      "lateral_delta_m": 0.021334477716267314
+    },
+    {
+      "id": "geometry-001",
+      "reason_codes": [],
+      "baseline_reason": "COLLISION",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.624,
+      "lateral_delta_m": 0.2188385090768114
+    },
+    {
+      "id": "geometry-002",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.060337555409853694
+    },
+    {
+      "id": "geometry-003",
+      "reason_codes": [],
+      "baseline_reason": "COLLISION",
+      "candidate_reason": "COLLISION",
+      "route_delta": 0.18400000000000002,
+      "lateral_delta_m": 0.3753247558471574
+    },
+    {
+      "id": "geometry-004",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.08330342204907731
+    },
+    {
+      "id": "geometry-005",
+      "reason_codes": [],
+      "baseline_reason": "COLLISION",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.616,
+      "lateral_delta_m": 0.12366358719281431
+    },
+    {
+      "id": "geometry-006",
+      "reason_codes": [],
+      "baseline_reason": "COLLISION",
+      "candidate_reason": "COLLISION",
+      "route_delta": 0.552,
+      "lateral_delta_m": 0.02252887336978729
+    },
+    {
+      "id": "geometry-007",
+      "reason_codes": [],
+      "baseline_reason": "COLLISION",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.648,
+      "lateral_delta_m": 0.228368496486475
+    },
+    {
+      "id": "geometry-008",
+      "reason_codes": [],
+      "baseline_reason": "COLLISION",
+      "candidate_reason": "COLLISION",
+      "route_delta": 0.6880000000000001,
+      "lateral_delta_m": 0.2285856409804516
+    },
+    {
+      "id": "geometry-009",
+      "reason_codes": [],
+      "baseline_reason": "COLLISION",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.76,
+      "lateral_delta_m": 0.09324791967659901
+    },
+    {
+      "id": "geometry-010",
+      "reason_codes": [],
+      "baseline_reason": "COLLISION",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.15200000000000002,
+      "lateral_delta_m": 0.2776721503879753
+    },
+    {
+      "id": "geometry-011",
+      "reason_codes": [],
+      "baseline_reason": "COLLISION",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.64,
+      "lateral_delta_m": 0.23990706644766818
+    },
+    {
+      "id": "geometry-012",
+      "reason_codes": [],
+      "baseline_reason": "COLLISION",
+      "candidate_reason": "COLLISION",
+      "route_delta": 0.008000000000000007,
+      "lateral_delta_m": 0.18486551638012036
+    },
+    {
+      "id": "geometry-013",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.11321538955248153
+    },
+    {
+      "id": "geometry-014",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.17752782863419223
+    },
+    {
+      "id": "geometry-015",
+      "reason_codes": [],
+      "baseline_reason": "COLLISION",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.488,
+      "lateral_delta_m": 0.3412687330685984
+    },
+    {
+      "id": "geometry-016",
+      "reason_codes": [],
+      "baseline_reason": "COLLISION",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.792,
+      "lateral_delta_m": 0.2864277085623095
+    },
+    {
+      "id": "geometry-017",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.07724218811676922
+    },
+    {
+      "id": "geometry-018",
+      "reason_codes": [],
+      "baseline_reason": "COLLISION",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.14400000000000002,
+      "lateral_delta_m": 0.15103896822505
+    },
+    {
+      "id": "geometry-019",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.1247495648817174
+    },
+    {
+      "id": "geometry-020",
+      "reason_codes": [],
+      "baseline_reason": "COLLISION",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.72,
+      "lateral_delta_m": 0.20834230589946828
+    },
+    {
+      "id": "geometry-021",
+      "reason_codes": [],
+      "baseline_reason": "COLLISION",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.07199999999999995,
+      "lateral_delta_m": 0.25415516933727067
+    },
+    {
+      "id": "geometry-022",
+      "reason_codes": [],
+      "baseline_reason": "COLLISION",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.64,
+      "lateral_delta_m": 0.24770747882643668
+    },
+    {
+      "id": "geometry-023",
+      "reason_codes": [],
+      "baseline_reason": "COLLISION",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.21599999999999997,
+      "lateral_delta_m": 0.16519373750186706
+    },
+    {
+      "id": "geometry-024",
+      "reason_codes": [],
+      "baseline_reason": "COLLISION",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.06399999999999995,
+      "lateral_delta_m": 0.13956757659296776
+    },
+    {
+      "id": "geometry-025",
+      "reason_codes": [],
+      "baseline_reason": "COLLISION",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.6,
+      "lateral_delta_m": 0.09419263419600402
+    },
+    {
+      "id": "geometry-026",
+      "reason_codes": [],
+      "baseline_reason": "COLLISION",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.728,
+      "lateral_delta_m": 0.10979128596939988
+    },
+    {
+      "id": "geometry-027",
+      "reason_codes": [],
+      "baseline_reason": "COLLISION",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.03200000000000003,
+      "lateral_delta_m": 0.3007110330097186
+    },
+    {
+      "id": "geometry-028",
+      "reason_codes": [],
+      "baseline_reason": "COLLISION",
+      "candidate_reason": "COLLISION",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.150154047597388
+    },
+    {
+      "id": "geometry-029",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.1449433274147863
+    },
+    {
+      "id": "geometry-030",
+      "reason_codes": [],
+      "baseline_reason": "COLLISION",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.5760000000000001,
+      "lateral_delta_m": 0.2308722619741599
+    },
+    {
+      "id": "geometry-031",
+      "reason_codes": [],
+      "baseline_reason": "COLLISION",
+      "candidate_reason": "COLLISION",
+      "route_delta": 0.384,
+      "lateral_delta_m": 0.07334162147069703
+    },
+    {
+      "id": "nominal-000",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.057643458440889625
+    },
+    {
+      "id": "nominal-001",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0725693588193008
+    },
+    {
+      "id": "nominal-002",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.04266682570359699
+    },
+    {
+      "id": "nominal-003",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.07296540462157797
+    },
+    {
+      "id": "nominal-004",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.08358196554533463
+    },
+    {
+      "id": "nominal-005",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.07564412793696655
+    },
+    {
+      "id": "nominal-006",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.04985064517168296
+    },
+    {
+      "id": "nominal-007",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.05200700465731682
+    },
+    {
+      "id": "nominal-008",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.038111073389928
+    },
+    {
+      "id": "nominal-009",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.03798715711851196
+    },
+    {
+      "id": "nominal-010",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.08263859746724508
+    },
+    {
+      "id": "nominal-011",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.07568043365289556
+    },
+    {
+      "id": "nominal-012",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.048845049144330396
+    },
+    {
+      "id": "nominal-013",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.07207063093584665
+    },
+    {
+      "id": "nominal-014",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.039438267851816526
+    },
+    {
+      "id": "nominal-015",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.06603693254670147
+    },
+    {
+      "id": "nominal-016",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0575932915556617
+    },
+    {
+      "id": "nominal-017",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.04191267219124975
+    },
+    {
+      "id": "nominal-018",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.06996430422090366
+    },
+    {
+      "id": "nominal-019",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.054481500858103896
+    },
+    {
+      "id": "nominal-020",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0655035327531936
+    },
+    {
+      "id": "nominal-021",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.04819655009312858
+    },
+    {
+      "id": "nominal-022",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.05190761469329304
+    },
+    {
+      "id": "nominal-023",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.043290962634715796
+    },
+    {
+      "id": "nominal-024",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.07867507594898296
+    },
+    {
+      "id": "nominal-025",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.039221944241949164
+    },
+    {
+      "id": "nominal-026",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.06620924360095604
+    },
+    {
+      "id": "nominal-027",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.04223860780468908
+    },
+    {
+      "id": "nominal-028",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.05374968263485071
+    },
+    {
+      "id": "nominal-029",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.0533927470456135
+    },
+    {
+      "id": "nominal-030",
+      "reason_codes": [],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.0,
+      "lateral_delta_m": 0.06560652071539035
+    },
+    {
+      "id": "nominal-031",
+      "reason_codes": [
+        "NEW_COLLISION",
+        "NEW_FAILURE"
+      ],
+      "baseline_reason": "SUCCESS",
+      "candidate_reason": "COLLISION",
+      "route_delta": -0.536,
+      "lateral_delta_m": 0.030689780653791132
+    },
+    {
+      "id": "sensing-000",
+      "reason_codes": [],
+      "baseline_reason": "OFFROAD",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.9359999999999999,
+      "lateral_delta_m": -0.42151625419114686
+    },
+    {
+      "id": "sensing-001",
+      "reason_codes": [],
+      "baseline_reason": "OFFROAD",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.9279999999999999,
+      "lateral_delta_m": -0.5145012912060409
+    },
+    {
+      "id": "sensing-002",
+      "reason_codes": [],
+      "baseline_reason": "OFFROAD",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.888,
+      "lateral_delta_m": -0.2645949648917498
+    },
+    {
+      "id": "sensing-003",
+      "reason_codes": [],
+      "baseline_reason": "OFFROAD",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.84,
+      "lateral_delta_m": -0.2755217978267844
+    },
+    {
+      "id": "sensing-004",
+      "reason_codes": [],
+      "baseline_reason": "OFFROAD",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.9279999999999999,
+      "lateral_delta_m": -0.6849311051809498
+    },
+    {
+      "id": "sensing-005",
+      "reason_codes": [],
+      "baseline_reason": "OFFROAD",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.88,
+      "lateral_delta_m": -0.3940521092057525
+    },
+    {
+      "id": "sensing-006",
+      "reason_codes": [],
+      "baseline_reason": "OFFROAD",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.88,
+      "lateral_delta_m": -0.46359565994110086
+    },
+    {
+      "id": "sensing-007",
+      "reason_codes": [],
+      "baseline_reason": "OFFROAD",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.9279999999999999,
+      "lateral_delta_m": -0.6963796971836224
+    },
+    {
+      "id": "sensing-008",
+      "reason_codes": [],
+      "baseline_reason": "OFFROAD",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.9279999999999999,
+      "lateral_delta_m": -0.5391362202495353
+    },
+    {
+      "id": "sensing-009",
+      "reason_codes": [],
+      "baseline_reason": "OFFROAD",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.912,
+      "lateral_delta_m": -0.48724421820609937
+    },
+    {
+      "id": "sensing-010",
+      "reason_codes": [],
+      "baseline_reason": "OFFROAD",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.9359999999999999,
+      "lateral_delta_m": -0.7256956212545167
+    },
+    {
+      "id": "sensing-011",
+      "reason_codes": [],
+      "baseline_reason": "OFFROAD",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.848,
+      "lateral_delta_m": -0.5063677854893408
+    },
+    {
+      "id": "sensing-012",
+      "reason_codes": [],
+      "baseline_reason": "OFFROAD",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.92,
+      "lateral_delta_m": -0.5342907179542686
+    },
+    {
+      "id": "sensing-013",
+      "reason_codes": [],
+      "baseline_reason": "OFFROAD",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.912,
+      "lateral_delta_m": -0.3186450251805826
+    },
+    {
+      "id": "sensing-014",
+      "reason_codes": [],
+      "baseline_reason": "OFFROAD",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.84,
+      "lateral_delta_m": -0.2956404551550216
+    },
+    {
+      "id": "sensing-015",
+      "reason_codes": [],
+      "baseline_reason": "OFFROAD",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.952,
+      "lateral_delta_m": -0.6412245548022899
+    },
+    {
+      "id": "sensing-016",
+      "reason_codes": [],
+      "baseline_reason": "OFFROAD",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.88,
+      "lateral_delta_m": -0.494980330134389
+    },
+    {
+      "id": "sensing-017",
+      "reason_codes": [],
+      "baseline_reason": "OFFROAD",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.9279999999999999,
+      "lateral_delta_m": -0.8369374848907412
+    },
+    {
+      "id": "sensing-018",
+      "reason_codes": [],
+      "baseline_reason": "OFFROAD",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.92,
+      "lateral_delta_m": -0.4533696744853063
+    },
+    {
+      "id": "sensing-019",
+      "reason_codes": [],
+      "baseline_reason": "OFFROAD",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.952,
+      "lateral_delta_m": -0.5844549934327379
+    },
+    {
+      "id": "sensing-020",
+      "reason_codes": [],
+      "baseline_reason": "OFFROAD",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.9279999999999999,
+      "lateral_delta_m": -0.45130889305155686
+    },
+    {
+      "id": "sensing-021",
+      "reason_codes": [],
+      "baseline_reason": "OFFROAD",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.904,
+      "lateral_delta_m": -0.4691310899859673
+    },
+    {
+      "id": "sensing-022",
+      "reason_codes": [],
+      "baseline_reason": "OFFROAD",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.848,
+      "lateral_delta_m": -0.355083259755109
+    },
+    {
+      "id": "sensing-023",
+      "reason_codes": [],
+      "baseline_reason": "OFFROAD",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.92,
+      "lateral_delta_m": -0.45820489094846395
+    },
+    {
+      "id": "sensing-024",
+      "reason_codes": [],
+      "baseline_reason": "OFFROAD",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.896,
+      "lateral_delta_m": -0.4669640824883926
+    },
+    {
+      "id": "sensing-025",
+      "reason_codes": [],
+      "baseline_reason": "OFFROAD",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.912,
+      "lateral_delta_m": -0.3401379092540924
+    },
+    {
+      "id": "sensing-026",
+      "reason_codes": [],
+      "baseline_reason": "OFFROAD",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.808,
+      "lateral_delta_m": -0.32909995218188187
+    },
+    {
+      "id": "sensing-027",
+      "reason_codes": [],
+      "baseline_reason": "OFFROAD",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.92,
+      "lateral_delta_m": -0.31460306629900103
+    },
+    {
+      "id": "sensing-028",
+      "reason_codes": [],
+      "baseline_reason": "OFFROAD",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.92,
+      "lateral_delta_m": -0.4960876507198433
+    },
+    {
+      "id": "sensing-029",
+      "reason_codes": [],
+      "baseline_reason": "OFFROAD",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.9279999999999999,
+      "lateral_delta_m": -0.8572808675143522
+    },
+    {
+      "id": "sensing-030",
+      "reason_codes": [],
+      "baseline_reason": "OFFROAD",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.9279999999999999,
+      "lateral_delta_m": -0.7951207924035691
+    },
+    {
+      "id": "sensing-031",
+      "reason_codes": [],
+      "baseline_reason": "OFFROAD",
+      "candidate_reason": "SUCCESS",
+      "route_delta": 0.9279999999999999,
+      "lateral_delta_m": -0.8097412449606054
+    }
+  ],
+  "route_delta": 0.31275000000000003,
+  "lateral_delta_m": -0.060696460889584886,
+  "overspeed_delta_kmh": -0.045051341673509576,
+  "route_delta_paired_bootstrap_95ci": [
+    0.2423734375,
+    0.3856562499999998
+  ],
+  "scope": "Finite paired kinematic simulation suite; not hardware validation."
+}

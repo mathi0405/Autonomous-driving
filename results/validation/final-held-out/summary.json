@@ -1,0 +1,193 @@
+{
+  "schema": 1,
+  "suite_file": "configs/validation/held-out-v5.json",
+  "first_evaluation": true,
+  "baseline": {
+    "episodes": 256,
+    "success_rate": 0.515625,
+    "collision_rate": 0.234375,
+    "offroad_rate": 0.25,
+    "timeout_rate": 0.0,
+    "route_completion": 0.6353125,
+    "mean_abs_lateral_error_m": 0.26543961784297343,
+    "mean_speed_kmh": 29.436529947085468,
+    "success_95ci": [
+      0.4546288138005892,
+      0.5761591906861023
+    ]
+  },
+  "candidate": {
+    "episodes": 256,
+    "success_rate": 0.97265625,
+    "collision_rate": 0.01953125,
+    "offroad_rate": 0.0,
+    "timeout_rate": 0.0078125,
+    "route_completion": 0.9804375000000004,
+    "mean_abs_lateral_error_m": 0.19035638932749244,
+    "mean_speed_kmh": 21.99329362211892,
+    "success_95ci": [
+      0.9446442920775396,
+      0.9866928436448789
+    ]
+  },
+  "baseline_by_regime": {
+    "actuator": {
+      "episodes": 64,
+      "success_rate": 0.921875,
+      "collision_rate": 0.078125,
+      "offroad_rate": 0.0,
+      "timeout_rate": 0.0,
+      "route_completion": 0.9662499999999999,
+      "mean_abs_lateral_error_m": 0.13299101538232694,
+      "mean_speed_kmh": 30.05812832872227,
+      "success_95ci": [
+        0.8298046264583709,
+        0.9661688230914496
+      ]
+    },
+    "geometry": {
+      "episodes": 64,
+      "success_rate": 0.140625,
+      "collision_rate": 0.859375,
+      "offroad_rate": 0.0,
+      "timeout_rate": 0.0,
+      "route_completion": 0.488375,
+      "mean_abs_lateral_error_m": 0.2053654650974898,
+      "mean_speed_kmh": 29.767718636056376,
+      "success_95ci": [
+        0.0757857255603086,
+        0.24616281741577023
+      ]
+    },
+    "nominal": {
+      "episodes": 64,
+      "success_rate": 1.0,
+      "collision_rate": 0.0,
+      "offroad_rate": 0.0,
+      "timeout_rate": 0.0,
+      "route_completion": 0.992,
+      "mean_abs_lateral_error_m": 0.06692747211513783,
+      "mean_speed_kmh": 30.075713647723344,
+      "success_95ci": [
+        0.9433759402071946,
+        1.0
+      ]
+    },
+    "sensing": {
+      "episodes": 64,
+      "success_rate": 0.0,
+      "collision_rate": 0.0,
+      "offroad_rate": 1.0,
+      "timeout_rate": 0.0,
+      "route_completion": 0.094625,
+      "mean_abs_lateral_error_m": 0.6564745187769392,
+      "mean_speed_kmh": 27.84455917583991,
+      "success_95ci": [
+        0.0,
+        0.05662405979280534
+      ]
+    }
+  },
+  "candidate_by_regime": {
+    "actuator": {
+      "episodes": 64,
+      "success_rate": 0.921875,
+      "collision_rate": 0.078125,
+      "offroad_rate": 0.0,
+      "timeout_rate": 0.0,
+      "route_completion": 0.9662499999999999,
+      "mean_abs_lateral_error_m": 0.13299101538232694,
+      "mean_speed_kmh": 30.05812832872227,
+      "success_95ci": [
+        0.8298046264583709,
+        0.9661688230914496
+      ]
+    },
+    "geometry": {
+      "episodes": 64,
+      "success_rate": 0.96875,
+      "collision_rate": 0.0,
+      "offroad_rate": 0.0,
+      "timeout_rate": 0.03125,
+      "route_completion": 0.9715,
+      "mean_abs_lateral_error_m": 0.39418326603836057,
+      "mean_speed_kmh": 17.75933018564205,
+      "success_95ci": [
+        0.8930270822904169,
+        0.9913878616538281
+      ]
+    },
+    "nominal": {
+      "episodes": 64,
+      "success_rate": 1.0,
+      "collision_rate": 0.0,
+      "offroad_rate": 0.0,
+      "timeout_rate": 0.0,
+      "route_completion": 0.992,
+      "mean_abs_lateral_error_m": 0.06692747211513783,
+      "mean_speed_kmh": 30.075713647723344,
+      "success_95ci": [
+        0.9433759402071946,
+        1.0
+      ]
+    },
+    "sensing": {
+      "episodes": 64,
+      "success_rate": 1.0,
+      "collision_rate": 0.0,
+      "offroad_rate": 0.0,
+      "timeout_rate": 0.0,
+      "route_completion": 0.992,
+      "mean_abs_lateral_error_m": 0.16732380377414433,
+      "mean_speed_kmh": 10.080002326388012,
+      "success_95ci": [
+        0.9433759402071946,
+        1.0
+      ]
+    }
+  },
+  "provenance": {
+    "source_sha256": "040585abec25f765ed4c7c9aed59fb71e2f2046cc605c10c0623fdaeba8d1d08",
+    "commit": "49269e9db0fc452e063dde7e11da7f9e197f89c1",
+    "dirty": true,
+    "python": "3.11.9",
+    "platform": "Windows-10-10.0.26300-SP0",
+    "dependencies": {
+      "numpy": "2.2.6",
+      "gymnasium": "1.1.1",
+      "stable-baselines3": null,
+      "torch": null
+    }
+  },
+  "source_fingerprint_matches": true,
+  "candidate_failures": [
+    {
+      "id": "geometry-054",
+      "reason": "TIMEOUT"
+    },
+    {
+      "id": "geometry-061",
+      "reason": "TIMEOUT"
+    },
+    {
+      "id": "actuator-002",
+      "reason": "COLLISION"
+    },
+    {
+      "id": "actuator-005",
+      "reason": "COLLISION"
+    },
+    {
+      "id": "actuator-026",
+      "reason": "COLLISION"
+    },
+    {
+      "id": "actuator-042",
+      "reason": "COLLISION"
+    },
+    {
+      "id": "actuator-057",
+      "reason": "COLLISION"
+    }
+  ]
+}
