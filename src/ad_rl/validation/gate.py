@@ -6,6 +6,8 @@ from dataclasses import asdict, dataclass, fields
 
 import numpy as np
 
+from ad_rl.validation.runner import validate_outcomes
+
 
 @dataclass(frozen=True)
 class GateRules:
@@ -41,6 +43,8 @@ def load_rules(data: dict) -> GateRules:
 def compare(baseline: dict, candidate: dict, rules: GateRules | None = None) -> dict:
     """Compare paired cases only when simulator, suite and runtime are compatible."""
     rules = rules or GateRules()
+    validate_outcomes(baseline["episodes"])
+    validate_outcomes(candidate["episodes"])
     reasons = []
     for key in ("backend", "suite_sha256"):
         if baseline[key] != candidate[key]:
