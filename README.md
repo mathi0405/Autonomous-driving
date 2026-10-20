@@ -142,7 +142,7 @@ All sub-reward components are logged independently in training telemetry to faci
 
 ## 5. Experimental Results
 
-Evaluation conducted over **20 test episodes** per agent, with no teacher forcing or privileged information at test time.
+The checked-in `results/summary.json` reports **20 episodes per agent in the lightweight fallback environment, using state observations**. The table below summarizes that artifact; it is not evidence of camera-only CARLA performance. Separate CARLA/image evaluations must include their own logs, checkpoints, and configuration.
 
 | Agent | Success Rate | Route Completion | Collision Rate |
 |---|---|---|---|
@@ -153,7 +153,7 @@ Evaluation conducted over **20 test episodes** per agent, with no teacher forcin
 
 ### Discussion
 
-The PPO agent achieves the highest RL performance, approaching classical controller success rates while operating exclusively from image observations — without access to privileged map or state information available to the PID and Stanley controllers. SAC converges to a satisfactory policy but exhibits greater variance, likely attributable to the replay buffer's off-policy distribution shift in this partially-observable setting. The advantage of classical controllers on structured test tracks is expected; their performance is expected to degrade substantially in unstructured or sensor-degraded scenarios where RL-based generalization becomes critical.
+In the saved fallback/state evaluation, PPO achieves 95% success and SAC 85%, while both classical baselines achieve 100%. These results describe this evaluation configuration only. They do not establish image-based navigation, transfer to CARLA, or superiority under sensor degradation.
 
 For an interactive breakdown of all evaluation metrics, generate the dashboard:
 
