@@ -7,7 +7,7 @@ name = "ad-rl"
 version = "0.2.0"
 description = "Autonomous driving with deep reinforcement learning (PPO & SAC) in the CARLA simulator. Includes a CPU-only fallback environment, CNN-based perception, classical controller baselines, full evaluation harness, and CI/CD pipeline."
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 license = { text = "MIT" }
 authors = [{ name = "Mani Chandan Mathi", email = "108810456+mathi0405@users.noreply.github.com" }]
 keywords = [
@@ -26,7 +26,6 @@ classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Science/Research",
     "License :: OSI Approved :: MIT License",
-    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
@@ -76,6 +75,7 @@ Changelog = "https://github.com/mathi0405/Autonomous-driving/blob/main/CHANGELOG
 [project.scripts]
 ad-train = "ad_rl.training.train:main"
 ad-eval = "ad_rl.evaluation.evaluate:main"
+ad-validate = "ad_rl.validation.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
@@ -88,7 +88,7 @@ ad_rl = ["py.typed"]
 # ---------------------------------------------------------------------------
 [tool.ruff]
 line-length = 100
-target-version = "py39"
+target-version = "py310"
 src = ["src", "tests"]
 
 [tool.ruff.lint]
@@ -114,15 +114,19 @@ known-first-party = ["ad_rl"]
 
 [tool.black]
 line-length = 100
-target-version = ["py39", "py310", "py311", "py312"]
+target-version = ["py310", "py311", "py312"]
 
 [tool.mypy]
-python_version = "3.9"
+python_version = "3.11"
 warn_unused_ignores = true
 warn_redundant_casts = true
 ignore_missing_imports = true
 disallow_untyped_defs = false
 files = ["src"]
+
+[[tool.mypy.overrides]]
+module = ["torch.*", "stable_baselines3.*", "gymnasium.*"]
+follow_imports = "skip"
 
 [tool.pytest.ini_options]
 minversion = "8.0"

@@ -1,0 +1,47 @@
+name: Behavioral validation
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: driving-validation-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  behavioral-gate:
+    name: Driving regression gate and negative controls
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      PYTHONPATH: src
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: requirements-validation.txt
+      - name: Install pinned CPU validation dependencies
+        run: pip install -r requirements-validation.txt
+      - name: Test behavioral and evidence correctness
+        run: pytest tests/test_validation.py tests/test_sensor_sync.py tests/test_safety_filter.py tests/test_evidence_lifecycle.py tests/test_release_readiness.py -q
+      - name: Evaluate frozen cases and prove three bad changes are rejected
+        run: python scripts/validate_release.py --out artifacts/ci
+      - name: Reject regressions against the previous improved controller
+        run: python scripts/validate_regressions.py --out artifacts/regression
+      - name: Retain reports and replay evidence even when the gate fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: driving-validation-${{ github.run_number }}
+          path: |
+            artifacts/ci
+            artifacts/regression
+          retention-days: 30
+          if-no-files-found: error

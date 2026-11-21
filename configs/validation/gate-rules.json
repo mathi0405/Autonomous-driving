@@ -1,0 +1,9 @@
+{
+  "max_new_collisions": 0,
+  "max_new_offroads": 0,
+  "max_new_failures": 0,
+  "max_route_drop": 0.02,
+  "max_lateral_increase_m": 0.10,
+  "max_overspeed_increase_kmh": 3.0,
+  "min_nominal_success_rate": 0.95
+}

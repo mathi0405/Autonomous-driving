@@ -8,6 +8,8 @@ fallback environment, the tests, or CI.
 from __future__ import annotations
 
 import contextlib
+import queue
+import time
 import weakref
 from typing import Any
 
@@ -37,6 +39,8 @@ class SensorManager:
         self.collision_intensity: float = 0.0
         self.lane_invasions: int = 0
         self._collision_flag = False
+        self._image_queue: queue.Queue = queue.Queue(maxsize=32)
+        self.latest_frame: int | None = None
 
         self._spawn_sensors()
 
@@ -77,6 +81,12 @@ class SensorManager:
         array = np.frombuffer(image.raw_data, dtype=np.uint8)
         array = array.reshape((image.height, image.width, 4))[:, :, :3]  # BGRA -> BGR
         self.latest_image = array[:, :, ::-1].copy()  # BGR -> RGB
+        try:
+            self._image_queue.put_nowait((image.frame, self.latest_image))
+        except queue.Full:
+            with contextlib.suppress(queue.Empty):
+                self._image_queue.get_nowait()
+            self._image_queue.put_nowait((image.frame, self.latest_image))
 
     @staticmethod
     def _on_collision(weak_self: weakref.ref[SensorManager], event: Any) -> None:
@@ -96,10 +106,27 @@ class SensorManager:
 
     # ----- polling helpers ------------------------------------------------- #
     def had_collision(self) -> bool:
-        """Return and clear the collision flag for this tick."""
-        flag = self._collision_flag
-        self._collision_flag = False
-        return flag
+        """Return an episode-latched collision flag; callbacks cannot be lost by clearing."""
+        return self._collision_flag
+
+    def wait_for_frame(self, frame: int, timeout: float) -> np.ndarray:
+        """Wait for the exact camera frame; reject missing/future frames explicitly."""
+        deadline = time.monotonic() + timeout
+        while True:
+            remaining = deadline - time.monotonic()
+            if remaining <= 0:
+                raise TimeoutError(f"Camera did not deliver simulation frame {frame}.")
+            try:
+                received, image = self._image_queue.get(timeout=remaining)
+            except queue.Empty as error:
+                raise TimeoutError(f"Camera did not deliver simulation frame {frame}.") from error
+            if received < frame:
+                continue
+            if received > frame:
+                raise RuntimeError(f"Camera skipped frame {frame}; received {received}.")
+            self.latest_frame = received
+            self.latest_image = image
+            return image
 
     def destroy(self) -> None:
         """Stop and destroy attached sensors, suppressing cleanup errors.

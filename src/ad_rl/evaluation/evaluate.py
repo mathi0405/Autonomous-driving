@@ -13,8 +13,8 @@ Evaluate a classical baseline (no training required)::
 from __future__ import annotations
 
 import argparse
+from collections.abc import Callable
 from pathlib import Path
-from typing import Callable
 
 import numpy as np
 
@@ -22,6 +22,7 @@ from ad_rl.envs import make_env
 from ad_rl.evaluation.metrics import EpisodeRecord, aggregate, update_summary
 from ad_rl.utils.config import Config, load_config
 from ad_rl.utils.logging import get_logger
+from ad_rl.utils.seeding import set_global_seeds
 
 logger = get_logger("ad_rl.eval")
 
@@ -68,7 +69,7 @@ def run_episodes(
     records: list[EpisodeRecord] = []
     for ep in range(n_episodes):
         if hasattr(policy, "reset"):
-            policy.reset()  # type: ignore[attr-defined]
+            policy.reset()
         reset_seed = None if seed is None else seed + ep
         obs, info = env.reset(seed=reset_seed)
         done = False
@@ -128,6 +129,7 @@ def parse_args(argv=None) -> argparse.Namespace:
 def evaluate(args: argparse.Namespace) -> dict:
     """Run evaluation rollouts and return the aggregated metrics dict."""
     cfg = load_config(args.config)
+    set_global_seeds(args.seed)
     if args.obs is not None:
         cfg.env.observation = args.obs
     if cfg.env.observation == "state" and cfg.env.frame_stack > 1:
@@ -152,7 +154,10 @@ def evaluate(args: argparse.Namespace) -> dict:
     logger.info(
         f"Evaluating [bold]{agent_name}[/bold]" f" on '{args.env}' for {args.episodes} episodes"
     )
-    records = run_episodes(env, policy, args.episodes, seed=args.seed)
+    try:
+        records = run_episodes(env, policy, args.episodes, seed=args.seed)
+    finally:
+        env.close()
     metrics = aggregate(records)
     _print_metrics(agent_name, metrics)
 

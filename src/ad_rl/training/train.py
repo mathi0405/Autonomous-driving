@@ -15,9 +15,13 @@ Full PPO run against a live CARLA server::
 from __future__ import annotations
 
 import argparse
+import copy
+import hashlib
 import json
-import shutil
+from dataclasses import asdict
 from pathlib import Path
+
+import yaml
 
 from ad_rl.agents import build_agent
 from ad_rl.envs import make_env
@@ -46,6 +50,12 @@ def parse_args(argv=None) -> argparse.Namespace:
     p.add_argument("--no-tensorboard", action="store_true")
     p.add_argument("--no-progress", action="store_true")
     p.add_argument("--outdir", default="runs")
+    p.add_argument(
+        "--carla-eval-port",
+        type=int,
+        default=2001,
+        help="Separate CARLA evaluation server; must differ from the training port.",
+    )
     return p.parse_args(argv)
 
 
@@ -63,6 +73,8 @@ def apply_overrides(cfg: Config, args: argparse.Namespace) -> Config:
         cfg.logging["eval_episodes"] = args.eval_episodes
     if args.no_tensorboard:
         cfg.logging["tensorboard"] = False
+    if args.smooth_actions:
+        cfg.env.smooth_actions = True
     # State observations are low-dim; multi-frame stacking is unnecessary there.
     if cfg.env.observation == "state" and cfg.env.frame_stack > 1:
         cfg.env.frame_stack = 1
@@ -71,12 +83,21 @@ def apply_overrides(cfg: Config, args: argparse.Namespace) -> Config:
 
 def train(args: argparse.Namespace) -> Path:
     """Run training end-to-end and return the output directory path."""
+    from ad_rl.validation.runner import provenance, source_fingerprint, write_json
+
+    run_provenance = provenance()
     cfg = apply_overrides(load_config(args.config), args)
+    eval_cfg = copy.deepcopy(cfg)
+    if args.env == "carla":
+        if args.carla_eval_port == cfg.carla.port:
+            raise ValueError("CARLA training and evaluation require separate server ports.")
+        cfg.n_envs = 1
+        eval_cfg.carla.port = args.carla_eval_port
     set_global_seeds(cfg.seed)
 
     run_name = args.run_name or f"{cfg.algorithm}_{args.env}_{cfg.env.observation}"
     run_dir = Path(args.outdir) / run_name
-    run_dir.mkdir(parents=True, exist_ok=True)
+    run_dir.mkdir(parents=True, exist_ok=False)
     tb_dir = str(run_dir / "tb") if cfg.logging.get("tensorboard", True) else None
 
     logger.info(
@@ -86,29 +107,54 @@ def train(args: argparse.Namespace) -> Path:
 
     n_envs = 1 if args.env == "carla" else cfg.n_envs
     train_venv = make_vector_env(args.env, cfg, n_envs=n_envs, seed=cfg.seed, vec=args.vec)
-    eval_venv = make_vector_env(args.env, cfg, n_envs=1, seed=cfg.seed + 777)
+    eval_venv = None
+    try:
+        eval_venv = make_vector_env(args.env, eval_cfg, n_envs=1, seed=cfg.seed + 777)
 
-    model = build_agent(cfg.algorithm, train_venv, cfg, device=args.device, tensorboard_log=tb_dir)
+        model = build_agent(
+            cfg.algorithm, train_venv, cfg, device=args.device, tensorboard_log=tb_dir
+        )
 
-    callbacks = _build_callbacks(cfg, eval_venv, run_dir, n_envs)
-    model.learn(
-        total_timesteps=cfg.total_timesteps,
-        callback=callbacks,
-        progress_bar=not args.no_progress,
-        tb_log_name=run_name,
-    )
+        callbacks = _build_callbacks(cfg, eval_venv, run_dir, n_envs)
+        model.learn(
+            total_timesteps=cfg.total_timesteps,
+            callback=callbacks,
+            progress_bar=not args.no_progress,
+            tb_log_name=run_name,
+        )
 
-    final_path = run_dir / "final_model.zip"
-    model.save(final_path)
-    shutil.copy(args.config, run_dir / "config.yaml")
-    logger.info(f"Saved final model -> {final_path}")
+        final_path = run_dir / "final_model.zip"
+        model.save(final_path)
+        resolved = asdict(cfg)
+        resolved.pop("raw", None)
+        (run_dir / "config.yaml").write_text(yaml.safe_dump(resolved), encoding="utf-8")
+        write_json(
+            run_dir / "provenance.json",
+            {
+                **run_provenance,
+                "backend": args.env,
+                "resolved_config": resolved,
+                "cli": vars(args),
+                "evaluation_port": eval_cfg.carla.port if args.env == "carla" else None,
+                "source_changed_during_training": (
+                    run_provenance["source_sha256"] != source_fingerprint()
+                ),
+                "actual_timesteps": model.num_timesteps,
+                "model_sha256": hashlib.sha256(final_path.read_bytes()).hexdigest(),
+            },
+        )
+        logger.info(f"Saved final model -> {final_path}")
 
-    metrics = _final_evaluation(model, args.env, cfg, run_dir)
-    logger.info(f"Final eval: {json.dumps(metrics, indent=2)}")
+        eval_venv.close()
+        eval_venv = None
+        metrics = _final_evaluation(model, args.env, eval_cfg, run_dir)
+        logger.info(f"Final eval: {json.dumps(metrics, indent=2)}")
 
-    train_venv.close()
-    eval_venv.close()
-    return run_dir
+        return run_dir
+    finally:
+        train_venv.close()
+        if eval_venv is not None:
+            eval_venv.close()
 
 
 def _build_callbacks(cfg: Config, eval_venv, run_dir: Path, n_envs: int):
@@ -144,13 +190,16 @@ def _final_evaluation(model, env_name: str, cfg: Config, run_dir: Path) -> dict:
 
     n_eval = int(cfg.logging.get("eval_episodes", 5))
     eval_env = make_env(env_name, cfg)
-    records = run_episodes(
-        eval_env, policy_from_model(model, deterministic=True), n_eval, seed=cfg.seed + 10_000
-    )
+    try:
+        records = run_episodes(
+            eval_env, policy_from_model(model, deterministic=True), n_eval, seed=cfg.seed + 10_000
+        )
+    finally:
+        eval_env.close()
     metrics = aggregate(records)
     (run_dir / "metrics.json").write_text(json.dumps(metrics, indent=2), encoding="utf-8")
     update_summary(
-        Path("results") / "summary.json",
+        run_dir / "summary.json",
         agent=cfg.algorithm.upper(),
         metrics=metrics,
         returns=[r.ret for r in records],
